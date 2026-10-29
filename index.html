@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Isnad Media</title>
+<meta name="description" content="Isnad Media. Short films, reminders and stories of Muslims across Africa, told with their sources.">
+<meta name="theme-color" content="#0F4535">
+<link rel="icon" href="assets/isnad-mark.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
+<link rel="stylesheet" href="css/styles.css?v=21">
+</head>
+<body>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- The pointed arch from the logo, in box units, for clipping artwork -->
+    <clipPath id="archClip" clipPathUnits="objectBoundingBox"><path d="M0 1V0.426A0.6 0.432 0 0 1 0.5 0A0.6 0.432 0 0 1 1 0.426V1Z"/></clipPath>
+  </defs>
+  <symbol id="mark" viewBox="0 0 272 362">
+    <path d="M15 350V155A147.4 147.4 0 0 1 136 10A147.4 147.4 0 0 1 257 155V350" style="fill:none;stroke:var(--mark-arch);stroke-width:16;stroke-linecap:round;stroke-linejoin:round"/>
+    <g style="fill:none;stroke:var(--mark-chain);stroke-width:16;stroke-linecap:round">
+      <rect x="102" y="90" width="68" height="92" rx="30"/>
+      <rect x="102" y="238" width="68" height="92" rx="30"/>
+      <path d="M136 168V250"/>
+    </g>
+  </symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.2v13.6L19 12z" style="fill:currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M6.5 5h4v14h-4zM13.5 5h4v14h-4z" style="fill:currentColor"/></symbol>
+  <symbol id="star" viewBox="0 0 24 24"><path d="M6 6h12v12H6zM12 3.5l8.5 8.5-8.5 8.5L3.5 12z" style="fill:currentColor"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 24 24"><path d="M3.5 9h4l5-4v14l-5-4h-4z" style="fill:currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" style="fill:none;stroke:currentColor;stroke-width:2"/><circle cx="12" cy="12" r="4" style="fill:none;stroke:currentColor;stroke-width:2"/><circle cx="17.2" cy="6.8" r="1.2" style="fill:currentColor"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M13 3v12.2a3.6 3.6 0 1 1-3.6-3.6M13 3c.6 2.8 2.6 4.6 5.6 4.8" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7" style="fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5z" style="fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:round"/><path d="M9.2 8.6c.3-.6.6-.6.9-.6h.5c.2 0 .4.1.5.4l.7 1.6c.1.2 0 .5-.1.7l-.5.6c.4.9 1.2 1.7 2.1 2.1l.6-.5c.2-.2.5-.2.7-.1l1.6.7c.3.1.4.3.4.5v.5c0 .3 0 .6-.6.9-.5.3-1.6.5-3.4-.6-1.4-.8-2.6-2-3.4-3.4-1.1-1.8-.9-2.9-.6-3.4z" style="fill:currentColor"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5" style="fill:none;stroke:currentColor;stroke-width:1.9"/><path d="M3.8 7.2l8.2 6 8.2-6" style="fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"/></symbol>
+  <symbol id="i-muted" viewBox="0 0 24 24"><path d="M3.5 9h4l5-4v14l-5-4h-4z" style="fill:currentColor"/><path d="M16 9.5l5 5M21 9.5l-5 5" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="#top" aria-label="Isnad Media, back to the top">
+      <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span class="brand__word"><span class="brand__name">ISNAD</span><span class="brand__sub">MEDIA</span></span>
+    </a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#find">Watch</a>
+      <a href="#prayer-times">Prayer times</a>
+      <a href="#haramain">The Haram</a>
+      <a href="#our-name">Our name</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn--primary btn--sm site-header__follow" href="#follow">Follow us</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <p class="eyebrow eyebrow--hero"><span>Stories you can trust</span><span class="eyebrow__ar" lang="ar" dir="rtl">قصص موثوقة</span></p>
+      <h1 id="hero-title">Every story has a <span class="gold">chain.</span></h1>
+      <p class="hero__lead">Short films, reminders and the history of Muslims across Africa, from Isnad Media. The scholars of hadith traced every saying back through each person who carried it. We tell our stories the same way, so you always know who said it and how it reached you.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#follow">Follow us</a>
+        <a class="btn btn--ghost" href="#prayer-times">Prayer times</a>
+      </div>
+      <div class="countdown" role="timer" aria-labelledby="cdLabel">
+        <svg class="countdown__ring" viewBox="0 0 80 80" aria-hidden="true">
+          <circle class="countdown__track" cx="40" cy="40" r="34"/>
+          <circle class="countdown__fill" id="cdFill" cx="40" cy="40" r="34" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 40 40)"/>
+          <use class="countdown__star" href="#star" x="27" y="27" width="26" height="26"/>
+        </svg>
+        <div class="countdown__text">
+          <p class="countdown__label"><span id="cdLabel">Next adhan in</span> <select class="city-select city-select--inline" id="cityHero" aria-label="Your city, for prayer times"><option>Nairobi</option></select></p>
+          <p class="countdown__name"><span class="ar" lang="ar" dir="rtl" id="cdAr">العصر</span> <span id="cdName">Asr</span> at <span id="cdAt">14:15</span></p>
+          <p class="countdown__clock" data-countdown>00:00:00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- The mihrab arch: the Haram's courtyards, a silent moving picture. -->
+    <figure class="stage" data-ambient>
+      <div class="arch">
+        <video class="arch__art" src="assets/haramain/courtyards.mp4" poster="assets/haramain/courtyards.jpg" muted loop playsinline preload="metadata" aria-label="Crowds moving through the courtyards of Masjid al-Ḥarām in Makkah, seen from above."></video>
+        <canvas id="stage" aria-hidden="true"></canvas>
+        <button class="hold stage__hold" type="button" data-ambient-toggle aria-label="Pause the moving picture">
+          <svg class="hold__pause" aria-hidden="true"><use href="#i-pause"/></svg>
+          <svg class="hold__play" aria-hidden="true"><use href="#i-play"/></svg>
+        </button>
+      </div>
+      <figcaption class="film__caption">
+        <span class="story__series"><span>From the Haramain</span><span class="eyebrow__ar" lang="ar" dir="rtl">من الحرمين</span></span>
+        <span class="film__title">The courtyards</span>
+        <span>Crowds moving through the courtyards of Masjid al-Ḥarām.</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="find" aria-labelledby="find-title">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow"><span>Watch</span><span class="eyebrow__ar" lang="ar" dir="rtl">شاهد</span></p>
+      <h2 id="find-title">What you’ll find here</h2>
+      <p class="section__lead">Choose one to watch its videos.</p>
+    </header>
+    <!-- Each card opens its shelf of films. A film can sit on more than one shelf. -->
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar__media" aria-hidden="true"><img src="assets/video/mali-first-command.jpg?v=2" width="1280" height="720" loading="lazy" alt=""></div>
+        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-reminders" data-shelf>Reminders</button></h3>
+        <p class="pillar__ar" lang="ar" dir="rtl">تذكير</p>
+        <p class="pillar__about">From the Qurʾān and Sunnah, always with the source</p>
+        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">3 videos</span><svg><use href="#i-next"/></svg></p>
+      </div>
+      <div class="shelf" id="shelf-reminders" role="region" aria-label="Reminders: videos" data-gallery hidden>
+        <ul class="shelf__films">
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/masajid-of-africa-jumuah.mp4?v=3" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-jumuah.jpg?v=3">
+              <img src="assets/video/masajid-of-africa-jumuah.jpg?v=3" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">0:53</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch Jumuʿah, 0:53</span>
+            </button>
+            <p class="shelf__series"><span>Masajid of Africa</span><span class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
+            <h4 class="piece__title">Jumuʿah</h4>
+            <p class="piece__text">The khutbah’s call of Āl ʿImrān 3:102, with its source on screen</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/from-the-haramain-madinah.mp4?v=3" data-full-kind="film" data-full-poster="assets/video/from-the-haramain-madinah.jpg?v=3">
+              <img src="assets/video/from-the-haramain-madinah.jpg?v=3" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">1:30</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch The recitation at the next table, 1:30</span>
+            </button>
+            <p class="shelf__series"><span>From the Haramain</span><span class="piece__ar" lang="ar" dir="rtl">من الحرمين</span></p>
+            <h4 class="piece__title">The recitation at the next table</h4>
+            <p class="piece__text">Sūrat an-Nūr, recited quietly at a table in Madinah</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/mali-first-command.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-first-command.jpg?v=2">
+              <img src="assets/video/mali-first-command.jpg?v=2" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">1:03</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch Islam’s first command, 1:03</span>
+            </button>
+            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+            <h4 class="piece__title">Islam’s first command</h4>
+            <p class="piece__text">The first word revealed was not “pray” but “read”: the religion begins with knowledge</p>
+          </li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar__media" aria-hidden="true"><img src="assets/video/mali-manuscripts.jpg?v=2" width="1280" height="720" loading="lazy" alt=""></div>
+        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-history" data-shelf>African Muslim History</button></h3>
+        <p class="pillar__ar" lang="ar" dir="rtl">تاريخ المسلمين في أفريقيا</p>
+        <p class="pillar__about">From Mauritania, Mali and Senegal to Sudan, Somalia and the Swahili coast</p>
+        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">6 videos</span><svg><use href="#i-next"/></svg></p>
+      </div>
+      <div class="shelf" id="shelf-history" role="region" aria-label="African Muslim History: videos" data-gallery hidden>
+        <ul class="shelf__films">
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/masajid-of-africa-jumuah.mp4?v=3" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-jumuah.jpg?v=3">
+              <img src="assets/video/masajid-of-africa-jumuah.jpg?v=3" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">0:53</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch Jumuʿah, 0:53</span>
+            </button>
+            <p class="shelf__series"><span>Masajid of Africa</span><span class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
+            <h4 class="piece__title">Jumuʿah</h4>
+            <p class="piece__text">Friday in Shela, Lamu, on Kenya’s Swahili coast</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/mali-timbuktu-abroad.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-timbuktu-abroad.jpg?v=2">
+              <img src="assets/video/mali-timbuktu-abroad.jpg?v=2" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">1:30</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch Why Timbuktu is more famous abroad than at home, 1:30</span>
+            </button>
+            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+            <h4 class="piece__title">Why Timbuktu is more famous abroad than at home</h4>
+            <p class="piece__text">Thierno Hady Thiam, Vice-President of the High Islamic Council of Mali, on the city the world knows better than Malians do</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/mali-across-the-sahara.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-across-the-sahara.jpg?v=2">
+              <img src="assets/video/mali-across-the-sahara.jpg?v=2" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">1:06</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch How Islam crossed the Sahara, 1:06</span>
+            </button>
+            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+            <h4 class="piece__title">How Islam crossed the Sahara</h4>
+            <p class="piece__text">From Biskra to Gao: Islam reached Timbuktu, Gao and Kidal in the north of Mali before the south</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/mali-teacher-to-student.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-teacher-to-student.jpg?v=2">
+              <img src="assets/video/mali-teacher-to-student.jpg?v=2" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">1:02</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch From teacher to student, 1:02</span>
+            </button>
+            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+            <h4 class="piece__title">From teacher to student</h4>
+            <p class="piece__text">How knowledge in Islam is passed on, hand to hand, in the circles of Mali</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/mali-first-command.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-first-command.jpg?v=2">
+              <img src="assets/video/mali-first-command.jpg?v=2" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">1:03</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch Islam’s first command, 1:03</span>
+            </button>
+            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+            <h4 class="piece__title">Islam’s first command</h4>
+            <p class="piece__text">The first word revealed was not “pray” but “read”: the religion begins with knowledge</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/mali-manuscripts.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-manuscripts.jpg?v=2">
+              <img src="assets/video/mali-manuscripts.jpg?v=2" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">0:44</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch Who’s reading the manuscripts?, 0:44</span>
+            </button>
+            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+            <h4 class="piece__title">Who’s reading the manuscripts?</h4>
+            <p class="piece__text">Timbuktu’s manuscripts hold centuries of scholarship. Are they being read?</p>
+          </li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar__media" aria-hidden="true"><img src="assets/video/mali-west-africa-changed.jpg?v=2" width="1280" height="720" loading="lazy" alt=""></div>
+        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-faces" data-shelf>Faces of the Ummah</button></h3>
+        <p class="pillar__ar" lang="ar" dir="rtl">وجوه الأمة</p>
+        <p class="pillar__about">Real stories of Muslims across Africa</p>
+        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">3 videos</span><svg><use href="#i-next"/></svg></p>
+      </div>
+      <div class="shelf" id="shelf-faces" role="region" aria-label="Faces of the Ummah: videos" data-gallery hidden>
+        <ul class="shelf__films">
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/from-the-haramain-madinah.mp4?v=3" data-full-kind="film" data-full-poster="assets/video/from-the-haramain-madinah.jpg?v=3">
+              <img src="assets/video/from-the-haramain-madinah.jpg?v=3" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">1:30</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch The recitation at the next table, 1:30</span>
+            </button>
+            <p class="shelf__series"><span>From the Haramain</span><span class="piece__ar" lang="ar" dir="rtl">من الحرمين</span></p>
+            <h4 class="piece__title">The recitation at the next table</h4>
+            <p class="piece__text">A waiter in Madinah, reciting Sūrat an-Nūr as he works</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/haramain/courtyards.mp4" data-full-kind="video" data-full-poster="assets/haramain/courtyards.jpg">
+              <img src="assets/haramain/courtyards.jpg" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">0:39</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch The courtyards, 0:39</span>
+            </button>
+            <p class="shelf__series"><span>From the Haramain</span><span class="piece__ar" lang="ar" dir="rtl">من الحرمين</span></p>
+            <h4 class="piece__title">The courtyards</h4>
+            <p class="piece__text">The Ummah gathered in the courtyards of Masjid al-Ḥarām</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/mali-west-africa-changed.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-west-africa-changed.jpg?v=2">
+              <img src="assets/video/mali-west-africa-changed.jpg?v=2" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">0:58</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="shelf__seen" aria-hidden="true"><svg><use href="#i-check"/></svg>Watched</span>
+              <span class="sr-only">Watch How Islam in West Africa has changed, 0:58</span>
+            </button>
+            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+            <h4 class="piece__title">How Islam in West Africa has changed</h4>
+            <p class="piece__text">Thierno Hady Thiam on the middle way of the Mālikī school, and what has shifted in his lifetime</p>
+          </li>
+        </ul>
+      </div>
+      <div class="pillar">
+        <div class="pillar__media pillar__media--soon" aria-hidden="true"><svg class="pillar__soon"><use href="#mark"/></svg></div>
+        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-majlis" data-shelf>The Majlis</button></h3>
+        <p class="pillar__ar" lang="ar" dir="rtl">المجلس</p>
+        <p class="pillar__about">Sit-down conversations on faith and life</p>
+        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">Coming soon</span><svg><use href="#i-next"/></svg></p>
+      </div>
+      <div class="shelf" id="shelf-majlis" role="region" aria-label="The Majlis: videos" hidden>
+        <p class="shelf__empty">Our first sit-down conversations will appear here. <a href="#follow">Follow us</a> so you don’t miss them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="prayer-times" aria-labelledby="prayer-title">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow"><span>Prayer Times</span><span class="eyebrow__ar" lang="ar" dir="rtl">مواقيت الصلاة</span></p>
+      <h2 id="prayer-title">Times of prayer</h2>
+    </header>
+
+    <p class="prayers-head"><label for="cityPrayers">Prayer times for</label> <select class="city-select city-select--pill" id="cityPrayers"><option>Nairobi</option></select></p>
+    <ol class="prayers" id="prayers" aria-label="Prayer times"></ol>
+    <p class="prayers__note" id="prayersNote"></p>
+  </div>
+</section>
+
+<section class="section" id="across-africa" aria-labelledby="atlas-title">
+  <!-- A live map: the night over Africa, each prayer-time city lit by the prayer it is in, every line to the Kaʿbah.
+       Land and borders from Natural Earth (public domain). -->
+  <div class="wrap atlas">
+    <header class="atlas__head">
+      <p class="eyebrow"><span>Across Africa</span><span class="eyebrow__ar" lang="ar" dir="rtl">عبر أفريقيا</span></p>
+      <h2 id="atlas-title">The adhan never stops</h2>
+      <p class="section__lead">As the sun moves, the call to prayer moves with it, from city to city. The shadow is the night over Africa right now. Each light is one of our 125 cities, and every line points to the Kaʿbah. Tap a city to see its times.</p>
+    </header>
+
+    <div class="atlas__map" id="atlasMap">
+      <svg class="atlas__land" viewBox="0 0 860 760" preserveAspectRatio="none" aria-hidden="true"><line class="atlas__lat" x1="0" y1="155.6" x2="860" y2="155.6"/><text class="atlas__lat-label" x="12" y="149.6">Tropic of Cancer</text><line class="atlas__lat" x1="0" y1="390" x2="860" y2="390"/><text class="atlas__lat-label" x="12" y="384">Equator</text><line class="atlas__lat" x1="0" y1="604.4" x2="860" y2="604.4"/><text class="atlas__lat-label" x="12" y="598.4">Tropic of Capricorn</text><path class="atlas__coast" d="M498.5 34.7L501.7 34L503.1 36.4L517.3 36.5L517.9 38.8L523.2 36.9L521.7 39.8L508 40.7L504.6 38.4L495.9 37.4L495.7 34.7ZM494.2 0.4L501.3 3.5L502.8 7.8L505.8 9.8L492.5 2L488.8 1.5ZM604.6 34.1L599.4 37.1L600.5 40.1L590.1 44.3L584.5 42.7L583.2 40.5L583 39.2L588.8 38.2L589.4 36.1L596.1 36.5ZM291.4 -7.9L294.6 -7L290.7 -3L283.7 -5.7L289 -9.1L292 -9.6ZM755.4 514.3L759.4 520.7L764.4 541.5L764.1 546.3L761.9 549.6L758.9 544.6L756.6 545.2L758.4 554.9L754.5 562.4L753.6 573.4L731.8 637.9L727.3 641.5L711.1 645.4L700.3 640L696.7 633L697 624.2L692.6 613.8L695 603.6L698 601.8L704 589.2L704.5 584.3L700.4 572.9L699.8 563.9L704.2 557L704.8 552.2L721.6 547.4L724 549.3L724.7 545.1L729.4 542.2L731 544.3L733.5 537.7L734.6 537.1L734.8 540.1L737.7 536.4L739.7 536.7L737.7 533.7L739.9 529.6L739.4 526.6L742.6 527.2L748 522.7L749.2 518.4L747.9 514.7L752.1 510.8ZM356.3 -18.8L358 -15L355.6 -1.7L350.6 -2.4L349.7 0.4L346.5 0.7L344.2 -2.1L345.5 -8.4L342 -18.7L348.8 -20ZM415.8 7.8L411 15.4L412.9 19.4L411.1 23.1L405 22L384.4 11.8L387.4 8.2L397.9 10.2ZM880 -20L880 138.6L874.1 139L865.1 135.6L864 136.9L850.5 135.8L833.4 132.1L829.8 120.9L823.6 118L807.6 124.9L797.1 122.7L784.8 113.8L775.9 111.4L772.8 108.7L768.8 99.4L760.7 88L755.6 89.7L750.3 86.7L752.3 85.3L750 84.9L748.3 89.6L739.8 89.9L741.5 94.3L737.2 96.1L740.5 96.5L748 112.8L761.5 123.4L760.1 123.2L762.2 126.9L760.3 128.9L767.3 141.3L770 130.2L772.6 128.5L775.4 131L776.1 139.5L772.7 143.9L774.2 144.7L773.1 146.6L781.2 150.3L786.5 148.4L801.5 148.3L824.1 126.5L823.7 139.8L829.1 148.5L836.1 152L845.8 153.6L858.4 165.8L853.7 175L848.9 178.9L844.7 185.9L842.1 185.8L841.7 184.1L838.6 187.6L837.1 193.2L838.1 199.8L828.2 202.5L823.8 210.1L814.8 211.6L810.6 219.6L800.7 220L785.8 225.3L782.4 228.3L782.2 233.4L753.5 243.6L746.7 249.5L739.9 249.5L727.9 255.3L716.6 256.6L710.4 261.8L700.1 263.9L694.9 263L689.4 240.6L686.6 237.7L688.4 229.7L687 222.6L683 215.6L676.6 209.9L667.6 192.5L657.3 186.1L652.7 180.3L649.9 171.2L650.6 164.1L644.6 152.9L635.4 147.1L631.8 141.8L631.5 137.1L611.8 109.6L606.2 109.4L609.7 94.5L602.2 112.4L592.5 104.3L584.7 90.7L583.6 93.7L586.6 100.7L595.5 111L599.6 123.5L612 145.3L617.8 150.6L615.1 152.2L617 160.5L628.3 169L632.6 178.9L631.9 188.8L634.7 201.8L645.7 209.3L655 234.7L657.9 238.8L658.6 235.3L662 239.9L671.8 243.8L676.6 250.2L682.4 254.1L684 257.9L690.8 261.8L693.5 266.3L693.4 269.7L685.4 274.9L691.6 274.3L702.8 285.3L709.4 285.6L718.2 281.6L725.6 282.5L734 278.3L761.1 274.7L767.9 270.2L772.6 271.7L770.3 285.6L771.9 284.5L773.9 286.1L769.3 286.6L768.2 295.7L739.8 345L720.5 365.3L697.2 381.4L679.8 399.7L673.9 408.7L668.9 410.2L668.1 413.9L662.2 416.9L661.2 422.5L654.9 434.8L652.3 436.7L648 450.7L655.4 460.2L652.9 465.2L654.4 470.1L653 474.4L656.4 481.9L657.2 490L666.1 496.6L664 503.3L665.8 516.4L664.3 519.4L665.7 519.8L666.5 535.4L668.2 534.7L668.3 537.9L658.4 554.4L650.8 559.7L635.1 565.7L629.4 569.9L624.1 577.7L618.5 579.9L609.5 588.1L606.5 587L607.1 594.7L612.7 606.5L613.1 614L614.5 611.2L615.4 613L613.7 628L615.4 628.2L614.9 630.7L609.9 636.5L587.9 646.4L585.9 650L588.5 652.7L589.6 650.8L588.5 660.8L582.9 676.2L573.4 683.8L559.7 703.2L530.8 725.2L524.3 727.6L518.1 727.4L516.4 730.1L510 729.7L508.3 731.7L485.5 730.1L477.9 733.7L465.3 734.6L460.2 737.9L448.3 733.6L447.5 730.8L445 731.1L444.6 733.5L444.3 727.2L438.5 718.3L443.3 715L442.1 707.4L433.5 694.5L427.4 680.1L412.9 662.8L405 632L404.6 614.5L377.8 570L377.5 548.3L380.2 545.1L385.5 524.4L396.9 511.2L398.5 500.5L390 480.5L393.6 476.9L393.8 473.7L388.3 459.6L382.8 451.2L390.7 448.7L384.5 450L382.4 448.1L377.8 435.7L357.6 415.2L360.6 415.5L356.2 413.7L350.4 403.1L353.2 406.3L355 405.5L350.6 403L347 395.9L349.5 396.9L353 393.5L353.5 386.6L358 389.6L360 388L355.5 387L353.3 384.5L356.2 384.2L356 379.5L353.9 378.6L358.1 370.7L359.5 359.2L355.6 352L357.4 351.5L356.9 349.4L354.3 350.8L350 349.1L349.2 344.5L346.6 343.3L345.7 344.7L345.7 342.5L342.5 340.8L342.9 344.4L332.8 344.5L330.8 342.8L331.6 344.9L329.2 346.1L327.7 342.8L328.6 346.3L325.8 345.2L320.8 347.1L314.9 341.6L313.7 336.6L315.5 335.3L312 334.7L314.6 333.9L311.1 333.6L304.3 326.5L294.5 325.7L297.2 324L293.4 326L273.1 328.5L269.5 331.9L262.6 332.4L240 342.4L227.5 338.9L229.8 338.7L228.5 336.5L226.5 338.7L216.4 337L207.2 337.9L209.4 338.7L200.9 339.9L184.6 346.5L168.7 339.5L157.2 329.2L142.7 319.1L135.1 316.1L135.2 312.5L131.5 311.8L127.3 305.7L131.1 303.7L128.2 304.2L127.9 301.6L129.4 301.2L123.1 294.6L123.1 290.7L115.7 287.5L114.1 282.3L111.1 280.3L109.9 282L109.5 278.6L107.8 279.7L106.1 277.8L105.7 275L109.3 274L105 272.2L109.2 270.3L100.6 272.1L100.8 270.6L96.7 269.5L97.5 267.6L92.1 265.3L95.6 263.9L92.3 263.7L92.5 255.7L95.9 257.3L105.7 255.3L95.6 256.5L92.3 251L93.8 249.6L92.1 250L88.3 243.6L84.7 242.5L88.5 240.8L94.3 232.7L99.7 211.1L97.9 200L94.8 196.4L96.9 194.9L95.6 195.3L97.9 187.7L91.2 179.1L89 181.4L90.7 171L96.4 164.1L102.1 152.1L100.2 153.3L101 151.6L110.9 142.8L115.9 127.5L124.2 122.6L130.5 110.9L144.5 106.9L158 96.2L163.3 88.9L163.5 85.5L161.2 82.8L161.9 75.8L166.5 69.1L167.5 64.3L174.9 57.5L191 50.3L200.8 32.1L207.2 31L207.5 33.9L213.7 37.9L226.1 37.9L230.3 35.9L231.6 38.7L240.9 39.1L272.6 24.8L297.8 21L307.6 21L312.9 23.5L324.9 19.1L329.3 20.8L334.3 19.4L339.1 21.4L356.9 16.6L358.3 18.6L362 17.9L364.1 22.7L369.5 19.4L371.3 21.3L364.9 27.4L371.2 37.6L360.6 47.9L363.1 52.7L367.1 53.1L367.2 54.9L369.6 53.7L372 57.5L382.8 61.4L392.8 60.8L411.8 66.1L417.1 75.7L438.3 80.7L449.4 87.1L455.9 85.9L460.1 82L461.5 79.2L459.3 71.8L461.2 67.8L466.2 64.2L477.2 60.6L490.9 63.8L492.9 67.9L508.8 70.2L512.3 74.7L527.7 75.3L550.7 81.7L570.8 74L578.9 74.6L581.4 76.6L578.9 75.2L577.7 77.1L581 79.1L582.5 77L586 79.3L596.7 78.7L604.8 74.1L616.5 47.5L619.8 44.5L618.1 26.9L621.8 21.9L620.5 20.9L613.9 24.3L607 21.8L596.9 28.2L587.9 29.6L572.4 21.8L566.5 21.3L564.5 27.3L556.9 28.4L552.2 26.8L549.7 22.8L535.4 23.2L542.4 19.7L532.6 20.2L535.3 18.4L530.7 13.4L532.3 10.2L522.9 7.2L524.4 3.6L526.7 6.6L531.4 5.5L527.6 2.9L530.1 1.1L526.8 -2.9L529 -5.5L521.1 -4.7L521.8 -9.9L527.4 -14L550.1 -13.9L547.9 -15.3L549.6 -16.3L558.5 -17.6L550.5 -20L663.8 -20L536.6 -20L522 -10.7L522.5 -13.1L527.9 -16.3L521.1 -16.1L518.6 -18.4L511 -19.9L497.6 -17.5L498.7 -14.2L503.4 -11.5L497.3 -13.3L499.5 -9.7L494.3 -12.6L496.3 -9.2L488.1 -15.8L486.3 -15L485.9 -10.4L493.3 -1.8L491.5 -1L491.6 -2.6L489.2 -3.1L490.7 -0.4L485.7 1.3L499.7 7.3L500.6 12.3L499.7 13.2L495.4 9.7L490.5 11L494.9 15.4L491.6 16.7L487.3 14.6L491.6 25.5L487.2 22.1L484.9 25.5L480.8 19.7L478.9 22.6L477.4 21.4L475.8 19.2L476.8 16.1L471.2 11.1L478.3 6.7L488.5 10.3L491.8 8.7L484.2 5.6L471.1 6.1L467.7 1.3L471.2 -0.3L467.8 -0.1L463 -3.3L458.5 -10.4L453.6 -13.5L454.6 -20L432.3 -20L443.3 -13.7L443.9 -9L440.8 -9.4L438.7 -12.8L429.3 -14.6L425.2 -7.5L431.1 -3.8L431.7 0L426.2 2L425.4 5.9L420.6 10.6L417.2 10.6L416.4 8.2L422.1 0.6L416.9 -9.9L409.5 -12.4L408.4 -16.3L403.4 -16L404.6 -17.3L400.7 -17.9L399.5 -20L269.5 -20L267.1 -18.2L268.9 -17.2L266 -16.1L256.7 -5.2L258 -0.6L262 2.4L254.8 6.8L251.8 12.3L252.8 13.7L243.6 16.1L238.1 22.6L216.3 22.8L208.3 25.8L203.7 29.7L199.6 28.1L196.2 23.6L197.8 20.9L196 21.7L191.4 17.2L181.6 19.9L170 19.7L171.9 15.7L171.2 5.5L173.3 5.8L167.9 5.5L167.5 3.4L172.1 -0.8L168.6 2.6L165.2 2L166.2 -3.4L171.6 -11.2L173.4 -20ZM752.5 -20L763.7 -12.8L755.5 -11.9L753.6 -3.5L751.6 -0.3L749.6 -0.8L748.7 6.1L750.8 13.3L761.3 15.9L769.3 21.9L777.6 23.9L800.2 21.5L798.7 0.5L797 -2.1L791.6 -2.7L792.4 -6.1L796 -5.5L794.9 -9.1L789.9 -9.9L790.3 -7.7L787.4 -14L789.3 -20L798.7 -16.5L803.8 -16.9L803.2 -18.3L807.2 -20ZM797.6 263.6L805.1 264.5L797.2 266.8L793.1 264.7L795.3 262.8ZM793.3 147.4L791.9 147.1L794.1 145.9ZM821.9 120.8L819.5 123L812.9 123.6L817.6 120.5ZM679.9 222.9L681.7 222.9L681.6 224.3L679 223.2L678.6 220ZM661.4 233L664 234.2L659.8 233.9L659.5 231.1ZM742.7 93.8L740.8 92L741.8 90.2ZM538.4 30.7L537.1 28.3L542.3 25.7ZM531.7 35.3L530.7 34L532.2 31.8ZM515.5 20.3L513.6 19.3L515.3 18ZM514.8 26.1L514.4 26.6L513.7 26.4ZM528.3 11.9L530.6 12.9L525.8 12.8ZM518.6 22.1L520.7 21L519.8 21.2ZM503.6 14.2L503.8 13.2L504 13.5ZM509.4 15.1L509.4 16.1L509.1 16.1ZM520.9 7.8L518.9 7.6L518.5 4.3L521.6 4.6ZM524.1 -3.3L526 -0.5L524.7 0.3L521.1 -0.8L522.7 -2L518.4 -2ZM498.9 -1.6L499.7 -2.7L499.4 -2ZM516.8 -14.3L515.7 -14L514.5 -14.8ZM514.4 -9.8L513.6 -8.1L510.6 -8.5L510.6 -10ZM507.7 -16.1L505.2 -16.9L507.2 -17.9ZM519.7 -11.4L517.4 -11.1L516.7 -11.4ZM98.8 279.4L97.6 278.9L99.3 278ZM88.1 61.3L93.1 62.4L89.8 63.4ZM96.6 106.2L93.4 109.9L91 106.6L98.8 104.2ZM122.9 100.9L121.4 101.3L122.1 99.4L125.4 97.6L125.2 99.9ZM118 108.3L115.1 109L121.4 102.6L120.7 107.5ZM134.7 315.6L130.5 314.3L133.8 313.6ZM106 108.5L105.6 111.9L101.9 111.1L103.2 108.5ZM8.3 220.5L6.6 219.1L9.6 218.2ZM101 275.3L100.4 274L100.9 274.1ZM81.1 111.9L80.2 113.5L78.4 112.4ZM30.8 227.6L32.9 229.6L30.4 229.6ZM16.9 241.4L15 240.2L16.7 239.8ZM81.7 105.1L80.7 101.6L82.8 102.8ZM19.1 223.8L16.8 225.1L16 223.8ZM25.5 239.9L23 240.4L22.5 236.7ZM704.8 510.8L705.1 513.6L702.2 511.7ZM697.9 513.1L696.3 512.5L697 512.6ZM694.7 509L692.3 507.5L693 503.7ZM655 451.7L654.8 454.5L651.8 451.7L653.1 447.2ZM836.5 594.8L833.2 594.3L836.6 589.9L837.9 592.1ZM818 603.4L813.6 602.7L813.1 599L816.6 599.1ZM658.6 439.1L657.5 444.4L656.7 439.3ZM815.4 436.9L813.8 436.1L814.6 435.6ZM347.4 352.4L349.5 353.7L347 357.8L344.8 357.4ZM326.6 388.8L324.7 387.7L326.9 385.9ZM333 345.8L332.1 346.1L331.4 346.1ZM369.6 52.8L367.2 52.6L367.4 51.1ZM302.9 -8.4L298.5 -10.6L302.2 -10.3ZM274.5 0.8L272.2 1L273.5 -0.8L276.1 -0.9ZM-17.8 4.4L-20 3.5L-19.6 3.6ZM3.5 11.6L8.2 11.6L5.6 12.8ZM466.1 6.2L467.6 9.3L463.5 8.2ZM468.9 11.9L469.9 12.9L468.2 13.4L466.2 11.5ZM466.9 3.9L465.5 4.2L466.9 1.6ZM460.8 -4.3L456.5 -7.7L459.2 -7.7Z"/><path class="atlas__borders" d="M572.9 614L553.6 611.9M553.6 611.9L550.4 610.2L550.3 608L540.1 605.5L536.7 600.6L537 595.3L532.8 594.8L531.8 591L521.7 585.4L512.6 567.9M512.6 567.9L520 569.7L530.2 569.6L539.3 559L547.6 555.3L549.1 549.9L554.9 547L564 546.4M564 546.4L564.4 549.9L572.4 550.2L579.4 554.3L589.5 557.1L589.9 573.6L587 579.4L589.9 589.8L584.9 596.6L584.3 603L572.9 614M512.6 567.9L507.3 565.2L493.8 566.4M493.8 566.4L481.5 556L480.4 552.6L479.8 520L499.6 519.9L499.7 498.7M499.7 498.7L503.7 501.3L503.8 504.2L512.9 502.1L513.5 506.2L520.3 508.9L528.3 509.7L531.6 505.8L535.7 512.3L544.1 515.2L550.1 523.7L555.5 522.5L557.7 524.4L558 511.5L555.1 512.3L554.9 514.2L550.6 513.5L544.8 508.1L543.6 504.8L546.5 495.5L546 486.8L544 482.2L548.7 477.9L549 474.8L567.5 471.9M567.5 471.9L570.3 476L573.5 476.1L579.4 480.5L589.2 484.1M589.2 484.1L593.5 488.6L593.1 490.4L596.6 495.5L592.6 498.9L593.8 501.6L592.3 504.2L592.5 511.1L595.1 513.5L590.2 516.3L589.7 522.2L586.7 525.9L589.9 530.2L592 530.1M592 530.1L562.3 539.9L564 546.4M688 226.3L691.7 223.1L691.9 216.4L694.2 214.8L699.2 216.8L711.5 215.7L727.3 217.3L731.4 220.5L734.4 218.9L741.7 208.4L750.4 204.2L779.8 200M779.8 200L790.8 223.5M823.9 140.2L820.7 142.6L820 140.5L818 141.3L817.6 147.6L819.9 149.4L814.7 150.6L811.9 163M811.9 163L785.6 160.7L775.9 149.2L775.7 147.1M820.8 129.4L821.4 133.1L823 133.5M822.8 137.6L822.8 137.6M599 400L565.1 400.7M565.1 400.7L559.3 404.7L558.2 403.4L555.8 403.9M555.8 403.9L557.2 389L559.4 381.8L572.5 369.6L571.8 367.3L567.3 365.4L568.4 355.1M568.4 355.1L571.5 352.1L575.5 353.2L578 352L581.4 354.8L590 351.2L594.9 352.4L599.8 347.8M599.8 347.8L601.7 351.9L604.4 353.5L604.5 358.4L608.6 364.1L609.8 372.3L608 377.5L604.8 379.6L599.4 388.3L599 400M867.1 23.6L863.4 23.6L852.7 14.8L842.6 13.4L833.5 10.3L831.9 7.8L824.4 7.5L822.7 9.2L813.8 9.5L809 12.2L807 15.3L799.2 16.6M704 -10L707.7 -7M707.7 -7L708.2 -6.5M708.2 -6.5L705.9 -7.7L703.9 -4.2L700.2 -3.8L703 6.1L704.5 6.6L702.1 10.9L705.9 12.9L707.6 18.6M707.6 18.6L702.8 20.2L701.1 17L687.7 16.3L683.6 18.9M683.6 18.9L682 17L675.1 19.1L667.1 19L653.6 23.2L641.9 21L634.3 23.6L626.6 22L625.4 25.4L626.4 27.7L623.8 28.3L621.5 31.7L618.9 30.8M375 58.2L375 65.9L362.8 73.2L361.1 75.4L362.2 82.2L358.9 86.1L355.2 87.7M355.2 87.7L350.5 69.3L343.3 64.6L341.1 59.4L337.3 57.3L335 51.7L335.2 49.2L342.5 42.7L343.9 38L342.5 32L343.5 26.3L342.1 24.8L345.8 20.6M269 280.1L267.7 286.1L273.3 290L273.8 296.4L276 299.5L275.3 320.1L277.8 327L276.2 327.8M271.9 329.1L267.4 325.5L265.2 321.5L266.9 306.5L263.7 302.4L265.3 296L262.3 295.4L263.8 287.1L259.2 283.3L259.3 278.8M259.3 278.8L269 280.1M567.5 471.9L562.1 460.4L555.4 453.1L556.1 447.2L553.2 439L554 434.5M554 434.5L559.5 433.1L567.9 422.8L567.8 419.9L564.3 418.7L565.6 414M565.6 414L568.3 413.4L568.8 411.4L568.1 405.6L565.1 400.7M599 400L636.4 420.5L636.1 425L652.2 436.9M664.6 494.6L653.2 501.2L644.9 504.1L639.2 503L637.3 505.8L633.7 507.1L629.8 505.7L623 507.1L619.1 504.6L615.6 506L609.6 505.8M609.6 505.8L606.1 500.8L605.7 492.4L603.2 487.3L600 485L598.9 486.7L589.2 484.1M683.6 18.9L677.9 24L672.9 26.2L673.6 33.6L669.9 45.7L647.7 56.3M647.7 56.3L628.2 66.8L623.7 66.1L617.9 62.7M617.9 62.7L618.7 55.7M618.7 55.7L620.3 54.1L619.7 52.7L623.7 51.6L623 50.4L625.9 47.8L623.3 45L623.8 43.4L619.8 43.7M579.5 649.6L581.1 658.4M581.1 658.4L580 658.2L579.6 663.1L574.7 663L570.6 661.1L567.9 657.7L568 654.1L572.1 648.4L574.2 647.5L579.5 649.6M568.4 355.1L556.8 344.1L554.7 343.9L552.2 346.1L547.3 344.9L541.9 346.5L534 338.9M534 338.9L531.4 332.8L525.1 329.3L523.6 323.6L512.8 315.7L512 311.9L508.5 308.6L502.9 307.1L501.5 303.3M501.5 303.3L505.3 301.1L507.8 292.3L512.1 286.7L518.6 285.9L519.2 288.3L526.6 295.2L538.8 294L540.5 296.7L548.5 296.7L549.8 294.1L554.7 292.3L556 289.4L560 287.2L567.6 292.7L572.2 292L584.2 279.1L583.4 273.1L580.7 269.9L587.4 269.9L587.2 267.8L592 267.8L591.3 282.5L599.1 288.2L598.7 294.9L600.8 295.4M600.8 295.4L600.7 304.5L592.8 305.6L590 311L599 314.9L607.1 323.4L612.7 335.1M612.7 335.1L599.8 347.8M501.5 303.3L495.4 301.8L494.7 298.9L496.5 291.8L488.6 280.8M488.6 280.8L489.2 276.5L485.9 274.2L484.2 264.5L478.3 262.1L482.3 256.7L481.1 252L485.4 248.4L483.8 244.5L489.3 238.4L489.3 234.7L491.1 233L499.7 232.8L499.8 195M499.8 195L499.8 190L509.8 190L509.8 170M509.8 170L572.1 170.1L574 168L574.3 170L628.7 170M646.1 210L642.2 214.4L635.5 216.8L634.1 219.4L630.1 219.4L629.1 227L624.3 238.7L625.2 247.4M625.2 247.4L621.2 262.4L616.7 263.8L611.1 271.8L609.3 281.4L607.7 282.5L605.7 281.2L603.4 283.4L600.8 295.4M185.9 18.2L185.6 12.7L190.4 8.1L186.6 5.4L190 -0.6L184.6 -6.6L189.5 -7L190.9 -9.4M572.9 614L575.5 624.8L579.8 634.6L579.5 649.6M581.1 658.4L588.8 658.5M424.5 676.2L430.6 670.3L433.6 672.7L434.5 677L441 678.7L451.6 679.4L455.4 675.7L459.8 674.5L459.8 637.8M459.8 637.8L464.3 641.5L467.9 649.2L466.3 654.4L466.8 658.2L477 658.4L486 651.3L490.6 643.1L493.9 642.9L499 646L507.5 648.2L514.4 647.1L519.1 637.5L524 636.1L528.4 632.4L530.8 625.8L537.6 622L542.1 616.9L553.6 611.9M547.4 691L551 689.2L553.9 682.7L546.3 675.8L537.4 679.4L530.6 686.3L533.9 693.2L537.5 696L540.6 696.3L543.9 691.5L547.4 691M675.3 407L669.8 398.7L669.6 361.9L678.8 350.2M678.8 350.2L680.3 348.6L688.6 346.7L695.4 341.6L709.4 340.9L739.8 310M739.8 310L749.4 295.5L749.4 277.4M739.8 310L729.8 310L699.8 299.9L694.8 296.2L688.4 288L686.6 284L689.2 280M689.2 280L692.5 275M157.2 305.2L153.5 312.4L144.9 320.9M127.1 299.5L129.7 299L135.7 291L147.3 290L153.1 296.9L152.5 299L155 303.1L152.9 306.6L157.2 305.2M137.2 241.9L139.8 247.9L139.5 253.7L141.7 256.8L143.7 256.3L146.1 260.6L146.1 266M146.1 266L136 266.6L129.4 265.1L129.2 263.7L122.7 263.3M122.7 263.3L108 263.2L104.2 265.1L92.9 266.5M92.4 259.4L101.7 258.4L101.9 256.8L107.1 256L108.5 254.4L117.5 257.6L121.5 256.7L120.2 254.6L115.9 255L109.8 251.9L104.9 254.1L94.4 254.1M94.6 231.6L97.6 224.7L114.6 223.4L121.3 228.5L125.9 229.4L127.9 233.8L137.2 241.9M609.5 96.5L620.7 98L627.5 91.3L634.7 90L636.3 86.9L639.8 85L629.6 75.1L651.4 68.7M651.4 68.7L663.7 70.6L680.8 79.2L706.9 98L725.3 99M725.3 99L734.3 100.1L736.7 104.7L744.4 104.6M768.1 142.1L769.7 144.3L772.7 143.9M811.9 163L816.4 170L809.8 190L779.8 200M565.6 414L559.3 413.4L558.7 417.2L557 417.9L553.9 418.1L551 416L550.1 417.2M550.1 417.2L548.6 414.5L551.3 412L552 407.2L555.8 403.9M396.1 253L400.6 259.2M400.6 259.2L402 266.2L406.2 268.5L405.6 275.1L398.9 278.6L395.3 283.9L392 294.4L388.8 297L387.8 301.8L384 304L382.3 307.2L377.7 317.3L378.6 318.8L372.4 325.5L366.1 319.4L364.8 321.1L361.4 320L357.8 322.4L350 330.8L345.6 342.4M287.1 326.3L287.7 299.5L290.4 299.2L298.4 283.9L294.9 276L295.9 273M295.9 273L296.5 264.7L300.4 260.7L301.5 255.4L306.6 252.7L314.9 251.3L323 253.4L329.4 259.9L338.3 256.6L347.5 260.9L356.2 261.9L360.5 257.9L364.7 256.7L374.1 256.5L384.6 259.1L388.7 255.5L396.1 253M295.9 273L288.1 266.2L283.7 267.8L283.9 271M283.9 271L280.7 266.9L282.3 265.3L281 263L275.6 263.6L269.9 259.6L269.9 256.4L272 256.4L264.3 250.3L261.6 245L262.2 240.9M262.2 240.9L269.5 240.2L273 237.3L295 236.4L298.2 233.3L302.4 220L302.3 198.6M302.3 198.6L318.4 195.2L334.8 181.3L379.7 154.8M379.7 154.8L394.8 158.2L402.1 163.8L409.8 160M409.8 160L411.8 174.8L416.1 180.5L415.9 182.7L419.6 186.5L417.3 191L414.7 220.9L403.7 232.5L394.5 246.2L396.1 253M512.6 567.9L505.3 570.5L503.6 569.8L496 574.6L492.2 570L469.8 573.2L469.8 609.6L459.8 610L459.8 637.8M377.4 562.5L385.5 562.1L391 559.7L400.2 564.1L444 564L449.6 568L467.5 570.2L493.8 566.4M592 530.1L596.4 535.7L603.3 534.1L605 536L605.4 543L602.5 548.9L604.4 552.7L610.8 558.3L610.9 561.1L612.9 561L611.7 555.6L613.6 551.6L617.5 550.6L618.9 538.9L612.5 529L605.6 523.6L603.6 511.7L606.2 506.2L609.6 505.8M606.4 510.1L605.4 510.2L606.4 510.1M607.2 511.1L606.8 510.1L607.2 511.1M237.8 39L242.1 42.5L243.2 56.8L245.5 62.1L249.4 65.3L247.6 66.6L247.7 68.9L231.4 69.2L229.8 71.7L221.7 73.4L221.7 78L223.3 80.4L210.3 85.3L205.5 90.4L195.2 91.8L193.6 94.3L188.4 93.9L173.4 102.8L173.1 113.4M173.1 113.4L171.8 113.4L172.1 118.8L165.9 119.1L161.8 121.5L152.4 119.8L146.1 121.2L146.6 123.7L142.8 129L139.4 130.1L135.7 141.7L129.4 146L126.9 150.2L121.1 153.1L117.8 166.9L112.5 175L90 175.8M173.1 113.4L173.1 117.1M173.1 117.1L173.2 130L139.8 130L139.8 155.3L133.8 157.3L128.5 161.8L129.8 176.7L90.3 176.7L89.5 181.9M173.1 117.1L211.8 140M211.8 140L194.1 140.1L203.7 224.3L206.4 227.2L204.9 235L168.2 235L166.5 233.2L165.5 235.4L153 235.8L150.5 238.5L145 233.6L142.4 235.7L140.6 241.1L138.9 242.6L137.2 241.9M211.8 140L271.5 179L271.6 181.8L277.6 186.7L291.3 191.5L292.6 195.9L291.1 198.5L292.6 199.9L302.3 198.6M262.2 240.9L252.4 239.5L240.3 245.4L238.8 248.3L234.1 247.7L230.5 253.5L227.5 253.4L227 257.2L224.7 258.2L220.5 256L218.5 256.9L216.7 258.8L217.7 262.1L215.2 263.3L215.7 266.6L207.1 271.7L207.5 276.3L205.1 279.6L204.8 285.7M204.8 285.7L198 287.7L197.4 282.8L195.8 284.4L193.5 283.4L193.1 286.5L190.5 286.6L189.8 288.6L185 285.6L180.1 288.4M180.1 288.4L177.3 285.1L176.6 280.1L173.3 279.9L176 276.3L171.8 273.3L169.6 266L166.1 265.3L166.4 267.4L162.5 269.7L157.2 267.9L152.9 271L150.7 268L146.9 269.8L145 268L146.1 266M511.5 73.5L508.5 76.6L509.8 82.2L507 88L509.8 98.2L509.8 170M499.8 195L419.8 155.5L409.8 160M379.7 154.8L375.1 146.8L362.5 144.1L360 136.7L354.5 129.3L354.9 126.7L358.8 123.7L357.5 116.7L359.2 112.1L358 98.2L353.1 88.8L355.2 87.7M157.2 305.2L162.2 304.6L164.8 306.5L166.3 313L165.4 315.8L168.8 317.8L171.1 317.4L173.4 313.1L175.1 314.4M175.1 314.4L177 320.2L174 324.9L181.1 327.7L182 330.2L185.5 331.6L184.6 346.5M618.7 55.7L614.1 59.3L611.1 59.2M725.3 99L731.5 90L736.4 89L739.8 90.2M612.7 335.1L613.3 336.4L617.5 336.6L617.6 341.9L620.2 345.3L629.1 345.9L640.9 353.5L654.9 355.4L658.4 351.5L667.7 347.3L671.4 350.4L678.8 350.2M647.7 56.3L650.4 66.9L652.9 67.6L651.4 68.7M609.7 94.5L614.5 75.2M614.5 75.2L615.5 66M615.5 66L615.7 63.6L617.9 62.7M615.5 66L611.9 64.6L609.5 68.4L609.6 71.8L612 72.5L608.8 76.3L614.5 75.2M609 95.2L602.5 77.9M602.5 77.9L604.8 74.1M602.5 77.9L602 76.8M707.6 18.6L713.6 29.8L722.7 32.3L720 33.9L721.3 38.7L715 44.2L715.4 47.8L714 50.3L720.2 55.8L721.1 60.4L733.7 65.8L738.3 72.1L736.8 80L740.1 80.1L740.2 85.3L745.4 90.4M869.9 42.5L867.3 44.8L868.9 46.8L866.4 46.9L864.9 49.1L865.1 53.6L869.2 54.9L865.6 58.6L868.3 67.5L868.5 75.2M708.2 -6.5L714.8 -0.1L721.1 1.2M721.1 1.2L724.9 0.9M724.9 0.9L740 -6.8L743.2 -4L741.1 -2.4L742.9 -0.2L740 1.5L745.9 5.9L748.7 5.6M122.7 263.3L122.9 266.9L120.5 267.8L122.6 269.9L122.7 272.6L113.2 274.9L109.6 280.6M180.1 288.4L178.4 290.3L178.6 295L181 295.8L182.2 299.2L180.5 302.1L182.8 303.6L183.2 305.9L177.6 305.5L177.4 307.5L179.9 309.2L177.7 314.4L175.1 314.4M460 -7.1L462.5 -6.8L463.4 -9.9M228.9 339.1L229.1 338.7M229.8 338.7L231.8 338.5L232.4 335.7L230 332.9L227.7 321.9L232.1 310.7L234.9 307.9L232.5 299.5L233.1 295.2M233.1 295.2L230.9 284.1L231.7 280L253.7 280.7L257 278.3L259.3 278.8M392.9 368.4L391.9 377.2L401.8 376.3L404.3 381L403.2 383.8L399.5 386.5L398.6 392L404.7 395.7L403.8 408.9L400 414.9L397.3 411.4L394.7 414L389.9 413.1L386.3 408.3L384.3 409.3L384.5 413.3L376 413.4L375.4 418.4L379.4 423.2L378.8 426.7L375 425.2L371.3 429.2M355.9 379.7L373.3 380L373.3 368.3M373.3 368.3L373.5 367L375.6 367L392.9 368.4M625.2 247.4L630.2 247.3L632.6 245.5L635.7 248.5L638.8 241.5L644.3 245.7L650.2 243.7L652 245.2L661.4 245.4L668.2 248.9L683.8 265.3M683.8 265.3L677.9 273.1L678 280.2L689.2 280M691.2 262.9L687.1 266.2L683.8 265.3M358 367L359.8 368.3L373.3 368.3M600 39.4L594.7 40L593.8 38.4L587.1 38.3M204.8 285.7L209 287.6L210.3 290.7L213.8 292.9L216.7 293.5L222.1 290.8L227.8 291L231.8 295.7L233.1 295.2M499.7 498.7L498.3 500.1L482.2 501.2L482.8 492.6L478.1 484.7L479 476.9L477.8 463.1L466.1 462.8L465.9 459.2L458.7 459.9L455.3 461.4L453.4 469.7L435.8 471L429.8 462.6L427 451.6L424.3 449L390.7 448.7M382.1 447.6L385 447L384.5 440.7L390.7 436.3M390.7 436.3L394.2 438.4L396.6 437.2L397.2 434.5L403.6 433L404.1 438.3L407.1 438.8L419.9 427.7L422.2 420.3L422.2 411.8L428.8 402.3L437.5 395.5L440.7 369.9L446.1 355.2M446.1 355.2L445.9 346.5L450.7 341.1L455 338.7L462.3 341.7L465.6 345.4L484.2 348.6L488.7 342.8L494.2 343.4L503.2 340.1L510.7 340.3L515.3 336.9L528.2 339.4L530.7 338L534 338.9M550.1 417.2L552.2 420.5L552.1 428.3L554 434.5M392.9 368.4L405.8 368L409 369.9L417.4 370.8L420.6 373.2L421.8 367.3M421.8 367.3L426.1 354.9L434.9 353.1L441.6 355L444.7 353.8L446.1 355.2M390.7 436.3L388 434.3L380.2 440M488.6 280.8L484.9 280L477.7 283.6L476.3 287.6L463.4 298.7L449.6 300.6L448.9 301.6L451.1 303.4L445.6 309.5L436.5 310.2L427.9 314.5L425.4 311.4L419.6 314.9L414.8 314.8M414.8 314.8L415.5 312.1L411.1 304.4L399.8 293.1L402.4 290.2L416.5 289.9L411.3 283.5L410.8 271.5L408.5 265L404.6 259.8L400.6 259.2M421.8 367.3L420.7 360.9L411.3 351.7L410.6 347.1L407.3 344L405.6 337.2L406.2 331.4L404.3 329.6L407.4 327.2L414.8 314.8M283.9 271L279.8 275.8L274.3 275.5L269 280.1M707.7 -7L710.3 -7.7L711.7 -5.7L717.8 -5.5L721.1 1.2M724.9 0.9L724 -1.9L725.9 -2.2L723.7 -4L724.8 -5.6L715.8 -9.9"/></svg>
+      <canvas class="atlas__night" id="atlasNight" width="86" height="76" aria-hidden="true"></canvas>
+      <svg class="atlas__lines" viewBox="0 0 860 760" preserveAspectRatio="none" aria-hidden="true">
+        <path class="atlas__qibla" id="atlasQibla"/>
+        <path class="atlas__qibla atlas__qibla--on" id="atlasQiblaOn"/>
+        <g class="atlas__kaaba" id="atlasKaaba"></g>
+      </svg>
+      <div class="atlas__dots" id="atlasDots" role="group" aria-label="Cities with prayer times"></div>
+      <div class="atlas__tip" id="atlasTip" hidden></div>
+    </div>
+
+    <div class="atlas__side">
+      <p class="atlas__clock"><span class="atlas__live" id="atlasLive">Live</span> <span id="atlasClock">--:--</span></p>
+      <p class="atlas__now" id="atlasNow"></p>
+      <ul class="atlas__key" id="atlasKey" aria-label="What the colours mean"></ul>
+      <div class="atlas__time">
+        <button class="btn btn--primary btn--sm" type="button" id="atlasPlay" aria-pressed="false">
+          <svg class="atlas__play-icon" aria-hidden="true"><use href="#i-play"/></svg>
+          <span id="atlasPlayLabel">Watch a day go by</span>
+        </button>
+        <input class="atlas__scrub" id="atlasScrub" type="range" min="0" max="1440" step="5" value="0" aria-label="Move through the next 24 hours">
+        <button class="btn btn--line btn--sm" type="button" id="atlasBack" hidden>Back to now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section haram" id="haramain" aria-labelledby="haram-title" data-gallery>
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow"><span>From the Haramain</span><span class="eyebrow__ar" lang="ar" dir="rtl">من الحرمين</span></p>
+      <h2 id="haram-title">Every prayer faces here</h2>
+      <p class="section__lead">Masjid al-Ḥarām in Makkah, the qiblah of every prayer above. Walk its arches from the light of day to the setting sun, and tap any arch to see it in full.</p>
+    </header>
+
+    <!-- An arcade like the Haram's own: each arch is a window onto one moment, linked like a chain. -->
+    <ol class="arcade">
+      <li class="arcade__bay" data-piece>
+        <div class="arcade__frame">
+          <button class="arcade__arch" type="button" data-full="assets/haramain/kaaba-arch.jpg">
+            <span class="arcade__window"><img src="assets/haramain/kaaba-arch.jpg" width="1490" height="990" loading="lazy" style="object-position: 42% 50%" alt="The Kaʿbah and the crowds around it, seen from an upper floor of Masjid al-Ḥarām through one of its arches."></span>
+            <span class="sr-only">See in full</span>
+          </button>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">الكعبة</p>
+        <h3 class="piece__title">The Kaʿbah</h3>
+        <p class="piece__text">Through an arch of the Haram’s upper floor</p>
+      </li>
+      <li class="arcade__bay" data-piece>
+        <div class="arcade__frame">
+          <button class="arcade__arch" type="button" data-full="assets/haramain/clock-tower.jpg">
+            <span class="arcade__window"><img src="assets/haramain/clock-tower.jpg" width="1124" height="1600" loading="lazy" style="object-position: 50% 30%" alt="The Makkah Clock Tower lit gold by the sun against a deep blue sky, with a minaret of the Haram and crowds below."></span>
+            <span class="sr-only">See in full</span>
+          </button>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">برج الساعة</p>
+        <h3 class="piece__title">The Clock Tower</h3>
+        <p class="piece__text">Rising beside the Haram, lit gold by the sun</p>
+      </li>
+      <li class="arcade__bay" data-piece>
+        <div class="arcade__frame">
+          <button class="arcade__arch" type="button" data-full="assets/haramain/haram-sunset.jpg">
+            <span class="arcade__window"><img src="assets/haramain/haram-sunset.jpg" width="1460" height="1600" loading="lazy" style="object-position: 55% 50%" alt="The sun setting behind the minarets of Masjid al-Ḥarām, its courtyards full of people dressed in white."></span>
+            <span class="sr-only">See in full</span>
+          </button>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">الغروب</p>
+        <h3 class="piece__title">Sunset</h3>
+        <p class="piece__text">Over the courtyards of the Haram</p>
+      </li>
+      <li class="arcade__bay" data-piece data-ambient>
+        <div class="arcade__frame">
+          <button class="arcade__arch" type="button" data-full="assets/haramain/maghrib.mp4" data-full-kind="video" data-full-poster="assets/haramain/maghrib.jpg">
+            <span class="arcade__window"><video src="assets/haramain/maghrib.mp4" poster="assets/haramain/maghrib.jpg" width="576" height="1024" muted loop playsinline preload="none" aria-hidden="true"></video></span>
+            <span class="sr-only">The same courtyards as the sun goes down, a moving picture. See in full</span>
+          </button>
+          <button class="hold" type="button" data-ambient-toggle aria-label="Pause the moving picture">
+            <svg class="hold__pause" aria-hidden="true"><use href="#i-pause"/></svg>
+            <svg class="hold__play" aria-hidden="true"><use href="#i-play"/></svg>
+          </button>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">المغرب</p>
+        <h3 class="piece__title">Maghrib</h3>
+        <p class="piece__text">The same courtyards as the sun goes down</p>
+      </li>
+    </ol>
+
+    <!-- The courtyards, moving. -->
+    <figure class="courtyards" data-piece data-ambient>
+      <video src="assets/haramain/courtyards.mp4" poster="assets/haramain/courtyards.jpg" width="1280" height="720" muted loop playsinline preload="none" aria-label="Crowds moving through the courtyards of Masjid al-Ḥarām, seen from above."></video>
+      <figcaption class="courtyards__caption">
+        <span class="piece__ar" lang="ar" dir="rtl">ساحات المسجد الحرام</span>
+        <span class="piece__title">The courtyards</span>
+        <span class="piece__text">Crowds moving through the courtyards of <span class="nowrap">Masjid al-Ḥarām</span></span>
+      </figcaption>
+      <div class="courtyards__tools">
+        <button class="hold" type="button" data-ambient-toggle aria-label="Pause the moving picture">
+          <svg class="hold__pause" aria-hidden="true"><use href="#i-pause"/></svg>
+          <svg class="hold__play" aria-hidden="true"><use href="#i-play"/></svg>
+        </button>
+        <button class="hold" type="button" data-full="assets/haramain/courtyards.mp4" data-full-kind="video" data-full-poster="assets/haramain/courtyards.jpg" aria-label="See the courtyards in full">
+          <svg aria-hidden="true"><use href="#i-expand"/></svg>
+        </button>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="ayah" aria-label="From the Qur'an, Surat al-Hujurat 49:6">
+  <div class="wrap ayah__inner">
+    <p class="ayah__ar" lang="ar" dir="rtl">﴿يَا أَيُّهَا الَّذِينَ آمَنُوا إِن جَاءَكُمْ فَاسِقٌ بِنَبَإٍ <span class="gold">فَتَبَيَّنُوا</span>﴾</p>
+    <p class="ayah__en">“O you who believe, if a wrongdoer brings you news, <span class="gold">verify it.</span>”</p>
+    <p class="ayah__ref">Sūrat al-Ḥujurāt 49:6</p>
+  </div>
+  <figure class="ayah__photo">
+    <img src="assets/makkah-sunset.jpg" width="1600" height="1200" loading="lazy" alt="Makkah at sunset: the Clock Tower and the minarets of the Haram rise above the city, with mountains behind under an orange sky.">
+  </figure>
+</section>
+
+<section class="section" id="our-name" aria-labelledby="name-title">
+  <div class="wrap name">
+    <div class="name__head">
+      <p class="name__ar" lang="ar" dir="rtl" aria-hidden="true">إسناد</p>
+      <p class="eyebrow"><span>Our name</span><span class="eyebrow__ar" lang="ar" dir="rtl">لماذا إسناد</span></p>
+      <h2 id="name-title">Named after the science of trust</h2>
+    </div>
+    <div class="name__text">
+      <p>Isnād comes from an Arabic root meaning to lean on, or to support. In hadith scholarship it is the chain of people through whom a saying reached us. One narrator heard it from another, all the way back to the Prophet ﷺ.</p>
+      <p>The scholars studied every person in that chain. Was each narrator honest? Did they remember well? Had they really met the one they quoted? A report was only as strong as its weakest link. We took the name because we want to be held to that standard.</p>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <blockquote class="matn">
+      <p class="matn__ar" lang="ar" dir="rtl">«إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ»</p>
+      <p class="matn__en">“Actions are only by intentions.”</p>
+      <footer>Ṣaḥīḥ al-Bukhārī, ḥadīth 1</footer>
+    </blockquote>
+  </div>
+
+  <!-- The quote closes the story. -->
+  <blockquote class="wrap quote">
+    <p class="quote__lead">Long before al-Bukhārī, ʿAbdullāh ibn al-Mubārak put it this way:</p>
+    <p class="quote__ar" lang="ar" dir="rtl">الإِسْنَادُ مِنَ الدِّينِ، وَلَوْلَا الإِسْنَادُ لَقَالَ مَنْ شَاءَ مَا شَاءَ</p>
+    <p class="quote__en">“The isnad is part of the religion. Were it not for the isnad, anyone could say whatever they wished.”</p>
+    <footer>ʿAbdullāh ibn al-Mubārak (d. 181 AH), in the introduction to Ṣaḥīḥ Muslim</footer>
+  </blockquote>
+
+  <div class="wrap test">
+    <div class="test__intro">
+      <h3>Five links in every story</h3>
+      <p>Hadith scholars graded a report <i>ṣaḥīḥ</i>, sound, only when five conditions held. We put every story through the same five before we publish it. Tap a link to break it and see what happens to the grade.</p>
+    </div>
+
+    <ol class="links" id="links">
+      <li class="link">
+        <button type="button" class="link__btn" aria-pressed="false" data-name="an unbroken chain">
+          <span class="sr-only">Break or repair this link: </span>
+          <span class="link__head">
+            <span class="link__ar" lang="ar" dir="rtl">اتصال السند</span>
+            <span class="link__name">Ittiṣāl al-sanad<small>An unbroken chain</small></span>
+            <span class="link__state" aria-hidden="true"></span>
+          </span>
+          <span class="link__row"><b>In hadith</b><span>Every narrator heard it directly from the one before.</span></span>
+          <span class="link__row"><b>At Isnad</b><span>We trace each story to where it started. When we can’t, we say so.</span></span>
+        </button>
+      </li>
+      <li class="link">
+        <button type="button" class="link__btn" aria-pressed="false" data-name="integrity">
+          <span class="sr-only">Break or repair this link: </span>
+          <span class="link__head">
+            <span class="link__ar" lang="ar" dir="rtl">عدالة الرواة</span>
+            <span class="link__name">ʿAdālat al-ruwāt<small>Narrators of integrity</small></span>
+            <span class="link__state" aria-hidden="true"></span>
+          </span>
+          <span class="link__row"><b>In hadith</b><span>Every narrator was known for honesty and upright character.</span></span>
+          <span class="link__row"><b>At Isnad</b><span>We name our sources and tell you why we trust them.</span></span>
+        </button>
+      </li>
+      <li class="link">
+        <button type="button" class="link__btn" aria-pressed="false" data-name="precision">
+          <span class="sr-only">Break or repair this link: </span>
+          <span class="link__head">
+            <span class="link__ar" lang="ar" dir="rtl">ضبط الرواة</span>
+            <span class="link__name">Ḍabṭ al-ruwāt<small>Narrators who were precise</small></span>
+            <span class="link__state" aria-hidden="true"></span>
+          </span>
+          <span class="link__row"><b>In hadith</b><span>Every narrator preserved the words accurately.</span></span>
+          <span class="link__row"><b>At Isnad</b><span>Quotes, names and numbers are checked against the record before we publish.</span></span>
+        </button>
+      </li>
+      <li class="link">
+        <button type="button" class="link__btn" aria-pressed="false" data-name="nothing irregular">
+          <span class="sr-only">Break or repair this link: </span>
+          <span class="link__head">
+            <span class="link__ar" lang="ar" dir="rtl">السلامة من الشذوذ</span>
+            <span class="link__name">Salāmah min al-shudhūdh<small>Nothing irregular</small></span>
+            <span class="link__state" aria-hidden="true"></span>
+          </span>
+          <span class="link__row"><b>In hadith</b><span>The report does not contradict narrators more reliable than its own.</span></span>
+          <span class="link__row"><b>At Isnad</b><span>A claim that goes against well-established reporting gets a second check.</span></span>
+        </button>
+      </li>
+      <li class="link">
+        <button type="button" class="link__btn" aria-pressed="false" data-name="no hidden defect">
+          <span class="sr-only">Break or repair this link: </span>
+          <span class="link__head">
+            <span class="link__ar" lang="ar" dir="rtl">السلامة من العلة</span>
+            <span class="link__name">Salāmah min al-ʿillah<small>No hidden defect</small></span>
+            <span class="link__state" aria-hidden="true"></span>
+          </span>
+          <span class="link__row"><b>In hadith</b><span>No concealed flaw lies behind a sound-looking chain.</span></span>
+          <span class="link__row"><b>At Isnad</b><span>We look for the edited clip, the missing context and the quote cut short.</span></span>
+        </button>
+      </li>
+    </ol>
+
+    <div class="verdict" id="verdict" aria-live="polite">
+      <span class="verdict__label">The grade</span>
+      <span class="verdict__ar" lang="ar" dir="rtl" id="verdictAr">صحيح</span>
+      <span class="verdict__en" id="verdictEn">Ṣaḥīḥ (sound)</span>
+      <p class="verdict__note" id="verdictNote">All five links hold. We publish this story.</p>
+      <button class="btn btn--line btn--sm" type="button" id="resetChain" hidden>Repair the chain</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reach" aria-labelledby="reach-title">
+  <div class="wrap">
+    <div class="reach">
+      <div class="reach__intro">
+        <p class="eyebrow"><span>Work with us</span><span class="eyebrow__ar" lang="ar" dir="rtl">لنعمل معًا</span></p>
+        <h2 id="reach-title">Let’s make an impact together.</h2>
+        <p class="section__lead">Have a challenge to solve, a story to tell, or an opportunity to explore? We’d love to hear from you.</p>
+      </div>
+      <!-- Opens to show WhatsApp and email; works without JavaScript. -->
+      <details class="reach__talk">
+        <summary class="reach__start">
+          <span>Start a conversation</span>
+          <svg class="reach__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </summary>
+        <ul class="reach__ways">
+          <li>
+            <a class="reach__way" href="https://wa.me/250793835632" target="_blank" rel="noopener">
+              <span class="reach__icon" aria-hidden="true"><svg><use href="#i-whatsapp"/></svg></span>
+              <span class="reach__text"><small>WhatsApp</small><b>+250 793 835 632</b></span>
+            </a>
+          </li>
+          <li>
+            <a class="reach__way" href="mailto:isnadmedia9@gmail.com">
+              <span class="reach__icon" aria-hidden="true"><svg><use href="#i-mail"/></svg></span>
+              <span class="reach__text"><small>Email</small><b>isnadmedia9@gmail.com</b></span>
+            </a>
+          </li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow"><span>Contact</span><span class="eyebrow__ar" lang="ar" dir="rtl">تواصل معنا</span></p>
+      <h2 id="contact-title">Write to us</h2>
+      <p class="section__lead">Ask a question, send us a story or tell us about a masjid or a person we should film. If it’s a story, tell us how you know. We check it like everything else.</p>
+    </header>
+    <div class="contact">
+      <form class="form" id="contactForm">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-topic">What is it about?</label>
+          <select id="f-topic" name="topic">
+            <option>A story tip</option>
+            <option>A question</option>
+            <option>Working together</option>
+            <option>Feedback on a film or post</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" rows="5" required></textarea>
+        </div>
+        <div class="form__foot">
+          <button class="btn btn--green" type="submit">Send message</button>
+          <p class="form__status" id="formStatus" role="status"></p>
+        </div>
+      </form>
+      <ul class="ways">
+        <li><h3>Story tips</h3><p>Know a masjid, a person or a piece of history we should film? Tell us how you know it. We check every tip before we tell the story.</p></li>
+        <li><h3>Questions</h3><p>Ask about anything you have seen from us. Questions we hear often may become a reminder or a conversation on <b>The Majlis</b>.</p></li>
+        <li><h3>Working together</h3><p>Masjids, schools and organisations can write to us about filming, sharing our stories or working together.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer__grid">
+    <div class="footer__brand">
+      <a class="brand" href="#top" aria-label="Isnad Media, back to the top">
+        <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
+        <span class="brand__word"><span class="brand__name">ISNAD</span><span class="brand__sub">MEDIA</span></span>
+      </a>
+      <p class="footer__tag">Stories you can trust</p>
+      <ul class="socials" id="follow" aria-label="Isnad Media on social media">
+        <li><a href="https://www.instagram.com/isnad_media" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-instagram"/></svg><span>Instagram<small>@isnad_media</small></span></a></li>
+        <li><a href="https://www.tiktok.com/@isnad.media7" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tiktok"/></svg><span>TikTok<small>@isnad.media7</small></span></a></li>
+      </ul>
+    </div>
+    <div class="dua">
+      <p class="dua__ar" lang="ar" dir="rtl">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ</p>
+      <p class="dua__en">Glory be to You, O Allah, and all praise is Yours. I bear witness that there is no god but You. I seek Your forgiveness and turn to You.</p>
+      <p class="dua__ref">Kaffārat al-majlis, said at the close of a gathering</p>
+    </div>
+  </div>
+  <div class="wrap footer__base">
+    <p>© <span id="year">2026</span> Isnad Media</p>
+    <p>Prayer times are calculated and may differ by a few minutes from your local masjid.</p>
+  </div>
+</footer>
+
+
+<dialog class="lightbox" id="lightbox" aria-label="Full view" tabindex="-1">
+  <div class="lightbox__media"></div>
+  <p class="lightbox__caption"></p>
+  <button class="lightbox__btn lightbox__close" type="button" data-box="close" aria-label="Close"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+  <button class="lightbox__btn lightbox__prev" type="button" data-box="prev" aria-label="Previous"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+  <button class="lightbox__btn lightbox__next" type="button" data-box="next" aria-label="Next"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/main.js?v=20"></script>
+</body>
+</html>
