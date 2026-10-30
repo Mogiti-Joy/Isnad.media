@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/styles.css?v=34">
+<link rel="stylesheet" href="css/styles.css?v=41">
 </head>
 <body>
 
@@ -60,11 +60,11 @@
       <span class="brand__word"><span class="brand__name">ISNAD</span><span class="brand__sub">MEDIA</span></span>
     </a>
     <nav class="site-nav" id="siteNav" aria-label="Sections">
+      <a href="#our-name">Our name</a>
       <a href="#find">Watch</a>
+      <a href="#services">What we do</a>
       <a href="#prayer-times">Prayer times</a>
       <a href="#haramain">The Haram</a>
-      <a href="#our-name">Our name</a>
-      <a href="#services">What we do</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="btn btn--primary btn--sm site-header__follow" href="#follow">Follow us</a>
@@ -80,30 +80,41 @@
 <main>
 
 <section class="hero" id="top" aria-labelledby="hero-title">
-  <div class="wrap hero__grid">
+  <div class="wrap hero__inner">
     <div class="hero__copy">
       <p class="eyebrow eyebrow--hero"><span>Stories you can trust</span><span class="eyebrow__ar" lang="ar" dir="rtl">قصص موثوقة</span></p>
       <h1 id="hero-title">Every story has a <span class="gold">chain.</span></h1>
       <p class="hero__lead">Short films, reminders and the history of Muslims across Africa, from Isnad Media. The scholars of hadith traced every saying back through each person who carried it. We tell our stories the same way, so you always know who said it and how it reached you.</p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="#follow">Follow us</a>
+        <a class="btn btn--primary" href="#find">Watch our films</a>
+        <a class="btn btn--ghost" href="#services">Work with us</a>
         <a class="btn btn--ghost" href="#prayer-times">Prayer times</a>
       </div>
-      <div class="countdown" role="timer" aria-labelledby="cdLabel">
-        <svg class="countdown__ring" viewBox="0 0 80 80" aria-hidden="true">
-          <circle class="countdown__track" cx="40" cy="40" r="34"/>
-          <circle class="countdown__fill" id="cdFill" cx="40" cy="40" r="34" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 40 40)"/>
-          <use class="countdown__star" href="#star" x="27" y="27" width="26" height="26"/>
-        </svg>
-        <div class="countdown__text">
-          <p class="countdown__label"><span id="cdLabel">Next adhan in</span> <select class="city-select city-select--inline" id="cityHero" aria-label="Your city, for prayer times"><option>Nairobi</option></select></p>
-          <p class="countdown__name"><span class="ar" lang="ar" dir="rtl" id="cdAr">العصر</span> <span id="cdName">Asr</span> <span id="cdAt">at 14:15</span></p>
-          <p class="countdown__clock" data-countdown>00:00:00</p>
-        </div>
-      </div>
     </div>
+  </div>
+</section>
 
-    <!-- The mihrab arch: the Ṭawāf around the Kaʿbah, a silent moving picture. -->
+<section class="section" id="our-name" aria-labelledby="name-title">
+  <div class="wrap name">
+    <div class="name__head">
+      <p class="name__ar" lang="ar" dir="rtl" aria-hidden="true">إسناد</p>
+      <p class="eyebrow"><span>Our name</span><span class="eyebrow__ar" lang="ar" dir="rtl">لماذا إسناد</span></p>
+      <h2 id="name-title">Named after the science of trust</h2>
+    </div>
+    <div class="name__text">
+      <p>Isnād comes from an Arabic root meaning to lean on, or to support. In hadith scholarship it is the chain of people through whom a saying reached us. One narrator heard it from another, all the way back to the Prophet ﷺ.</p>
+      <p>The scholars studied every person in that chain. Was each narrator honest? Did they remember well? Had they really met the one they quoted? A report was only as strong as its weakest link. We took the name because we want to be held to that standard.</p>
+    </div>
+  </div>
+
+  <!-- The saying the name rests on, then the Ṭawāf. -->
+  <blockquote class="wrap quote">
+    <p class="quote__ar" lang="ar" dir="rtl">الإِسْنَادُ مِنَ الدِّينِ، وَلَوْلَا الإِسْنَادُ لَقَالَ مَنْ شَاءَ مَا شَاءَ</p>
+    <p class="quote__en">“The isnad is part of the religion. Were it not for the isnad, anyone could say whatever they wished.”</p>
+  </blockquote>
+
+  <div class="wrap name__film">
+    <!-- After the name, the mihrab arch: the Ṭawāf around the Kaʿbah, a silent moving picture. -->
     <figure class="stage" data-ambient>
       <div class="arch">
         <video class="arch__art" src="assets/haramain/tawaf-arch.mp4" poster="assets/haramain/tawaf-arch.jpg" muted loop playsinline preload="metadata" aria-label="Pilgrims in white circling the Kaʿbah in Masjid al-Ḥarām, Makkah, late in the day."></video>
@@ -238,13 +249,23 @@
         </ul>
       </div>
       <div class="pillar">
-        <div class="pillar__media" aria-hidden="true"><img src="assets/video/from-the-haramain-madinah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt=""></div>
+        <div class="pillar__media pillar__media--soon" aria-hidden="true"><svg class="pillar__soon"><use href="#mark"/></svg></div>
         <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-faces" data-shelf>Faces of the Ummah</button></h3>
         <p class="pillar__ar" lang="ar" dir="rtl">وجوه الأمة</p>
         <p class="pillar__about">Real stories of Muslims, from Africa to the Haramain</p>
+        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">Coming soon</span><svg><use href="#i-next"/></svg></p>
+      </div>
+      <div class="shelf" id="shelf-faces" role="region" aria-label="Faces of the Ummah: videos" hidden>
+        <p class="shelf__empty">Our first stories of Muslims across the ummah will appear here. <a href="#follow">Follow us</a> so you don’t miss them.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar__media" aria-hidden="true"><img src="assets/video/from-the-haramain-madinah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt=""></div>
+        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-haramain" data-shelf>From the Haramain</button></h3>
+        <p class="pillar__ar" lang="ar" dir="rtl">من الحرمين</p>
+        <p class="pillar__about">Moments from Makkah and Madinah</p>
         <p class="pillar__more" aria-hidden="true"><span class="pillar__count">1 video</span><svg><use href="#i-next"/></svg></p>
       </div>
-      <div class="shelf" id="shelf-faces" role="region" aria-label="Faces of the Ummah: videos" data-gallery hidden>
+      <div class="shelf" id="shelf-haramain" role="region" aria-label="From the Haramain: videos" data-gallery hidden>
         <ul class="shelf__films">
           <li class="shelf__film" data-piece>
             <button class="shelf__thumb" type="button" data-full="assets/video/from-the-haramain-madinah.mp4?v=3" data-preview="assets/video/previews/from-the-haramain-madinah.mp4" data-full-kind="film" data-full-poster="assets/video/from-the-haramain-madinah.jpg?v=4">
@@ -260,17 +281,33 @@
           </li>
         </ul>
       </div>
-      <div class="pillar">
-        <div class="pillar__media pillar__media--soon" aria-hidden="true"><svg class="pillar__soon"><use href="#mark"/></svg></div>
-        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-majlis" data-shelf>The Majlis</button></h3>
-        <p class="pillar__ar" lang="ar" dir="rtl">المجلس</p>
-        <p class="pillar__about">Sit-down conversations on faith and life</p>
-        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">Coming soon</span><svg><use href="#i-next"/></svg></p>
-      </div>
-      <div class="shelf" id="shelf-majlis" role="region" aria-label="The Majlis: videos" hidden>
-        <p class="shelf__empty">Our first sit-down conversations will appear here. <a href="#follow">Follow us</a> so you don’t miss them.</p>
-      </div>
     </div>
+  </div>
+</section>
+
+<section class="section" id="services" aria-labelledby="services-title">
+  <div class="wrap">
+    <header class="section__head">
+      <p class="eyebrow"><span>What we do</span><span class="eyebrow__ar" lang="ar" dir="rtl">ما نقدّمه</span></p>
+      <h2 id="services-title">Work with us</h2>
+    </header>
+    <ol class="services">
+      <li class="service"><span class="service-num" aria-hidden="true">01</span><h3>Film and Documentary Production</h3><p>We produce documentaries, short films and institutional videos for masjids, foundations and organisations, capturing their history, people and impact to a broadcast standard.</p></li>
+      <li class="service"><span class="service-num" aria-hidden="true">02</span><h3>Strategic Communications</h3><p>We provide communications strategy, donor reporting and reputation management for Islamic foundations, waqf bodies, financial institutions and schools, helping them communicate their work clearly to communities, partners and funders.</p></li>
+      <li class="service"><span class="service-num" aria-hidden="true">03</span><h3>Translation and Localisation</h3><p>We provide professional translation of films, publications, reports and policy documents for institutions, organisations and businesses. Every translation is reviewed for accuracy and cultural context, across Arabic, English, French, Swahili, Somali and Hausa.</p></li>
+      <li class="service"><span class="service-num" aria-hidden="true">04</span><h3>Verification and Fact-Checking</h3><p>We verify religious content, quotes, footage and claims circulating online, tracing them to their original source. This service is available to media houses, platforms and institutions.</p></li>
+      <li class="service"><span class="service-num" aria-hidden="true">05</span><h3>Training and Capacity Building</h3><p>We deliver media, communications and storytelling training for religious leaders, Islamic organisations and newsrooms, including accurate reporting on Muslim communities.</p></li>
+      <li class="service"><span class="service-num" aria-hidden="true">06</span><h3>Footage Licensing and Archive</h3><p>We license verified footage of Muslim life across Africa and the Haramain to broadcasters, production companies and cultural institutions.</p></li>
+    </ol>
+    <div class="also">
+      <h3 class="also__title">Also from Isnad</h3>
+      <ol class="also__list" start="7">
+        <li class="also__item"><span class="also__item-num" aria-hidden="true">07</span><h3>Educational Content</h3><p>We develop educational series, short courses and children’s content on Islamic history and heritage in Africa for madrasas, schools and learning platforms.</p></li>
+        <li class="also__item"><span class="also__item-num" aria-hidden="true">08</span><h3>Hajj and Umrah Content</h3><p>We produce pilgrim guides, preparation series and branded content for Hajj and Umrah operators, drawing on extensive original footage from Makkah and Madinah.</p></li>
+        <li class="also__item"><span class="also__item-num" aria-hidden="true">09</span><h3>Convenings and Events</h3><p>We design and host gatherings, forums and Ramadan programme series that bring together scholars, institutions and communities around African Islamic heritage, with sponsorship and content opportunities for partners.</p></li>
+      </ol>
+    </div>
+    <a class="btn btn--primary services__cta" href="#contact">Start a conversation <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </div>
 </section>
 
@@ -280,6 +317,20 @@
       <p class="eyebrow"><span>Prayer times</span><span class="eyebrow__ar" lang="ar" dir="rtl">مواقيت الصلاة</span></p>
       <h2 id="prayer-title">Times of prayer</h2>
     </header>
+
+    <!-- Live countdown to the next adhan, for the city picked below. -->
+    <div class="countdown" role="timer" aria-labelledby="cdLabel">
+      <svg class="countdown__ring" viewBox="0 0 80 80" aria-hidden="true">
+        <circle class="countdown__track" cx="40" cy="40" r="34"/>
+        <circle class="countdown__fill" id="cdFill" cx="40" cy="40" r="34" pathLength="100" stroke-dasharray="0 100" transform="rotate(-90 40 40)"/>
+        <use class="countdown__star" href="#star" x="27" y="27" width="26" height="26"/>
+      </svg>
+      <div class="countdown__text">
+        <p class="countdown__label" id="cdLabel">Next adhan in <span id="cdCity">Nairobi</span></p>
+        <p class="countdown__name"><span class="ar" lang="ar" dir="rtl" id="cdAr">العصر</span> <span id="cdName">Asr</span> <span id="cdAt">at 14:15</span></p>
+        <p class="countdown__clock" data-countdown>00:00:00</p>
+      </div>
+    </div>
 
     <p class="prayers-head"><label for="cityPrayers">Prayer times for</label> <select class="city-select city-select--pill" id="cityPrayers"><option>Nairobi</option></select></p>
     <ol class="prayers" id="prayers" aria-label="Prayer times"></ol>
@@ -320,6 +371,86 @@
         </button>
         <input class="atlas__scrub" id="atlasScrub" type="range" min="0" max="1440" step="5" value="0" aria-label="Move through the next 24 hours">
         <button class="btn btn--line btn--sm" type="button" id="atlasBack" hidden>Back to now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="masajid" aria-labelledby="masajid-title">
+  <!-- Masajid of Africa: one of our Instagram stories as a stack of pages. Drag the top one away or use the arrows;
+       tap it to read it in full. -->
+  <div class="wrap masajid">
+    <header class="masajid__head">
+      <p class="eyebrow"><span>Masajid of Africa</span><span class="eyebrow__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
+      <h2 id="masajid-title">Rebuilt by hand, <span class="gold">every year</span></h2>
+      <p class="masajid__lead">The Great Mosque of Djenné in Mali is the largest mud-brick building on earth. Before the rains, the whole town climbs its walls and re-plasters them by hand. Turn the pages to read the story.</p>
+    </header>
+
+    <div class="deck" role="region" aria-roledescription="carousel" aria-label="Djenné, Mali: the story in 8 pages" data-deck data-gallery>
+      <div class="deck__stage">
+        <ol class="deck__pages">
+          <li class="deck__page" data-piece aria-roledescription="slide" aria-label="1 of 8: Rebuilt by hand">
+            <button class="deck__card" type="button" data-full="assets/masajid/djenne-1.jpg">
+              <img src="assets/masajid/djenne-1.jpg" width="1080" height="1350" alt="The Great Mosque of Djenné, its mud-brick towers against a blue sky, with the words: “This mosque is rebuilt by hand. Every single year.”" draggable="false">
+              <span class="sr-only">See in full</span>
+            </button>
+            <span class="piece__title" hidden>Rebuilt by hand</span><span class="piece__text" hidden>Djenné, Mali · 1 of 8</span>
+          </li>
+          <li class="deck__page" data-piece aria-roledescription="slide" aria-label="2 of 8: The Great Mosque">
+            <button class="deck__card" type="button" data-full="assets/masajid/djenne-2.jpg">
+              <img src="assets/masajid/djenne-2.jpg" width="1080" height="1350" alt="The Great Mosque of Djenné, its central tower bristling with wooden beams, with the words: “The Great Mosque of Djenné, Mali. The largest mud-brick building on earth.”" draggable="false">
+              <span class="sr-only">See in full</span>
+            </button>
+            <span class="piece__title" hidden>The Great Mosque</span><span class="piece__text" hidden>Djenné, Mali · 2 of 8</span>
+          </li>
+          <li class="deck__page" data-piece aria-roledescription="slide" aria-label="3 of 8: The toron">
+            <button class="deck__card" type="button" data-full="assets/masajid/djenne-3.jpg">
+              <img src="assets/masajid/djenne-3.jpg" width="1080" height="1350" alt="Wooden beams jutting from the mosque’s mud walls, framed by green leaves, with the words: “Those wooden spikes aren’t decoration. They’re toron: bundles of palm wood built into the walls as permanent scaffolding.”" draggable="false">
+              <span class="sr-only">See in full</span>
+            </button>
+            <span class="piece__title" hidden>The toron</span><span class="piece__text" hidden>Djenné, Mali · 3 of 8</span>
+          </li>
+          <li class="deck__page" data-piece aria-roledescription="slide" aria-label="4 of 8: The Crépissage">
+            <button class="deck__card" type="button" data-full="assets/masajid/djenne-4.jpg">
+              <img src="assets/masajid/djenne-4.jpg" width="1080" height="1350" loading="lazy" alt="The mosque’s towers, studded with toron, against the sky, with the words: “Each year, before the rains, the whole town climbs them. Families mix fresh mud and re-plaster every wall. They call it the Crépissage.”" draggable="false">
+              <span class="sr-only">See in full</span>
+            </button>
+            <span class="piece__title" hidden>The Crépissage</span><span class="piece__text" hidden>Djenné, Mali · 4 of 8</span>
+          </li>
+          <li class="deck__page" data-piece aria-roledescription="slide" aria-label="5 of 8: 700 years">
+            <button class="deck__card" type="button" data-full="assets/masajid/djenne-5.jpg">
+              <img src="assets/masajid/djenne-5.jpg" width="1080" height="1350" loading="lazy" alt="A dark brown page patterned with rows of toron, with the words: “Since the 13th century. A mosque has stood on this ground for over 700 years. Tradition says King Koi Konboro embraced Islam and turned his palace into a place of prayer.”" draggable="false">
+              <span class="sr-only">See in full</span>
+            </button>
+            <span class="piece__title" hidden>700 years</span><span class="piece__text" hidden>Djenné, Mali · 5 of 8</span>
+          </li>
+          <li class="deck__page" data-piece aria-roledescription="slide" aria-label="6 of 8: 1907">
+            <button class="deck__card" type="button" data-full="assets/masajid/djenne-6.jpg">
+              <img src="assets/masajid/djenne-6.jpg" width="1080" height="1350" loading="lazy" alt="The mosque’s main front, lit by the sun, with the words: “1907. The mosque you see today was raised by Djenné’s guild of master masons.”" draggable="false">
+              <span class="sr-only">See in full</span>
+            </button>
+            <span class="piece__title" hidden>1907</span><span class="piece__text" hidden>Djenné, Mali · 6 of 8</span>
+          </li>
+          <li class="deck__page" data-piece aria-roledescription="slide" aria-label="7 of 8: Why it lasts">
+            <button class="deck__card" type="button" data-full="assets/masajid/djenne-7.jpg">
+              <img src="assets/masajid/djenne-7.jpg" width="1080" height="1350" loading="lazy" alt="A sand-coloured page patterned with rows of toron, with the words: “It doesn’t last because it’s strong. It lasts because people keep coming back for it.”" draggable="false">
+              <span class="sr-only">See in full</span>
+            </button>
+            <span class="piece__title" hidden>Why it lasts</span><span class="piece__text" hidden>Djenné, Mali · 7 of 8</span>
+          </li>
+          <li class="deck__page" data-piece aria-roledescription="slide" aria-label="8 of 8: Djenné, Mali">
+            <button class="deck__card" type="button" data-full="assets/masajid/djenne-8.jpg">
+              <img src="assets/masajid/djenne-8.jpg" width="1080" height="1350" loading="lazy" alt="The mosque in shadow, with the words: “Masajid of Africa. Djenné, Mali. Stories of Islam in Africa, told from the source. Isnad. Follow for more mosques across the continent.”" draggable="false">
+              <span class="sr-only">See in full</span>
+            </button>
+            <span class="piece__title" hidden>Djenné, Mali</span><span class="piece__text" hidden>Djenné, Mali · 8 of 8</span>
+          </li>
+        </ol>
+      </div>
+      <div class="deck__bar">
+        <button class="deck__btn" type="button" data-step="-1" aria-label="Previous page"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+        <p class="deck__count" aria-live="polite"><span class="deck__now">01</span> / 08</p>
+        <button class="deck__btn" type="button" data-step="1" aria-label="Next page"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
       </div>
     </div>
   </div>
@@ -387,137 +518,10 @@
   <div class="wrap ayah__inner">
     <p class="ayah__ar" lang="ar" dir="rtl">﴿يَا أَيُّهَا الَّذِينَ آمَنُوا إِن جَاءَكُمْ فَاسِقٌ بِنَبَإٍ <span class="gold">فَتَبَيَّنُوا</span>﴾</p>
     <p class="ayah__en">“O you who believe, if a wrongdoer brings you news, <span class="gold">verify it.</span>”</p>
-    <p class="ayah__ref">Sūrat al-Ḥujurāt 49:6</p>
   </div>
   <figure class="ayah__photo">
     <img src="assets/makkah-sunset.jpg" width="1600" height="1200" loading="lazy" alt="Makkah at sunset: the Clock Tower and the minarets of the Haram rise above the city, with mountains behind under an orange sky.">
   </figure>
-</section>
-
-<section class="section" id="our-name" aria-labelledby="name-title">
-  <div class="wrap name">
-    <div class="name__head">
-      <p class="name__ar" lang="ar" dir="rtl" aria-hidden="true">إسناد</p>
-      <p class="eyebrow"><span>Our name</span><span class="eyebrow__ar" lang="ar" dir="rtl">لماذا إسناد</span></p>
-      <h2 id="name-title">Named after the science of trust</h2>
-    </div>
-    <div class="name__text">
-      <p>Isnād comes from an Arabic root meaning to lean on, or to support. In hadith scholarship it is the chain of people through whom a saying reached us. One narrator heard it from another, all the way back to the Prophet ﷺ.</p>
-      <p>The scholars studied every person in that chain. Was each narrator honest? Did they remember well? Had they really met the one they quoted? A report was only as strong as its weakest link. We took the name because we want to be held to that standard.</p>
-    </div>
-  </div>
-
-  <!-- The quote closes the story. -->
-  <blockquote class="wrap quote">
-    <p class="quote__lead">Long before al-Bukhārī, ʿAbdullāh ibn al-Mubārak put it this way:</p>
-    <p class="quote__ar" lang="ar" dir="rtl">الإِسْنَادُ مِنَ الدِّينِ، وَلَوْلَا الإِسْنَادُ لَقَالَ مَنْ شَاءَ مَا شَاءَ</p>
-    <p class="quote__en">“The isnad is part of the religion. Were it not for the isnad, anyone could say whatever they wished.”</p>
-    <footer>ʿAbdullāh ibn al-Mubārak (d. 181 AH), in the introduction to Ṣaḥīḥ Muslim</footer>
-  </blockquote>
-
-  <div class="wrap test">
-    <div class="test__intro">
-      <h3>Five links in every story</h3>
-      <p>Hadith scholars graded a report <i>ṣaḥīḥ</i>, sound, only when five conditions held. We put every story through the same five before we publish it. Tap a link to break it and see what happens to the grade.</p>
-    </div>
-
-    <ol class="links" id="links">
-      <li class="link">
-        <button type="button" class="link__btn" aria-pressed="false" data-name="an unbroken chain">
-          <span class="sr-only">Break or repair this link: </span>
-          <span class="link__head">
-            <span class="link__ar" lang="ar" dir="rtl">اتصال السند</span>
-            <span class="link__name">Ittiṣāl al-sanad<small>An unbroken chain</small></span>
-            <span class="link__state" aria-hidden="true"></span>
-          </span>
-          <span class="link__row"><b>In hadith</b><span>Every narrator heard it directly from the one before.</span></span>
-          <span class="link__row"><b>At Isnad</b><span>We trace each story to where it started. When we can’t, we say so.</span></span>
-        </button>
-      </li>
-      <li class="link">
-        <button type="button" class="link__btn" aria-pressed="false" data-name="integrity">
-          <span class="sr-only">Break or repair this link: </span>
-          <span class="link__head">
-            <span class="link__ar" lang="ar" dir="rtl">عدالة الرواة</span>
-            <span class="link__name">ʿAdālat al-ruwāt<small>Narrators of integrity</small></span>
-            <span class="link__state" aria-hidden="true"></span>
-          </span>
-          <span class="link__row"><b>In hadith</b><span>Every narrator was known for honesty and upright character.</span></span>
-          <span class="link__row"><b>At Isnad</b><span>We name our sources and tell you why we trust them.</span></span>
-        </button>
-      </li>
-      <li class="link">
-        <button type="button" class="link__btn" aria-pressed="false" data-name="precision">
-          <span class="sr-only">Break or repair this link: </span>
-          <span class="link__head">
-            <span class="link__ar" lang="ar" dir="rtl">ضبط الرواة</span>
-            <span class="link__name">Ḍabṭ al-ruwāt<small>Narrators who were precise</small></span>
-            <span class="link__state" aria-hidden="true"></span>
-          </span>
-          <span class="link__row"><b>In hadith</b><span>Every narrator preserved the words accurately.</span></span>
-          <span class="link__row"><b>At Isnad</b><span>Quotes, names and numbers are checked against the record before we publish.</span></span>
-        </button>
-      </li>
-      <li class="link">
-        <button type="button" class="link__btn" aria-pressed="false" data-name="nothing irregular">
-          <span class="sr-only">Break or repair this link: </span>
-          <span class="link__head">
-            <span class="link__ar" lang="ar" dir="rtl">السلامة من الشذوذ</span>
-            <span class="link__name">Salāmah min al-shudhūdh<small>Nothing irregular</small></span>
-            <span class="link__state" aria-hidden="true"></span>
-          </span>
-          <span class="link__row"><b>In hadith</b><span>The report does not contradict narrators more reliable than its own.</span></span>
-          <span class="link__row"><b>At Isnad</b><span>A claim that goes against well-established reporting gets a second check.</span></span>
-        </button>
-      </li>
-      <li class="link">
-        <button type="button" class="link__btn" aria-pressed="false" data-name="no hidden defect">
-          <span class="sr-only">Break or repair this link: </span>
-          <span class="link__head">
-            <span class="link__ar" lang="ar" dir="rtl">السلامة من العلة</span>
-            <span class="link__name">Salāmah min al-ʿillah<small>No hidden defect</small></span>
-            <span class="link__state" aria-hidden="true"></span>
-          </span>
-          <span class="link__row"><b>In hadith</b><span>No concealed flaw lies behind a sound-looking chain.</span></span>
-          <span class="link__row"><b>At Isnad</b><span>We look for the edited clip, the missing context and the quote cut short.</span></span>
-        </button>
-      </li>
-    </ol>
-
-    <div class="verdict" id="verdict" aria-live="polite">
-      <span class="verdict__label">The grade</span>
-      <span class="verdict__ar" lang="ar" dir="rtl" id="verdictAr">صحيح</span>
-      <span class="verdict__en" id="verdictEn">Ṣaḥīḥ (sound)</span>
-      <p class="verdict__note" id="verdictNote">All five links hold. We publish this story.</p>
-      <button class="btn btn--line btn--sm" type="button" id="resetChain" hidden>Repair the chain</button>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="services" aria-labelledby="services-title">
-  <div class="wrap">
-    <header class="section__head">
-      <p class="eyebrow"><span>What we do</span><span class="eyebrow__ar" lang="ar" dir="rtl">ما نقدّمه</span></p>
-      <h2 id="services-title">Work with us</h2>
-    </header>
-    <ol class="services">
-      <li class="service"><span class="service-num" aria-hidden="true">01</span><h3>Film and Documentary Production</h3><p>We produce documentaries, short films and institutional videos for masjids, foundations and organisations, capturing their history, people and impact to a broadcast standard.</p></li>
-      <li class="service"><span class="service-num" aria-hidden="true">02</span><h3>Strategic Communications</h3><p>We provide communications strategy, donor reporting and reputation management for Islamic foundations, waqf bodies, financial institutions and schools, helping them communicate their work clearly to communities, partners and funders.</p></li>
-      <li class="service"><span class="service-num" aria-hidden="true">03</span><h3>Translation and Localisation</h3><p>We provide professional translation of films, publications, reports and policy documents for institutions, organisations and businesses. Every translation is reviewed for accuracy and cultural context, across Arabic, English, French, Swahili, Somali and Hausa.</p></li>
-      <li class="service"><span class="service-num" aria-hidden="true">04</span><h3>Verification and Fact-Checking</h3><p>We verify religious content, quotes, footage and claims circulating online, tracing them to their original source. This service is available to media houses, platforms and institutions.</p></li>
-      <li class="service"><span class="service-num" aria-hidden="true">05</span><h3>Training and Capacity Building</h3><p>We deliver media, communications and storytelling training for religious leaders, Islamic organisations and newsrooms, including accurate reporting on Muslim communities.</p></li>
-      <li class="service"><span class="service-num" aria-hidden="true">06</span><h3>Footage Licensing and Archive</h3><p>We license verified footage of Muslim life across Africa and the Haramain to broadcasters, production companies and cultural institutions.</p></li>
-    </ol>
-    <div class="also">
-      <h3 class="also__title">Also from Isnad</h3>
-      <ol class="also__list" start="7">
-        <li class="also__item"><span class="also__item-num" aria-hidden="true">07</span><h3>Educational Content</h3><p>We develop educational series, short courses and children’s content on Islamic history and heritage in Africa for madrasas, schools and learning platforms.</p></li>
-        <li class="also__item"><span class="also__item-num" aria-hidden="true">08</span><h3>Hajj and Umrah Content</h3><p>We produce pilgrim guides, preparation series and branded content for Hajj and Umrah operators, drawing on extensive original footage from Makkah and Madinah.</p></li>
-        <li class="also__item"><span class="also__item-num" aria-hidden="true">09</span><h3>Convenings and Events</h3><p>We design and host gatherings, forums and Ramadan programme series that bring together scholars, institutions and communities around African Islamic heritage, with sponsorship and content opportunities for partners.</p></li>
-      </ol>
-    </div>
-    <a class="btn btn--primary services__cta" href="#contact">Start a conversation <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-  </div>
 </section>
 
 <section class="section" id="contact" aria-labelledby="contact-title">
@@ -574,7 +578,7 @@
     <div class="contact__side">
       <ul class="ways">
         <li><h3>Story tips</h3><p>Know a masjid, a person or a piece of history we should film? Tell us how you know it. We check every tip before we tell the story.</p></li>
-        <li><h3>Questions</h3><p>Ask about anything you have seen from us. Questions we hear often may become a reminder or a conversation on <b>The Majlis</b>.</p></li>
+        <li><h3>Questions</h3><p>Ask about anything you have seen from us. Questions we hear often may become a reminder.</p></li>
         <li><h3>Working together</h3><p>Masjids, schools and organisations can write to us about filming, sharing our stories or working together.</p></li>
       </ul>
       <!-- Every way to reach us, one tap each. -->
@@ -606,7 +610,6 @@
     <div class="dua">
       <p class="dua__ar" lang="ar" dir="rtl">سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ</p>
       <p class="dua__en">Glory be to You, O Allah, and all praise is Yours. I bear witness that there is no god but You. I seek Your forgiveness and turn to You.</p>
-      <p class="dua__ref">Kaffārat al-majlis, said at the close of a gathering</p>
     </div>
   </div>
   <div class="wrap footer__base">
@@ -626,6 +629,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js?v=29"></script>
+<script src="js/main.js?v=34"></script>
 </body>
 </html>

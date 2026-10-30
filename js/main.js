@@ -279,6 +279,7 @@
   const countdownSpan = np => `<span data-countdown>${clockText(np.inH * 36e5)}</span>`;
 
   function renderCountdown(np) {
+    $('#cdCity').textContent = place.name;
     $('#cdAr').textContent = np.ar;
     $('#cdName').textContent = np.en;
     $('#cdAt').textContent = `${np.tomorrow ? 'tomorrow ' : ''}at ${hm(np.time)}${place.timeZone === viewerZone ? '' : ' local time'}`;
@@ -298,7 +299,7 @@
   function renderPrayers(z, t, np) {
     $('#prayers').innerHTML = PRAYERS.map(p => {
       const n = prayerName(p, z.weekday);
-      // Marked like the countdown at the top; after Isha that is tomorrow's Fajr, shown with its own time.
+      // Marked like the countdown above; after Isha that is tomorrow's Fajr, shown with its own time.
       const isNext = np.key === p.key;
       return `<li class="prayer${p.sun ? ' prayer--sun' : ''}${isNext ? ' is-next' : ''}">
         <span class="prayer__ar" lang="ar" dir="rtl">${n.ar}</span>
@@ -314,34 +315,6 @@
     const added = [...byMinutes].map(([min, names]) => `, with ${min} minutes added to ${names.join(' and ')}`).join('');
     $('#prayersNote').textContent = `Times for ${place.name}, ${place.country}, follow ${m.name} (Fajr ${m.fajr}°, Isha ${m.isha}°${added})${SETTINGS.asrFactor === 2 ? ', with Hanafi Asr' : ''}.`;
   }
-
-  /* ---------- five links ---------- */
-
-  const linkBtns = $$('.link__btn');
-  function renderVerdict() {
-    const broken = linkBtns.filter(b => b.getAttribute('aria-pressed') === 'true');
-    $('#verdict').classList.toggle('is-weak', broken.length > 0);
-    $('#resetChain').hidden = broken.length === 0;
-    if (!broken.length) {
-      $('#verdictAr').textContent = 'صحيح';
-      $('#verdictEn').textContent = 'Ṣaḥīḥ (sound)';
-      $('#verdictNote').textContent = 'All five links hold. We publish this story.';
-    } else {
-      const names = broken.map(b => b.dataset.name);
-      const list = names.length > 1 ? `${names.slice(0, -1).join(', ')} and ${names.at(-1)}` : names[0];
-      $('#verdictAr').textContent = 'ضعيف';
-      $('#verdictEn').textContent = 'Ḍaʿīf (weak)';
-      $('#verdictNote').textContent = `The chain fails at ${list}. We hold the story back until it is repaired.`;
-    }
-  }
-  linkBtns.forEach(b => b.addEventListener('click', () => {
-    b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
-    renderVerdict();
-  }));
-  $('#resetChain').addEventListener('click', () => {
-    linkBtns.forEach(b => b.setAttribute('aria-pressed', 'false'));
-    renderVerdict();
-  });
 
   /* ---------- the mihrab frame (canvas) ---------- */
 
@@ -463,6 +436,60 @@
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) showPiece(shown + (dx < 0 ? 1 : -1));
     swipeX = null;
   });
+
+  /* ---------- masajid of africa: a stack of pages ---------- */
+
+  // The top page can be dragged away (or back), or turned with the arrows or the arrow keys.
+  // Tapping the top page opens it in the full view; closing that leaves the stack on the page last seen.
+  for (const deck of $$('[data-deck]')) {
+    const pages = $$('.deck__page', deck), steps = $$('[data-step]', deck), stage = $('.deck__stage', deck);
+    let at = 0;
+    function go(i) {
+      at = Math.max(0, Math.min(pages.length - 1, i));
+      pages.forEach((p, n) => {
+        const d = n - at;
+        p.dataset.pos = d < 0 ? 'gone' : d > 3 ? 'far' : d;
+        p.inert = d !== 0;
+      });
+      $('.deck__now', deck).textContent = String(at + 1).padStart(2, '0');
+      steps[0].disabled = at === 0;
+      steps[1].disabled = at === pages.length - 1;
+    }
+    for (const b of steps) b.addEventListener('click', () => go(at + Number(b.dataset.step)));
+    deck.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') go(at + 1);
+      if (e.key === 'ArrowLeft') go(at - 1);
+    });
+
+    // Drag the top page sideways: far enough and it is thrown off (left, onward) or the last one comes back (right).
+    let startX = null, dx = 0, dragged = false;
+    stage.addEventListener('pointerdown', e => {
+      if (e.button !== 0) return;
+      startX = e.clientX; dx = 0; dragged = false;
+    });
+    stage.addEventListener('pointermove', e => {
+      if (startX === null) return;
+      dx = e.clientX - startX;
+      if (!dragged && Math.abs(dx) < 8) return;
+      if (!dragged) { dragged = true; deck.classList.add('is-dragging'); stage.setPointerCapture(e.pointerId); }
+      pages[at].style.transform = `translateX(${dx}px) rotate(${dx / 18}deg)`;
+    });
+    const drop = () => {
+      if (startX === null) return;
+      startX = null;
+      deck.classList.remove('is-dragging');
+      pages[at].style.transform = '';
+      if (dragged && Math.abs(dx) > 70) go(at + (dx < 0 ? 1 : -1));
+    };
+    stage.addEventListener('pointerup', drop);
+    stage.addEventListener('pointercancel', drop);
+    // A drag is not a tap: don't open the full view after one.
+    deck.addEventListener('click', e => {
+      if (dragged) { e.stopPropagation(); e.preventDefault(); dragged = false; }
+    }, true);
+    box.addEventListener('close', () => { if (group[0] && deck.contains(group[0])) go(shown); });
+    go(0);
+  }
 
   /* ---------- header: the section on screen is marked in the menu ---------- */
 

@@ -26,7 +26,7 @@ Open `js/main.js`. The settings are at the top, in `SETTINGS`:
 
 ## Prayer times
 
-The prayer times cover every country in Africa (54 countries, 125 cities). Visitors pick their city in the countdown at the top of the page or in the Prayer times section. The page starts on the first city in the visitor's own time zone.
+The prayer times cover every country in Africa (54 countries, 125 cities). Visitors pick their city in the Prayer times section, which opens with a live countdown to the next adhan, or by tapping it on the map. The page starts on the first city in the visitor's own time zone.
 
 Each country uses the method its masjids follow. These are set in `METHODS` and `CITIES` in `js/main.js`:
 
@@ -52,13 +52,13 @@ The "From the Haramain" and "Masajid of Africa" labels were painted out of both 
 
 Both films were filmed upright. To fill the wide frame, the film plays whole in the middle with a blurred copy of the same footage at the sides. The earlier versions, with plain green sides, are in `originals/green-sides/`.
 
-The mihrab arch at the top of the page plays the Ṭawāf around the Kaʿbah, late in the day. It is the `<figure class="stage">` block in `index.html` and uses `assets/haramain/tawaf-arch.mp4` (cover `tawaf-arch.jpg`). The clip was cut from a 1080×1920 video (`originals/tawaf-source-1080x1920.mp4`, from Pexels judging by its file name; the Pexels licence allows use without credit) to the arch's tall shape at 760×1056, sharp on Retina screens. The source is 7 seconds long, so the last second fades into the first and the clip loops without a jump. It is never played backwards, which would show the Ṭawāf turning the wrong way. The arch is 380px wide. The earlier courtyards version is in `originals/unused/`.
+The mihrab arch under "Our name" and its quote plays the Ṭawāf around the Kaʿbah, late in the day. It is the `<figure class="stage">` block in `index.html` and uses `assets/haramain/tawaf-arch.mp4` (cover `tawaf-arch.jpg`). The clip was cut from a 1080×1920 video (`originals/tawaf-source-1080x1920.mp4`, from Pexels judging by its file name; the Pexels licence allows use without credit) to the arch's tall shape at 760×1056, sharp on Retina screens. The source is 7 seconds long, so the last second fades into the first and the clip loops without a jump. It is never played backwards, which would show the Ṭawāf turning the wrong way. The arch is 380px wide. The earlier courtyards version is in `originals/unused/`.
 
 The other films are on the shelves under "What you'll find here" (see below).
 
 ## The menu
 
-The bar at the top links to Watch, Prayer times, The Haram, Our name, What we do and Contact, and underlines the section on screen. On phones it shows only the logo and Follow us. The links are the `<nav class="site-nav">` block in `index.html`.
+The bar at the top links to Our name, Watch, What we do, Prayer times, The Haram and Contact, and underlines the section on screen. On phones it shows only the logo and Follow us. The links are the `<nav class="site-nav">` block in `index.html`.
 
 ## Phones, folding phones and dual-screen phones
 
@@ -68,25 +68,24 @@ The site was checked on every common size, from the 280px outer screen of the fi
 - **Taps**: buttons and pickers are at least 44px tall on phones, the size Apple recommends for a finger. The city pickers use 16px text so iPhones don't zoom in when they are tapped.
 - **The map**: on a phone the 125 cities crowd together, so a tap picks the city closest to the finger.
 - **The full view**: swipe left or right to move between pictures (films keep their own controls, so swiping isn't used on them). The picture or film always fits the screen above its caption, including phones turned sideways, where the arrows move to the sides.
-- **Five links in every story**: on phones and tablets the grade sits above the five links and stays pinned under the bar while they are tapped, so the change from ṣaḥīḥ to ḍaʿīf is always in view. On phones turned sideways, which are too short for that, it scrolls with the page.
 - **Small details**: buttons never break their label over two lines, the map's labels are enlarged on phones, and numbers stay on the same line as their units ("4 min").
 - **The form**: phone keyboards show the right keys for email and phone numbers, and the Return key moves to the next field.
-- **Dual-screen phones** (such as the Surface Duo) with the page spread over both screens: nothing sits across the hinge. Two-part layouts put one part on each screen (the hero's text on the left and the arch on the right, the verse in Arabic on the left and English on the right), cards and services fill two columns, one each side, and the full view uses one screen. This is the `dual-screen phones` block near the end of `css/styles.css`.
+- **Dual-screen phones** (such as the Surface Duo) with the page spread over both screens: nothing sits across the hinge. Two-part layouts put one part on each screen (the verse in Arabic on the left and English on the right), cards and services fill two columns, one each side, and the full view uses one screen. This is the `dual-screen phones` block near the end of `css/styles.css`.
 
 ## Our name
 
-The "Our name" section explains the name in two paragraphs and closes with the quote from ʿAbdullāh ibn al-Mubārak, introduced as coming "long before al-Bukhārī".
+The "Our name" section comes straight after the opening, so it is the first thing people reach when they scroll. It explains the name in two paragraphs, then gives the saying of ʿAbdullāh ibn al-Mubārak on the isnad in Arabic and English, and ends with the Ṭawāf arch.
 
 ## What you'll find here
 
-The four cards are buttons. Each shows a picture from its films (the `<div class="pillar__media">` at the top of the card); The Majlis shows the Isnad arch until it has films. The chosen card turns green and opens a shelf of its videos, shown as horizontal thumbnails; choosing a video plays it in the full view, with sound for the films. Each video is on one shelf only, and a series stays together (all the Scholars of Mali films are under African Muslim History):
+The four cards are buttons. Each shows a picture from its films (the `<div class="pillar__media">` at the top of the card); Faces of the Ummah shows the Isnad arch until it has films. The chosen card turns green and opens a shelf of its videos, shown as horizontal thumbnails; choosing a video plays it in the full view, with sound for the films. Each video is on one shelf only, and a series stays together (all the Scholars of Mali films are under African Muslim History):
 
 | Card | Videos |
 |---|---|
 | Reminders | Jumuʿah (Masajid of Africa) |
 | African Muslim History | The six Scholars of Mali films with Thierno Hady Thiam: Why Timbuktu is more famous abroad than at home, How Islam crossed the Sahara, From teacher to student, Islam’s first command, Who’s reading the manuscripts?, How Islam in West Africa has changed |
-| Faces of the Ummah | The recitation at the next table (From the Haramain) |
-| The Majlis | None yet: it shows "Coming soon" with a link to follow Isnad Media |
+| Faces of the Ummah | None yet: it shows "Coming soon" with a link to follow Isnad Media |
+| From the Haramain | The recitation at the next table |
 
 Each video on a shelf:
 
@@ -101,11 +100,11 @@ Each video on a shelf:
 
 The earlier thumbnails are in `originals/unused/old-thumbnails/`. If you replace a thumbnail, raise its `?v=` number in `index.html` so returning visitors see the new one.
 
-To add a video to a shelf, copy one `<li class="shelf__film">` block inside that card's `<div class="shelf">` in `index.html`, change the video, cover, length, series and text, and update the count on the card ("2 videos"). For The Majlis, replace the `shelf__empty` paragraph with a `<ul class="shelf__films">` list like the others.
+To add a video to a shelf, copy one `<li class="shelf__film">` block inside that card's `<div class="shelf">` in `index.html`, change the video, cover, length, series and text, and update the count on the card ("2 videos"). For Faces of the Ummah, replace the `shelf__empty` paragraph with a `<ul class="shelf__films">` list like the others.
 
 ## What we do
 
-After "Our name", "What we do" (ما نقدّمه) lists Isnad Media's services: six main ones as numbered cards, then three under the smaller heading "Also from Isnad". The **Start a conversation** button under them goes to the contact form. To change a service, edit its `<li>` in the `<section id="services">` block in `index.html`.
+After the four categories in "What you’ll find here", "What we do" (ما نقدّمه) lists Isnad Media's services: six main ones as numbered cards, then three under the smaller heading "Also from Isnad". The **Start a conversation** button under them goes to the contact form. To change a service, edit its `<li>` in the `<section id="services">` block in `index.html`.
 
 ## Contact
 
@@ -136,9 +135,18 @@ Hovering over or tapping a city shows its local time, current and next prayer, a
 
 The map uses the same prayer times as the rest of the site, so there is nothing extra to keep up to date. The coastline and country borders come from Natural Earth (public domain) and are built into `index.html`, with the equator and the tropics marked.
 
+## Masajid of Africa
+
+After the live map, the story of the Great Mosque of Djenné in Mali, from Isnad Media's Instagram, lies beside a short introduction as a stack of its eight pages (`assets/masajid/djenne-1.jpg` to `djenne-8.jpg`, 1080×1350, in order). The pages under the top one fan out a little.
+
+- **Turning the pages**: drag the top page aside (it flies off and the next one shows; drag the other way to bring the last one back), or use the arrows under the stack or the arrow keys. The count shows which page is on top.
+- **Reading in full**: tapping the top page opens it in the full view; closing it leaves the stack on the page last seen.
+
+The words on each page are part of the picture, so each picture's description in `index.html` repeats them for screen readers. To use another story, replace the eight pictures (keeping the names, or changing them in the `<section id="masajid">` block), then change the heading, the paragraph and the descriptions. For more or fewer pages, add or remove `<li class="deck__page">` blocks and change the "8" in the count and the labels.
+
 ## From the Haramain
 
-The section after the prayer times shows Masjid al-Ḥarām, the qiblah of those prayers. Its files are in `assets/haramain/`.
+After Masajid of Africa, this section shows Masjid al-Ḥarām, the qiblah of those prayers. Its files are in `assets/haramain/`.
 
 - **The arcade**: four arches, linked like a chain, run from daylight to the setting sun: the Kaʿbah (`kaaba-arch.jpg`), the Clock Tower (`clock-tower.jpg`), sunset over the courtyards (`haram-sunset.jpg`) and the Prophet’s Masjid in Madinah in the evening light (`madinah-evening.jpg`, see "Photos"). Tapping an arch opens the whole picture, uncropped; the arrow keys move along and Esc closes it.
 
@@ -154,7 +162,7 @@ If you edit the CSS or JavaScript after the site is online, raise the `?v=` numb
 
 The page is built so visitors download as little as possible:
 
-- **The arch at the top** plays a 2 MB, 6.5-second looping clip of the Ṭawāf, cut to the arch's shape. It is the only video every visitor downloads.
+- **The Ṭawāf arch** under "Our name" plays a 2 MB, 6.5-second looping clip, cut to the arch's shape. It is the only video that plays without a tap, and only while it is on screen.
 - **Previews on the shelves** play 8-second, silent, small copies from `assets/video/previews/` (about 200 KB each), not the films themselves.
 - **The films** are 720p, 7–17 MB each, and are only downloaded when someone presses play. The Mali films' 1080p originals are in `Downloads/REPORTAGE_Horizontal` if you ever want them back.
 - **Pictures** on the cards, shelves and arches are small copies (`-sm.jpg`); the full-size ones load only when opened.
@@ -180,6 +188,7 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 | `js/main.js` | Settings, prayer times, the live map, the shelves and full view, contact form |
 | `assets/` | Logo, icons, the link-preview picture and photos |
 | `assets/video/` | The films and their cover images |
+| `assets/masajid/` | The eight pages of the Djenné story in Masajid of Africa |
 | `serve.py` | Local preview server |
 | `_headers`, `.htaccess` | How long visitors' browsers keep each file (see "Data and caching") |
 | `originals/` | Earlier versions, not used by the page: `unused/` (files no longer on the page: the courtyards and Maghrib clips, an earlier Madinah photo, and the Lamu and Swahili-door pictures), `tawaf-source-1080x1920.mp4` (the full video the arch's clip was cut from), the two films with their series labels, `green-sides/` (before the blurred sides) and the courtyards clip and picture before they were made smaller |
