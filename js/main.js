@@ -6,7 +6,14 @@
      Settings. Change these to match Isnad Media.
      ------------------------------------------------------------------ */
   const SETTINGS = {
-    formEndpoint: '',           // where the contact form posts, e.g. a Formspree URL
+    // The Google Form the contact form fills in (see "Contact" in README.md). `action` is the form's link with
+    // "viewform" changed to "formResponse"; each field is that question's entry number. Until `action` is set,
+    // "Send" opens the visitor's email app with the message addressed to `email`.
+    googleForm: {
+      action: '',               // e.g. 'https://docs.google.com/forms/d/e/1FAIpQL…/formResponse'
+      fields: { name: '', email: '', whatsapp: '', topic: '', message: '' },  // e.g. name: 'entry.123456789'
+    },
+    email: 'isnadmedia9@gmail.com',
     city: 'Nairobi',            // prayer times shown when a visitor's time zone matches none of the CITIES below
     asrFactor: 1,               // 1 = Shafiʿi, Maliki, Hanbali; 2 = Hanafi
   };
@@ -274,7 +281,7 @@
   function renderCountdown(np) {
     $('#cdAr').textContent = np.ar;
     $('#cdName').textContent = np.en;
-    $('#cdAt').textContent = `${np.tomorrow ? 'tomorrow ' : ''}${hm(np.time)}${place.timeZone === viewerZone ? '' : ' local time'}`;
+    $('#cdAt').textContent = `${np.tomorrow ? 'tomorrow ' : ''}at ${hm(np.time)}${place.timeZone === viewerZone ? '' : ' local time'}`;
     countdown(true);
   }
 
@@ -291,11 +298,12 @@
   function renderPrayers(z, t, np) {
     $('#prayers').innerHTML = PRAYERS.map(p => {
       const n = prayerName(p, z.weekday);
-      const isNext = !np.tomorrow && np.key === p.key;
+      // Marked like the countdown at the top; after Isha that is tomorrow's Fajr, shown with its own time.
+      const isNext = np.key === p.key;
       return `<li class="prayer${p.sun ? ' prayer--sun' : ''}${isNext ? ' is-next' : ''}">
         <span class="prayer__ar" lang="ar" dir="rtl">${n.ar}</span>
-        <span class="prayer__en">${n.en}</span>
-        <span class="prayer__time">${hm(t[p.key])}</span>
+        <span class="prayer__en">${n.en}${isNext ? `<span class="prayer__tag">${np.tomorrow ? 'Tomorrow' : 'Next'}</span>` : ''}</span>
+        <span class="prayer__time">${hm(isNext ? np.time : t[p.key])}</span>
         ${isNext ? `<span class="prayer__in">in ${countdownSpan(np)}</span>` : ''}
       </li>`;
     }).join('');
@@ -384,67 +392,18 @@
     toastTimer = setTimeout(() => el.classList.remove('is-visible'), 4200);
   }
 
-  /* ---------- films: sound kept, with pause and mute ---------- */
+  /* ---------- films ---------- */
 
-  // Each [data-film] holds a video and its controls; [data-film-player] is what goes full screen.
-  const films = $$('[data-film]');
   const mmss = s => (Number.isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '0:00');
 
-  // Only one sound at a time: starting a video pauses the others.
-  function playVideo(v) {
-    for (const film of films) {
-      const other = $('video', film);
-      if (other !== v && !other.paused) other.pause();
-    }
-    v.play().catch(() => toast('This video could not start. Please try again.'));
-  }
+  /* ---------- the moving picture in the arch, and the full view ---------- */
 
-  for (const film of films) {
-    const v = $('video', film), muteBtn = $('[data-video-mute]', film);
-    const toggles = $$('[data-video-toggle]', film), track = $('.story__bar', film);
-    const sync = () => {
-      film.classList.toggle('is-running', !v.paused);
-      film.classList.toggle('is-muted', v.muted);
-      for (const b of toggles) b.setAttribute('aria-label', v.paused ? 'Play video' : 'Pause video');
-      muteBtn.setAttribute('aria-label', v.muted ? 'Unmute video' : 'Mute video');
-      muteBtn.setAttribute('aria-pressed', String(v.muted));
-    };
-    const toggle = () => (v.paused ? playVideo(v) : v.pause());
-    toggles.forEach(b => b.addEventListener('click', toggle));
-    v.addEventListener('click', toggle);
-    muteBtn.addEventListener('click', () => { v.muted = !v.muted; });
-    // Full screen keeps the controls bar; iPhone Safari only allows the video itself to go full screen.
-    const player = $('[data-film-player]', film), fullBtn = $('[data-video-full]', film);
-    fullBtn.addEventListener('click', () => {
-      if (document.fullscreenElement) { document.exitFullscreen(); return; }
-      if (player.requestFullscreen) player.requestFullscreen().catch(() => toast('Full screen isn’t available here.'));
-      else if (v.webkitEnterFullscreen) v.webkitEnterFullscreen();
-    });
-    document.addEventListener('fullscreenchange', () => {
-      fullBtn.setAttribute('aria-label', document.fullscreenElement === player ? 'Exit full screen' : 'Full screen');
-    });
-    for (const ev of ['play', 'pause', 'ended', 'volumechange']) v.addEventListener(ev, sync);
-    const progress = () => {
-      $('span', track).style.width = `${v.duration ? (v.currentTime / v.duration) * 100 : 0}%`;
-      $('.story__time', film).textContent = `${mmss(v.currentTime)} / ${mmss(v.duration)}`;
-    };
-    v.addEventListener('timeupdate', progress);
-    v.addEventListener('loadedmetadata', progress);
-    track.addEventListener('click', e => {
-      if (!v.duration) return;
-      const r = track.getBoundingClientRect();
-      v.currentTime = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)) * v.duration;
-    });
-    sync();
-  }
-
-  /* ---------- From the Haramain: moving pictures and the full view ---------- */
-
-  // Silent clips play by themselves while on screen, never with reduced motion, and can be paused.
+  // The silent clip plays by itself while on screen, never with reduced motion or data saving, and can be paused.
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const saveData = !!navigator.connection?.saveData;
   for (const piece of $$('[data-ambient]')) {
     const v = $('video', piece), btn = $('[data-ambient-toggle]', piece);
-    let held = reduceMotion.matches, onScreen = false;
+    let held = reduceMotion.matches || saveData, onScreen = false;
     const update = () => (onScreen && !held ? v.play().catch(() => {}) : v.pause());
     const sync = () => {
       piece.classList.toggle('is-held', held);
@@ -455,7 +414,7 @@
     sync();
   }
 
-  // Tapping an arch opens the whole picture, uncropped, or plays a film with its sound.
+  // Tapping an arch opens the whole picture, uncropped; tapping a film plays it with its sound.
   // The arrow keys move through the pieces of the same gallery: the Haram's arcade, or one shelf.
   const box = $('#lightbox'), boxMedia = $('.lightbox__media', box), boxCaption = $('.lightbox__caption', box);
   let group = [], shown = 0;
@@ -464,12 +423,10 @@
     const el = group[shown], piece = el.closest('[data-piece]'), kind = el.dataset.fullKind;
     const text = s => esc($(s, piece)?.textContent.trim() || '');
     const src = esc(el.dataset.full), poster = esc(el.dataset.fullPoster || '');
-    if (kind === 'film') for (const film of films) $('video', film).pause();  // one sound at a time
     boxMedia.innerHTML = kind === 'film' ? `<video src="${src}" poster="${poster}" playsinline controls></video>`
-      : kind === 'video' ? `<video src="${src}" poster="${poster}" muted loop playsinline controls></video>`
       : `<img src="${src}" alt="${esc($('img', el)?.alt || '')}">`;
-    const v = $('video', boxMedia), resumeAt = v && kind === 'film' ? watchFilm(v) : 0;
-    if (v && (kind === 'film' || !reduceMotion.matches)) v.play().catch(() => {});
+    const v = $('video', boxMedia), resumeAt = v ? watchFilm(v) : 0;
+    if (v) v.play().catch(() => {});
     boxCaption.innerHTML = `<span lang="ar" dir="rtl">${text('.piece__ar')}</span> <b>${text('.piece__title')}</b> ${text('.piece__text')}`
       + (resumeAt ? ` <span class="lightbox__resume">Continuing from ${mmss(resumeAt)}</span>` : '');
     if (box.open && !box.contains(document.activeElement)) box.focus();  // keep the keys working after a swap
@@ -494,6 +451,18 @@
     if (e.key === 'ArrowLeft') showPiece(shown - 1);
   });
   box.addEventListener('close', () => { boxMedia.innerHTML = ''; });
+  // Phones: swipe left or right to move along. Not on a film, where a sideways drag belongs to its own controls.
+  let swipeX = null, swipeY = 0;
+  box.addEventListener('touchstart', e => {
+    swipeX = e.touches.length === 1 && !e.target.closest('video') ? e.touches[0].clientX : null;
+    swipeY = e.touches[0].clientY;
+  }, { passive: true });
+  box.addEventListener('touchend', e => {
+    if (swipeX === null || group.length < 2) return;
+    const dx = e.changedTouches[0].clientX - swipeX, dy = e.changedTouches[0].clientY - swipeY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) showPiece(shown + (dx < 0 ? 1 : -1));
+    swipeX = null;
+  });
 
   /* ---------- header: the section on screen is marked in the menu ---------- */
 
@@ -508,6 +477,20 @@
     }
   }, { rootMargin: '-45% 0px -50% 0px' });
   for (const section of $$('main > section[id]')) spy.observe(section);
+
+  // Phones: the menu button opens the sections as a list; choosing one, tapping elsewhere or Esc closes it.
+  const menuBtn = $('.menu-btn'), nav = $('#siteNav');
+  const setMenu = open => {
+    menuBtn.setAttribute('aria-expanded', String(open));
+    nav.classList.toggle('is-open', open);
+  };
+  menuBtn.addEventListener('click', () => setMenu(menuBtn.getAttribute('aria-expanded') !== 'true'));
+  nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('click', e => { if (nav.classList.contains('is-open') && !e.target.closest('.site-header')) setMenu(false); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
+  });
+  window.matchMedia('(min-width: 901px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
 
   /* ---------- what you'll find here: each card opens its shelf of videos ---------- */
 
@@ -551,12 +534,8 @@
     for (const ev of ['timeupdate', 'pause', 'ended']) v.addEventListener(ev, () => remember(v));
     return at;
   }
-  for (const film of films) {
-    const v = $('video', film);
-    for (const ev of ['timeupdate', 'pause', 'ended']) v.addEventListener(ev, () => remember(v));
-  }
 
-  // Progress lines, "Watched" marks and the counts on the cards.
+  // Progress lines and the number of videos on each card.
   function renderWatched() {
     for (const thumb of $$('.shelf__thumb')) {
       const w = watched[fileOf(thumb.dataset.full)], label = $('.sr-only', thumb);
@@ -564,14 +543,12 @@
       thumb.dataset.label ||= label.textContent;
       $('.shelf__progress span', thumb).style.width = `${pct}%`;
       thumb.classList.toggle('is-started', pct > 0);
-      thumb.classList.toggle('is-watched', !!w?.done);
       label.textContent = thumb.dataset.label + (w?.done ? ', watched' : pct ? `, ${Math.round(pct)}% watched` : '');
     }
     for (const btn of shelfBtns) {
       const thumbs = $$('.shelf__thumb', $(`#${btn.getAttribute('aria-controls')}`)), count = $('.pillar__count', btn.closest('.pillar'));
       if (!thumbs.length) continue;
-      const seen = new Set(thumbs.filter(t => watched[fileOf(t.dataset.full)]?.done).map(t => fileOf(t.dataset.full))).size;
-      count.textContent = `${thumbs.length} video${thumbs.length > 1 ? 's' : ''}${seen ? ` · ${seen} watched` : ''}`;
+      count.textContent = `${thumbs.length} video${thumbs.length > 1 ? 's' : ''}`;
     }
   }
 
@@ -587,7 +564,7 @@
       v.playsInline = true;
       v.preload = 'none';
       v.setAttribute('aria-hidden', 'true');
-      v.src = thumb.dataset.full;
+      v.src = thumb.dataset.preview || thumb.dataset.full;  // a short, small clip, so a preview costs little data
       v.addEventListener('playing', () => thumb.classList.add('is-previewing'));
       v.addEventListener('timeupdate', () => { if (v.currentTime > 12) v.currentTime = 0; });
       $('img', thumb).after(v);
@@ -596,7 +573,7 @@
     if (on) v.play().catch(() => {});
     else { v.pause(); thumb.classList.remove('is-previewing'); }
   }
-  if (!reduceMotion.matches && !navigator.connection?.saveData) {
+  if (!reduceMotion.matches && !saveData) {
     const mouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     for (const thumb of $$('.shelf__thumb')) {
       if (mouse) {
@@ -675,11 +652,28 @@
       b.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') hideTip(); });
       b.addEventListener('focus', () => showTip(d));
       b.addEventListener('blur', hideTip);
-      b.addEventListener('click', () => { choose(p); showTip(d); });
+      b.addEventListener('click', e => {
+        const t = (e.detail && nearest(e.clientX, e.clientY)) || d;  // a tap goes to the closest city; Enter to this one
+        choose(t.p);
+        showTip(t);
+      });
       $('#atlasDots').append(b);
       return d;
     });
-    map.addEventListener('click', e => { if (!e.target.closest('.atlas__dot')) hideTip(); });
+    // On a phone the dots crowd together, so a tap picks the city closest to the finger, within reach of it.
+    function nearest(x, y) {
+      let best = null, dist = 28;
+      for (const d of dots) {
+        const r = d.b.getBoundingClientRect(), far = Math.hypot(r.left + r.width / 2 - x, r.top + r.height / 2 - y);
+        if (far < dist) { best = d; dist = far; }
+      }
+      return best;
+    }
+    map.addEventListener('click', e => {
+      if (e.target.closest('.atlas__dot')) return;
+      const t = nearest(e.clientX, e.clientY);
+      if (t) { choose(t.p); showTip(t); } else hideTip();
+    });
 
     function showTip(d) {
       const s = d.s || stateOf(d.p, when()), np = nextPrayer(s.z, d.p), calling = s.key !== 'sunrise' && s.since < windowMin();
@@ -770,7 +764,7 @@
       } else {
         let best = null;
         for (const d of dots) { const np = nextPrayer(d.s.z, d.p); if (!best || np.inH < best.np.inH) best = { d, np }; }
-        now.innerHTML = `Next: the adhan for <b>${esc(best.np.en)}</b> in ${esc(best.d.p.name)}, in ${(m => (m < 60 ? `${m} min` : `${Math.floor(m / 60)} h ${m % 60} min`))(Math.max(1, Math.round(best.np.inH * 60)))}.`;
+        now.innerHTML = `Next: the adhan for <b>${esc(best.np.en)}</b> in ${esc(best.d.p.name)}, in ${(m => (m < 60 ? `${m}\u00a0min` : `${Math.floor(m / 60)}\u00a0h ${m % 60}\u00a0min`))(Math.max(1, Math.round(best.np.inH * 60)))}.`;
       }
 
       // The clock, in the visitor's own city.
@@ -830,26 +824,31 @@
     e.preventDefault();
     const form = e.currentTarget, status = $('#formStatus');
     const data = Object.fromEntries(new FormData(form));
-    if (!SETTINGS.formEndpoint) {
+    if (data._honey) return;  // filled in by a spam robot
+    const { action, fields } = SETTINGS.googleForm;
+
+    // Not connected yet: the visitor's email app opens with the message written out.
+    if (!action) {
+      const body = `${data.message}\n\n${data.name}\n${data.email}${data.whatsapp ? `\nWhatsApp: ${data.whatsapp}` : ''}`;
+      location.href = `mailto:${SETTINGS.email}?subject=${encodeURIComponent(`${data.topic}, from the Isnad Media website`)}&body=${encodeURIComponent(body)}`;
       status.dataset.state = 'info';
-      status.textContent = 'This form is a preview. Messages will reach us once it is connected.';
+      status.innerHTML = `Your email app should open with your message. If it doesn’t, write to us at <a href="mailto:${SETTINGS.email}">${SETTINGS.email}</a>.`;
       return;
     }
+
+    // Google Forms accepts the answers but doesn't let the page read its reply, so a sent request counts as delivered.
+    const body = new URLSearchParams();
+    for (const [key, entry] of Object.entries(fields)) if (entry) body.append(entry, data[key] || '');
     status.dataset.state = 'info';
     status.textContent = 'Sending…';
     try {
-      const res = await fetch(SETTINGS.formEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error(String(res.status));
+      await fetch(action, { method: 'POST', mode: 'no-cors', body });
       form.reset();
       status.dataset.state = 'ok';
       status.textContent = `JazākAllāhu khayran${data.name ? `, ${data.name}` : ''}. Your message reached us.`;
     } catch {
       status.dataset.state = 'error';
-      status.textContent = 'Your message could not be sent. Check your connection and try again.';
+      status.innerHTML = `Your message could not be sent. Check your connection and try again, or email us at <a href="mailto:${SETTINGS.email}">${SETTINGS.email}</a>.`;
     }
   });
 
