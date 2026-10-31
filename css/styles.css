@@ -723,7 +723,142 @@ img, svg { max-width: 100%; }
   .atlas__tip { width: min(240px, 78%); }
 }
 
-/* ---------- from the haramain ---------- */
+/* ---------- through the doors: the Haramain, the Sahel, East Africa ---------- */
+
+/* one background for the whole section, like an illuminated page; each region sets the colours of its doors and words */
+.doors {
+  --door: var(--green);
+  --door-deep: var(--green-deep);
+  --door-link: var(--gold);
+  --door-wash: #FCF9F0;
+  --door-title: var(--green);
+  --door-text: var(--muted);
+  --door-accent: var(--gold-text);
+  /* star and cross, as in the gold illumination of a printed muṣḥaf */
+  --door-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96'%3E%3Cg fill='none' stroke='%23A8841F'%3E%3Cpath d='M48.0 0.0L62.1 14.1L81.9 14.1L81.9 33.9L96.0 48.0L81.9 62.1L81.9 81.9L62.1 81.9L48.0 96.0L33.9 81.9L14.1 81.9L14.1 62.1L0.0 48.0L14.1 33.9L14.1 14.1L33.9 14.1Z' stroke-opacity='.3'/%3E%3Cpath d='M48.0 9.0L59.4 20.4L75.6 20.4L75.6 36.6L87.0 48.0L75.6 59.4L75.6 75.6L59.4 75.6L48.0 87.0L36.6 75.6L20.4 75.6L20.4 59.4L9.0 48.0L20.4 36.6L20.4 20.4L36.6 20.4Z' stroke-opacity='.16'/%3E%3C/g%3E%3Cpath d='M48.0 41.0L50.1 43.1L52.9 43.1L52.9 45.9L55.0 48.0L52.9 50.1L52.9 52.9L50.1 52.9L48.0 55.0L45.9 52.9L43.1 52.9L43.1 50.1L41.0 48.0L43.1 45.9L43.1 43.1L45.9 43.1Z' fill='%23A8841F' fill-opacity='.1'/%3E%3Cg fill='%23A8841F' fill-opacity='.1'%3E%3Ccircle cx='0' cy='0' r='2.5'/%3E%3Ccircle cx='96' cy='0' r='2.5'/%3E%3Ccircle cx='0' cy='96' r='2.5'/%3E%3Ccircle cx='96' cy='96' r='2.5'/%3E%3C/g%3E%3C/svg%3E");
+  position: relative;
+  isolation: isolate;
+  background: var(--door-wash);
+}
+.doors[data-region="sahel"] {
+  --door: #9A4A22;
+  --door-deep: #6B2F12;
+  --door-link: #C8963A;
+  --door-title: #6B2F12;
+  --door-text: #75503C;
+  --door-accent: #8E4A14;
+}
+.doors[data-region="east"] {
+  --door: #0E5A6B;
+  --door-deep: #0A3F4C;
+  --door-link: #D27A4F;
+  --door-title: #0A4552;
+  --door-text: #3C6470;
+  --door-accent: #0B6377;
+}
+.section.doors { padding-top: clamp(48px, 6vw, 88px); }
+.doors::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--door-pattern);
+  background-position: center top;
+  /* strongest at the edges, quiet behind the words and doors */
+  -webkit-mask-image: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(0, 0, 0, .28), #000);
+  mask-image: radial-gradient(ellipse 70% 75% at 50% 50%, rgba(0, 0, 0, .28), #000);
+}
+/* the double gold rule that frames a muṣḥaf page */
+.doors::after {
+  content: "";
+  position: absolute;
+  inset: clamp(8px, 1.4vw, 18px);
+  z-index: -1;
+  border: 1.5px solid var(--line-gold);
+  box-shadow: inset 0 0 0 4px var(--door-wash), inset 0 0 0 5px var(--line-gold);
+  pointer-events: none;
+}
+.doors .eyebrow { color: var(--door-accent); }
+.doors .eyebrow__ar { color: var(--door-title); }
+.doors h2 { color: var(--door-title); }
+.doors .section__lead { color: var(--door-text); }
+.doors .piece__ar { color: var(--door-accent); }
+.doors .piece__title { color: var(--door-title); }
+.doors .piece__text { color: var(--door-text); }
+.doors .piece__text a { color: inherit; }
+.door[hidden] { display: none; }
+.door.is-opening .section__head { animation: door-words .6s ease both; }
+@keyframes door-words { from { opacity: 0; transform: translateY(10px); } }
+
+/* the three doors that choose a region, linked like the arcade below */
+.gates {
+  --gap: clamp(24px, 5vw, 56px);
+  display: flex;
+  gap: var(--gap);
+  margin: 22px 0 36px;
+}
+.gate {
+  position: relative;
+  display: grid;
+  flex: 1 1 0;
+  justify-items: center;
+  align-content: start;
+  gap: 2px;
+  min-width: 0;
+  max-width: 132px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--door-text);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+.gate + .gate::before {
+  content: "";
+  position: absolute;
+  top: 34%;
+  left: calc(var(--gap) * -1 - 8px);
+  z-index: 2;
+  width: calc(var(--gap) + 16px);
+  height: 12px;
+  margin-top: -6px;
+  border: 2px solid var(--door-link);
+  border-radius: 999px;
+  pointer-events: none;
+  transition: border-color .6s;
+}
+.gate__arch {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+  margin-bottom: 8px;
+  padding: 3px;
+  background: var(--line-gold);
+  clip-path: url(#archClip);
+  transition: background-color .3s, transform .3s cubic-bezier(.2, .7, .2, 1);
+}
+.gate__window { display: block; width: 100%; height: 100%; overflow: hidden; background: var(--door-deep); clip-path: url(#archClip); }
+.gate__window img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.55); opacity: .8; transition: filter .3s, opacity .3s; }
+.gate:hover .gate__window img,
+.gate[aria-selected="true"] .gate__window img { filter: none; opacity: 1; }
+.gate:hover .gate__arch { transform: translateY(-3px); }
+.gate[aria-selected="true"] .gate__arch { background: var(--door); }
+.gate:focus-visible { outline: none; }
+.gate:focus-visible .gate__arch { background: var(--gold); }
+.gate__name { font-size: .875rem; font-weight: 600; line-height: 1.25; }
+.gate__ar { font-size: 1rem; line-height: 1.4; color: var(--door-accent); }
+.gate[aria-selected="true"] .gate__name { font-weight: 700; color: var(--door-title); }
+
+/* wide screens: the three doors stand beside the heading */
+@media (min-width: 1100px) {
+  .doors .wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  .doors__eyebrow { grid-column: 1; grid-row: 1; margin-bottom: 14px; }
+  .gates { position: relative; z-index: 1; grid-column: 2; grid-row: 1 / span 2; align-self: start; margin: 0; }
+  .gate { flex: 0 0 132px; }
+  .door { grid-column: 1 / -1; grid-row: 2; }
+  .doors .section__head { max-width: 640px; min-height: 196px; align-content: start; }
+}
 
 /* an arcade like the Haram's own: arched windows onto one moment each, linked like a chain */
 .arcade {
@@ -747,23 +882,92 @@ img, svg { max-width: 100%; }
   width: 46px;
   height: 16px;
   margin-top: -8px;
-  border: 2.5px solid var(--gold);
+  border: 2.5px solid var(--door-link, var(--gold));
   border-radius: 999px;
   pointer-events: none;
 }
 .arcade__arch {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
   padding: 5px;
   border: 0;
-  background: var(--green);
+  background: var(--door, var(--green));
   clip-path: url(#archClip);
   cursor: zoom-in;
   transition: background-color .25s;
 }
+.arcade__arch[data-full-kind="film"] { cursor: pointer; }
 .arcade__arch:focus-visible { outline: none; background: var(--gold); }
-.arcade__window { display: block; width: 100%; height: 100%; overflow: hidden; background: var(--green-deep); clip-path: url(#archClip); }
+.arcade__window { position: relative; display: block; width: 100%; height: 100%; overflow: hidden; background: var(--door-deep, var(--green-deep)); clip-path: url(#archClip); perspective: 900px; }
+
+/* the two studded leaves of each door: shut until the arcade is reached, then they swing inwards in turn */
+.arcade__window::before,
+.arcade__window::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  display: none;
+  width: 50.5%;
+  background: radial-gradient(circle, var(--door-link) 0 2px, transparent 2.5px) center / 32px 32px, var(--door-deep);
+  backface-visibility: hidden;
+}
+.arcade__window::before { left: 0; transform-origin: left center; box-shadow: inset -1px 0 var(--door-link); }
+.arcade__window::after { right: 0; transform-origin: right center; box-shadow: inset 1px 0 var(--door-link); }
+.door.is-closed .arcade__window::before,
+.door.is-closed .arcade__window::after,
+.door.is-opening .arcade__window::before,
+.door.is-opening .arcade__window::after { display: block; }
+.arcade__bay:nth-child(2) { --i: 1; }
+.arcade__bay:nth-child(3) { --i: 2; }
+.arcade__bay:nth-child(4) { --i: 3; }
+.door.is-opening .arcade__window::before,
+.door.is-opening .arcade__window::after { animation: door-left 1s cubic-bezier(.6, .05, .2, 1) calc(var(--i, 0) * 130ms + 100ms) both; }
+.door.is-opening .arcade__window::after { animation-name: door-right; }
+@keyframes door-left { to { transform: rotateY(-104deg); } }
+@keyframes door-right { to { transform: rotateY(104deg); } }
+
+/* the arches that hold a film */
+.arcade__play {
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--door);
+  color: var(--white);
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, .28);
+  transform: translate(-50%, -50%);
+  transition: transform .3s;
+}
+.arcade__play svg { width: 20px; height: 20px; transform: translateX(2px); }
+.arcade__arch:hover .arcade__play { transform: translate(-50%, -50%) scale(1.08); }
+.arcade__len {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  z-index: 2;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .62);
+  color: var(--white);
+  font-size: var(--step--2);
+  font-weight: 600;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+.door.is-closed .arcade__play,
+.door.is-closed .arcade__len { opacity: 0; }
+.door.is-opening .arcade__play,
+.door.is-opening .arcade__len { animation: door-film .4s ease calc(var(--i, 0) * 130ms + 900ms) both; }
+@keyframes door-film { from { opacity: 0; } }
 .arcade__window img,
 .arcade__window video { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
 .arcade__arch:hover .arcade__window > *,

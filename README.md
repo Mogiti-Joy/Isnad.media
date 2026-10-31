@@ -19,8 +19,7 @@ Open `js/main.js`. The settings are at the top, in `SETTINGS`:
 
 | Setting | What to put there |
 |---|---|
-| `googleForm` | The Google Form the contact form fills in (see "Contact" below). Until it is set, "Send message" opens the visitor's email app instead. |
-| `email` | The address for messages when the Google Form isn't set, and in the form's error message. |
+| `email` | The address the contact form's messages are written to. |
 | `city` | The city whose prayer times are shown when a visitor's time zone doesn't match any city in the list (currently Nairobi). It must be one of the `CITIES` listed below it. |
 | `asrFactor` | `1` for the standard Asr (Shafiʿi, Maliki, Hanbali), `2` for Hanafi Asr. |
 
@@ -48,9 +47,9 @@ To add a city, add `['Name', latitude, longitude, 'time zone']` to its country i
 
 ## Films
 
-The "From the Haramain" and "Masajid of Africa" labels were painted out of both films and their covers; the small Isnad arch logo is kept. The labelled versions are in `originals/`.
+The "From the Haramain" and "Masajid of Africa" labels were painted out of both films and their covers; the small Isnad arch logo is kept. The label was also painted out of Uganda National Mosque. The labelled versions are in `originals/`.
 
-Both films were filmed upright. To fill the wide frame, the film plays whole in the middle with a blurred copy of the same footage at the sides. The earlier versions, with plain green sides, are in `originals/green-sides/`.
+These films were filmed upright. To fill the wide frame, the film plays whole in the middle with a blurred copy of the same footage at the sides. The earlier versions, with plain green sides, are in `originals/green-sides/`.
 
 The mihrab arch under "Our name" and its quote plays the Ṭawāf around the Kaʿbah, late in the day. It is the `<figure class="stage">` block in `index.html` and uses `assets/haramain/tawaf-arch.mp4` (cover `tawaf-arch.jpg`). The clip was cut from a 1080×1920 video (`originals/tawaf-source-1080x1920.mp4`, from Pexels judging by its file name; the Pexels licence allows use without credit) to the arch's tall shape at 760×1056, sharp on Retina screens. The source is 7 seconds long, so the last second fades into the first and the clip loops without a jump. It is never played backwards, which would show the Ṭawāf turning the wrong way. The arch is 380px wide. The earlier courtyards version is in `originals/unused/`.
 
@@ -58,7 +57,7 @@ The other films are on the shelves under "What you'll find here" (see below).
 
 ## The menu
 
-The bar at the top links to Our name, Watch, What we do, Prayer times, The Haram and Contact, and underlines the section on screen. On phones it shows only the logo and Follow us. The links are the `<nav class="site-nav">` block in `index.html`.
+The bar at the top links to Our name, Watch, What we do, Prayer times, From Haramain and Contact, and underlines the section on screen. On phones it shows only the logo and Follow us. The links are the `<nav class="site-nav">` block in `index.html`.
 
 ## Phones, folding phones and dual-screen phones
 
@@ -78,13 +77,13 @@ The "Our name" section comes straight after the opening, so it is the first thin
 
 ## What you'll find here
 
-The four cards are buttons. Each shows a picture from its films (the `<div class="pillar__media">` at the top of the card); Faces of the Ummah shows the Isnad arch until it has films. The chosen card turns green and opens a shelf of its videos, shown as horizontal thumbnails; choosing a video plays it in the full view, with sound for the films. Each video is on one shelf only, and a series stays together (all the Scholars of Mali films are under African Muslim History):
+The four cards are buttons. Each shows a picture from its films (the `<div class="pillar__media">` at the top of the card). The chosen card turns green and opens a shelf of its videos, shown as horizontal thumbnails; choosing a video plays it in the full view, with sound for the films. A video can be on two shelves at most, and a series stays together (all the Scholars of Mali films are under African Muslim History). A film on two shelves shares its progress line, because it is the same file:
 
 | Card | Videos |
 |---|---|
 | Reminders | Jumuʿah (Masajid of Africa) |
-| African Muslim History | The six Scholars of Mali films with Thierno Hady Thiam: Why Timbuktu is more famous abroad than at home, How Islam crossed the Sahara, From teacher to student, Islam’s first command, Who’s reading the manuscripts?, How Islam in West Africa has changed |
-| Faces of the Ummah | None yet: it shows "Coming soon" with a link to follow Isnad Media |
+| African Muslim History | The six Scholars of Mali films with Thierno Hady Thiam: Why Timbuktu is more famous abroad than at home, How Islam crossed the Sahara, From teacher to student, Islam’s first command, Who’s reading the manuscripts?, How Islam in West Africa has changed. Also Uganda National Mosque (Masajid of Africa) |
+| Faces of the Ummah | The recitation at the next table (also under From the Haramain), How Islam in West Africa has changed (also under African Muslim History) |
 | From the Haramain | The recitation at the next table |
 
 Each video on a shelf:
@@ -97,10 +96,11 @@ Each video on a shelf:
 - The six Scholars of Mali thumbnails are taken from the 1080p originals in `Downloads/REPORTAGE_Horizontal`, cropped above the subtitle line. Where the scholar is seated, his face sits off-centre so the play button doesn't cover it.
 - Jumuʿah, filmed upright, shows three moments side by side: the empty minbar, the khutbah and the congregation.
 - The recitation at the next table, also upright, shows Jamal close up.
+- Uganda National Mosque, also upright, shows the arch and minaret from the wide shot inside the film, above its captions.
 
 The earlier thumbnails are in `originals/unused/old-thumbnails/`. If you replace a thumbnail, raise its `?v=` number in `index.html` so returning visitors see the new one.
 
-To add a video to a shelf, copy one `<li class="shelf__film">` block inside that card's `<div class="shelf">` in `index.html`, change the video, cover, length, series and text, and update the count on the card ("2 videos"). For Faces of the Ummah, replace the `shelf__empty` paragraph with a `<ul class="shelf__films">` list like the others.
+To add a video to a shelf, copy one `<li class="shelf__film">` block inside that card's `<div class="shelf">` in `index.html`, change the video, cover, length, series and text, and update the count on the card ("2 videos").
 
 ## What we do
 
@@ -112,15 +112,7 @@ After the four categories in "What you’ll find here", "What we do" (ما نق�
 
 The form asks for a name, an email address (required, so we can reply), a WhatsApp number (optional), the topic and the message. A hidden field catches spam robots.
 
-Messages go into a **Google Form**, so they collect in a Google Sheet. Until the Google Form is connected, "Send message" opens the visitor's own email app with their message already written to isnadmedia9@gmail.com.
-
-To connect it:
-
-1. Signed in as isnadmedia9@gmail.com, create a form at [forms.google.com](https://forms.google.com) with five **Short answer** or **Paragraph** questions, in this order: *Name*, *Email*, *WhatsApp number*, *Topic*, *Message*. Leave none of them required (the website checks them itself) and don't turn on "Collect email addresses".
-2. Under **Responses**, open the three dots and turn on **Get email notifications for new responses**. Link the form to a Google Sheet if you want one.
-3. Press **Send**, choose the link tab, and send that link to whoever looks after the site. They open it, read each question's `entry.` number, and fill in `googleForm` in `js/main.js`: `action` is the link with `viewform` changed to `formResponse`, and each field is its question's `entry.` number.
-
-Google doesn't let the page see whether a message arrived, so after connecting, send one test message and check that it appears under Responses.
+"Send message" opens the visitor's own email app with their message already written to isnadmedia9@gmail.com, and they press send there. There is no Google Sheet or outside form service, so it is free and has no limit. A visitor with no email app set up sees the address on the page and can write to it directly.
 
 ## The adhan never stops (live map)
 
@@ -144,17 +136,25 @@ After the live map, the story of the Great Mosque of Djenné in Mali, from Isnad
 
 The words on each page are part of the picture, so each picture's description in `index.html` repeats them for screen readers. To use another story, replace the eight pictures (keeping the names, or changing them in the `<section id="masajid">` block), then change the heading, the paragraph and the descriptions. For more or fewer pages, add or remove `<li class="deck__page">` blocks and change the "8" in the count and the labels.
 
-## From the Haramain
+## Through the doors
 
-After Masajid of Africa, this section shows Masjid al-Ḥarām, the qiblah of those prayers. Its files are in `assets/haramain/`.
+After Masajid of Africa, this section keeps the curved door frames and opens onto three regions. The three small doors at the top choose one, and the doors and words take on its colours. The background stays the same for all three: parchment with a gold star-and-cross pattern and a double gold frame, like the illuminated pages of a printed muṣḥaf. It uses no verses, because Qurʾān text shouldn't sit behind buttons and pictures. It is the `<section id="haramain">` block in `index.html`, and it always opens on the Haramain, so the menu's link still goes there.
 
-- **The arcade**: four arches, linked like a chain, run from daylight to the setting sun: the Kaʿbah (`kaaba-arch.jpg`), the Clock Tower (`clock-tower.jpg`), sunset over the courtyards (`haram-sunset.jpg`) and the Prophet’s Masjid in Madinah in the evening light (`madinah-evening.jpg`, see "Photos"). Tapping an arch opens the whole picture, uncropped; the arrow keys move along and Esc closes it.
+| Door | Colours | Arches |
+|---|---|---|
+| From the Haramain | Green and gold | The Kaʿbah, the Clock Tower, sunset over the courtyards, the Prophet’s Masjid in Madinah |
+| The Sahel | Terracotta | The Great Mosque of Djenné, and three Scholars of Mali films |
+| East Africa | Ocean teal and coral | Lamu, the dhows, the Swahili door, and the Uganda National Mosque film |
 
-The arcade makes room for however many arches there are: to add one, copy an `<li class="arcade__bay">` block in the `<section id="haramain">` block of `index.html` and change its picture and text.
+- **The leaves**: each arch starts shut, with two studded leaves in its region's colour. They swing open one arch after another when the section comes on screen, and again whenever a door is chosen. Visitors who have asked their device for reduced motion see the pictures straight away.
+- **Pictures and films**: tapping an arch opens the whole picture, uncropped, or plays its film. The arrow keys move along that region's arches only, and Esc closes it.
+- **Pictures in the arches**: the Sahel's are in `assets/sahel/` and East Africa's in `assets/east-africa/`, cut to 720×1000. Keep faces in the upper part of the picture, because a film's play button sits low in the arch.
 
-The arches show smaller copies of the pictures (`kaaba-arch-sm.jpg` and so on); tapping an arch opens the full-size one. To swap a picture, keep the same file name, or change it in the `<section id="haramain">` block.
+To add an arch, copy an `<li class="arcade__bay">` block inside that region's `<div class="door">` and change its picture and text. An arch with a film needs `data-full-kind="film"` and `data-full-poster`, and the play button and length from another film arch. To add a region, add a `<button class="gate">`, a `<div class="door">` to match, and a block of colours under `.doors[data-region="sahel"]` in `css/styles.css`.
 
-The Maghrib clip and the wide courtyards banner that used to be in this section were removed because they repeated the courtyards clip and looked like the Sunset arch. Their files are in `originals/unused/`.
+The Haramain arches show smaller copies of the pictures (`kaaba-arch-sm.jpg` and so on); tapping an arch opens the full-size one. To swap a picture, keep the same file name, or change it in the block.
+
+The Maghrib clip and the wide courtyards banner that used to be in the Haramain arcade were removed because they repeated the courtyards clip and looked like the Sunset arch. Their files are in `originals/unused/`.
 
 If you edit the CSS or JavaScript after the site is online, raise the `?v=` number on their links at the top and bottom of `index.html`, so visitors' browsers fetch the new version.
 
@@ -164,7 +164,7 @@ The page is built so visitors download as little as possible:
 
 - **The Ṭawāf arch** under "Our name" plays a 2 MB, 6.5-second looping clip, cut to the arch's shape. It is the only video that plays without a tap, and only while it is on screen.
 - **Previews on the shelves** play 8-second, silent, small copies from `assets/video/previews/` (about 200 KB each), not the films themselves.
-- **The films** are 720p, 7–17 MB each, and are only downloaded when someone presses play. The Mali films' 1080p originals are in `Downloads/REPORTAGE_Horizontal` if you ever want them back.
+- **The films** are 720p, 4–17 MB each, and are only downloaded when someone presses play. The Mali films' 1080p originals are in `Downloads/REPORTAGE_Horizontal` if you ever want them back.
 - **Pictures** on the cards, shelves and arches are small copies (`-sm.jpg`); the full-size ones load only when opened.
 - **Visitors who turn on data saving** on their phone get no moving pictures until they press play.
 - **Returning visitors** reuse what they already have. `_headers` (Netlify, Cloudflare Pages) and `.htaccess` (Apache hosting such as cPanel) tell browsers to keep the CSS and JavaScript for a year and pictures and videos for 30 days, and to always check the page itself for changes. GitHub Pages ignores both files and keeps everything for 10 minutes.
@@ -191,7 +191,7 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 | `assets/masajid/` | The eight pages of the Djenné story in Masajid of Africa |
 | `serve.py` | Local preview server |
 | `_headers`, `.htaccess` | How long visitors' browsers keep each file (see "Data and caching") |
-| `originals/` | Earlier versions, not used by the page: `unused/` (files no longer on the page: the courtyards and Maghrib clips, an earlier Madinah photo, and the Lamu and Swahili-door pictures), `tawaf-source-1080x1920.mp4` (the full video the arch's clip was cut from), the two films with their series labels, `green-sides/` (before the blurred sides) and the courtyards clip and picture before they were made smaller |
+| `originals/` | Earlier versions, not used by the page: `unused/` (files no longer on the page: the courtyards and Maghrib clips, an earlier Madinah photo, the Lamu sunrise illustration, and the sources of the Lamu and Swahili-door pictures), `tawaf-source-1080x1920.mp4` (the full video the arch's clip was cut from), the two films with their series labels, `green-sides/` (before the blurred sides) and the courtyards clip and picture before they were made smaller |
 
 ## Photos
 
@@ -199,7 +199,7 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 - `assets/makkah-sunset.jpg` (Makkah at sunset, under the verse) was supplied as a WhatsApp image. It has no caption on the page; if it needs a photographer's credit, add one under the photo in `index.html`.
 - The other Haram pictures and all the films are Isnad Media's own.
 
-Pictures that are no longer on the page are in `originals/unused/`. Two of them came from Wikimedia Commons and need their photographer credited if they are ever used again: `lamu-maulidi-dhows.jpg` (dhow race at Lamu during Maulidi, by FredD, CC BY-SA 3.0) and `lamu-town.jpg` (Lamu Island, by folklore.co.ke, CC BY-SA 4.0).
+Two East Africa pictures came from Wikimedia Commons and must keep their credit under the arch, which also says they were cropped: `assets/east-africa/dhows.jpg` (dhow race at Lamu during Maulidi, by FredD, CC BY-SA 3.0) and `assets/east-africa/lamu-town.jpg` (Lamu Island, by folklore.co.ke, CC BY-SA 4.0). Pictures that are no longer on the page are in `originals/unused/`.
 
 ## Icons and link preview
 

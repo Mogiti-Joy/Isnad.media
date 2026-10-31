@@ -6,14 +6,7 @@
      Settings. Change these to match Isnad Media.
      ------------------------------------------------------------------ */
   const SETTINGS = {
-    // The Google Form the contact form fills in (see "Contact" in README.md). `action` is the form's link with
-    // "viewform" changed to "formResponse"; each field is that question's entry number. Until `action` is set,
-    // "Send" opens the visitor's email app with the message addressed to `email`.
-    googleForm: {
-      action: '',               // e.g. 'https://docs.google.com/forms/d/e/1FAIpQL…/formResponse'
-      fields: { name: '', email: '', whatsapp: '', topic: '', message: '' },  // e.g. name: 'entry.123456789'
-    },
-    email: 'isnadmedia9@gmail.com',
+    email: 'isnadmedia9@gmail.com',  // "Send message" opens the visitor's email app with the message addressed here
     city: 'Nairobi',            // prayer times shown when a visitor's time zone matches none of the CITIES below
     asrFactor: 1,               // 1 = Shafiʿi, Maliki, Hanbali; 2 = Hanafi
   };
@@ -437,6 +430,57 @@
     swipeX = null;
   });
 
+  /* ---------- through the doors: three regions, one arcade at a time ---------- */
+
+  const doors = $('.doors'), gates = $$('.gate', doors), firstDoor = $('.door', doors);
+  let doorsTimer, doorsSeen;
+  // The leaves swing open, then step out of the way. Visitors who asked for less motion see the pictures straight away.
+  function openDoor(door) {
+    if (reduceMotion.matches) return;
+    door.classList.remove('is-closed', 'is-opening');
+    void door.offsetWidth;  // restarts the animation when a door is opened again
+    door.classList.add('is-opening');
+    clearTimeout(doorsTimer);
+    doorsTimer = setTimeout(() => door.classList.remove('is-opening'), 2200);
+  }
+  function chooseGate(gate) {
+    doorsSeen?.disconnect();
+    for (const g of gates) {
+      const on = g === gate;
+      g.setAttribute('aria-selected', on);
+      g.tabIndex = on ? 0 : -1;
+      $(`#${g.getAttribute('aria-controls')}`).hidden = !on;
+    }
+    doors.dataset.region = gate.dataset.region;
+    const door = $(`#${gate.getAttribute('aria-controls')}`);
+    $('.arcade', door).scrollLeft = 0;
+    openDoor(door);
+  }
+  gates.forEach((gate, i) => {
+    gate.addEventListener('click', () => { if (gate.getAttribute('aria-selected') !== 'true') chooseGate(gate); });
+    gate.addEventListener('keydown', e => {
+      const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (!step) return;
+      e.preventDefault();
+      const next = gates[(i + step + gates.length) % gates.length];
+      chooseGate(next);
+      next.focus();
+    });
+  });
+  // The menu's link goes to the Haramain, whichever door was left open.
+  $('.site-nav a[href="#haramain"]').addEventListener('click', () => {
+    if (gates[0].getAttribute('aria-selected') !== 'true') chooseGate(gates[0]);
+  });
+  if (!reduceMotion.matches) {
+    firstDoor.classList.add('is-closed');
+    doorsSeen = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      doorsSeen.disconnect();
+      openDoor(firstDoor);
+    }, { threshold: 0.3 });
+    doorsSeen.observe($('.arcade', firstDoor));
+  }
+
   /* ---------- masajid of africa: a stack of pages ---------- */
 
   // The top page can be dragged away (or back), or turned with the arrows or the arrow keys.
@@ -847,36 +891,16 @@
 
   /* ---------- contact form ---------- */
 
-  $('#contactForm').addEventListener('submit', async e => {
+  // The visitor's email app opens with the message written out.
+  $('#contactForm').addEventListener('submit', e => {
     e.preventDefault();
-    const form = e.currentTarget, status = $('#formStatus');
-    const data = Object.fromEntries(new FormData(form));
+    const status = $('#formStatus');
+    const data = Object.fromEntries(new FormData(e.currentTarget));
     if (data._honey) return;  // filled in by a spam robot
-    const { action, fields } = SETTINGS.googleForm;
-
-    // Not connected yet: the visitor's email app opens with the message written out.
-    if (!action) {
-      const body = `${data.message}\n\n${data.name}\n${data.email}${data.whatsapp ? `\nWhatsApp: ${data.whatsapp}` : ''}`;
-      location.href = `mailto:${SETTINGS.email}?subject=${encodeURIComponent(`${data.topic}, from the Isnad Media website`)}&body=${encodeURIComponent(body)}`;
-      status.dataset.state = 'info';
-      status.innerHTML = `Your email app should open with your message. If it doesn’t, write to us at <a href="mailto:${SETTINGS.email}">${SETTINGS.email}</a>.`;
-      return;
-    }
-
-    // Google Forms accepts the answers but doesn't let the page read its reply, so a sent request counts as delivered.
-    const body = new URLSearchParams();
-    for (const [key, entry] of Object.entries(fields)) if (entry) body.append(entry, data[key] || '');
+    const body = `${data.message}\n\n${data.name}\n${data.email}${data.whatsapp ? `\nWhatsApp: ${data.whatsapp}` : ''}`;
+    location.href = `mailto:${SETTINGS.email}?subject=${encodeURIComponent(`${data.topic}, from the Isnad Media website`)}&body=${encodeURIComponent(body)}`;
     status.dataset.state = 'info';
-    status.textContent = 'Sending…';
-    try {
-      await fetch(action, { method: 'POST', mode: 'no-cors', body });
-      form.reset();
-      status.dataset.state = 'ok';
-      status.textContent = `JazākAllāhu khayran${data.name ? `, ${data.name}` : ''}. Your message reached us.`;
-    } catch {
-      status.dataset.state = 'error';
-      status.innerHTML = `Your message could not be sent. Check your connection and try again, or email us at <a href="mailto:${SETTINGS.email}">${SETTINGS.email}</a>.`;
-    }
+    status.innerHTML = `Your email app should open with your message. If it doesn’t, write to us at <a href="mailto:${SETTINGS.email}">${SETTINGS.email}</a>.`;
   });
 
   /* ---------- start ---------- */
