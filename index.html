@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/styles.css?v=46">
+<link rel="stylesheet" href="css/styles.css?v=47">
 </head>
 <body>
 
@@ -503,61 +503,11 @@
 
 <section class="section haram" id="haramain" aria-labelledby="haram-title" data-gallery>
   <div class="wrap">
-    <div class="haram__intro">
-      <header class="section__head">
-        <p class="eyebrow"><span>From the Haramain</span><span class="eyebrow__ar" lang="ar" dir="rtl">من الحرمين</span></p>
-        <h2 id="haram-title">Every prayer faces here</h2>
-        <p class="section__lead">Masjid al-Ḥarām in Makkah, the qiblah of every prayer above, and the Prophet’s Masjid in Madinah. Walk the arches from the light of day to the setting sun, and tap any arch to see it in full.</p>
-      </header>
-
-      <!-- The visitor's own line to the Kaʿbah: the same city as the prayer times and the map. -->
-      <aside class="qibla" aria-label="Your qiblah">
-        <svg class="qibla__dial" id="qiblaDial" viewBox="0 0 240 240" aria-hidden="true">
-          <defs>
-            <linearGradient id="qiblaGold" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#F6E7AE"/><stop offset=".38" stop-color="#B8902A"/><stop offset=".62" stop-color="#7D5F14"/><stop offset="1" stop-color="#E9D188"/>
-            </linearGradient>
-            <radialGradient id="qiblaFace">
-              <stop offset="0" stop-color="#176349"/><stop offset=".7" stop-color="#0B3A2B"/><stop offset="1" stop-color="#062419"/>
-            </radialGradient>
-          </defs>
-          <circle cx="120" cy="120" r="119" fill="url(#qiblaGold)"/>
-          <circle cx="120" cy="120" r="114" fill="#062419"/>
-          <g id="qiblaRing"></g>
-          <circle cx="120" cy="120" r="94" fill="url(#qiblaFace)" stroke="url(#qiblaGold)" stroke-width="2"/>
-          <g class="qibla__rosette">
-            <path d="M120.0 58.0L138.2 76.2L163.8 76.2L163.8 101.8L182.0 120.0L163.8 138.2L163.8 163.8L138.2 163.8L120.0 182.0L101.8 163.8L76.2 163.8L76.2 138.2L58.0 120.0L76.2 101.8L76.2 76.2L101.8 76.2Z"/>
-            <path d="M120.0 73.0L133.8 86.8L153.2 86.8L153.2 106.2L167.0 120.0L153.2 133.8L153.2 153.2L133.8 153.2L120.0 167.0L106.2 153.2L86.8 153.2L86.8 133.8L73.0 120.0L86.8 106.2L86.8 86.8L106.2 86.8Z"/>
-          </g>
-          <g id="qiblaHours"></g>
-          <g class="qibla__moon">
-            <circle cx="120" cy="160" r="15" fill="#051A14" stroke="url(#qiblaGold)" stroke-width="1.2"/>
-            <path id="qiblaMoon" transform="translate(120 160)" d=""/>
-          </g>
-          <g class="qibla__hand" id="qiblaHour"><path d="M120 128 L115.5 100 L120 74 L124.5 100Z"/></g>
-          <g class="qibla__hand" id="qiblaMinute"><path d="M120 130 L116.8 92 L120 52 L123.2 92Z"/></g>
-          <g class="qibla__hand qibla__hand--second" id="qiblaSecond">
-            <line x1="120" y1="146" x2="120" y2="54"/>
-            <path d="M120 156a8 8 0 1 1 7.4-5 6.4 6.4 0 1 0-7.4 5Z"/>
-          </g>
-          <circle cx="120" cy="120" r="5.5" fill="url(#qiblaGold)"/>
-          <circle cx="120" cy="120" r="2" fill="#062419"/>
-          <g class="qibla__needle" id="qiblaNeedle">
-            <circle class="qibla__halo" cx="120" cy="17" r="9"/>
-            <rect class="qibla__kaaba" x="114.5" y="11.5" width="11" height="11" rx="1"/>
-            <line class="qibla__band" x1="114.5" y1="15" x2="125.5" y2="15"/>
-          </g>
-        </svg>
-        <div class="qibla__words">
-          <p class="qibla__from"><label for="cityQibla">Your qiblah from</label> <select class="city-select city-select--pill" id="cityQibla"><option>Nairobi</option></select></p>
-          <p class="qibla__km"><span id="qiblaKm">2,520</span> km to the Kaʿbah</p>
-          <p class="qibla__dir">Face <span id="qiblaWind">north</span>, <span id="qiblaDeg">0°</span> from true north</p>
-          <p class="qibla__time"><span id="qiblaTime">12:00:00</span> in Makkah</p>
-          <p class="qibla__hijri" id="qiblaHijri" lang="ar" dir="rtl"></p>
-          <p class="qibla__key">The Kaʿbah on the outer ring marks your qiblah. The hands keep Makkah’s time.</p>
-        </div>
-      </aside>
-    </div>
+    <header class="section__head">
+      <p class="eyebrow"><span>From the Haramain</span><span class="eyebrow__ar" lang="ar" dir="rtl">من الحرمين</span></p>
+      <h2 id="haram-title">Every prayer faces here</h2>
+      <p class="section__lead">Masjid al-Ḥarām in Makkah, the qiblah of every prayer above, and the Prophet’s Masjid in Madinah. Walk the arches from the light of day to the setting sun, and tap any arch to see it in full.</p>
+    </header>
 
     <!-- An arcade like the Haram's own: each arch is a window onto one moment, linked like a chain. -->
     <ol class="arcade">
@@ -725,6 +675,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js?v=39"></script>
+<script src="js/main.js?v=40"></script>
 </body>
 </html>

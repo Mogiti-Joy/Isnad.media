@@ -142,7 +142,6 @@ The words on each page are part of the picture, so each picture's description in
 After Masajid of Africa, this section shows Masjid al-Ḥarām, the qiblah of those prayers. Its files are in `assets/haramain/`.
 
 - **The background**: parchment with a gold star-and-cross pattern and a double gold frame, like the illuminated pages of a printed muṣḥaf. It uses no verses, because Qurʾān text shouldn't sit behind buttons and pictures.
-- **The Makkah clock**: beside the heading, a clock in green and gold keeps Makkah's time, with Eastern Arabic numerals and a star rosette that turns slowly. Its outer ring is a compass: the Kaʿbah on the ring points from the visitor's city to the qiblah, with the distance and direction beside it. A window shows the moon's phase, worked out from the moon's average cycle, and the Hijri date below is the Umm al-Qurā calendar. The hands wind round to the time the first time the clock comes on screen. It follows the same city as the prayer times and the map, and uses the map's calculation, so they always agree. The direction is measured from true north, so a phone compass may differ by a few degrees.
 - **The arcade**: four arches, linked like a chain, run from daylight to the setting sun: the Kaʿbah (`kaaba-arch.jpg`), the Clock Tower (`clock-tower.jpg`), sunset over the courtyards (`haram-sunset.jpg`) and the Prophet’s Masjid in Madinah in the evening light (`madinah-evening.jpg`, see "Photos"). Tapping an arch opens the whole picture, uncropped; the arrow keys move along and Esc closes it.
 - **The leaves**: each arch starts shut, with two studded leaves that swing open one arch after another the first time the arcade comes on screen. Visitors who have asked their device for reduced motion see the pictures straight away.
 
@@ -189,7 +188,7 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 | `assets/masajid/` | The eight pages of the Djenné story in Masajid of Africa |
 | `serve.py` | Local preview server |
 | `_headers`, `.htaccess` | How long visitors' browsers keep each file (see "Data and caching") |
-| `originals/` | Earlier versions, not used by the page: `unused/` (files no longer on the page: the courtyards and Maghrib clips, an earlier Madinah photo, the Lamu and Swahili-door pictures, and `doors/`, the arch pictures from a Sahel and East Africa version of the Haramain section), `tawaf-source-1080x1920.mp4` (the full video the arch's clip was cut from), the two films with their series labels, `green-sides/` (before the blurred sides) and the courtyards clip and picture before they were made smaller |
+| `originals/` | Earlier versions, not used by the page: `unused/` (files no longer on the page: the courtyards and Maghrib clips, an earlier Madinah photo, the Lamu and Swahili-door pictures, and `doors/`, the arch pictures from a Sahel and East Africa version of the Haramain section, and `makkah-clock/`, the code for a clock and qiblah dial that sat beside the Haramain heading), `tawaf-source-1080x1920.mp4` (the full video the arch's clip was cut from), the two films with their series labels, `green-sides/` (before the blurred sides) and the courtyards clip and picture before they were made smaller |
 
 ## Photos
 

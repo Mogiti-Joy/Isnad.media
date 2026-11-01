@@ -757,53 +757,6 @@ img, svg { max-width: 100%; }
   pointer-events: none;
 }
 
-/* the heading, and beside it a clock: Makkah's time on its hands, the visitor's qiblah on its outer ring */
-.haram__intro { display: grid; gap: 28px; margin-bottom: 40px; }
-.haram__intro .section__head { margin-bottom: 0; }
-@media (min-width: 1100px) {
-  .haram__intro { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 40px; }
-}
-.qibla { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 30px); }
-.qibla__dial {
-  flex: none;
-  width: clamp(190px, 21vw, 248px);
-  height: auto;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  box-shadow: 0 18px 38px -14px rgba(6, 36, 25, .6), 0 0 0 7px rgba(168, 132, 31, .1);
-}
-.qibla__tick { stroke: #CDAF5C; stroke-width: 1; }
-.qibla__wind { font-size: 9.5px; font-weight: 700; fill: #E9D188; text-anchor: middle; dominant-baseline: central; }
-.qibla__minute { stroke: #D6B65C; stroke-width: .8; opacity: .75; }
-.qibla__numeral { font-family: var(--font-naskh); font-size: 16px; fill: #F3E7BE; text-anchor: middle; dominant-baseline: central; }
-.qibla__rosette { fill: none; stroke: #D6B65C; stroke-width: .8; opacity: .34; transform-origin: 120px 120px; animation: qibla-turn 180s linear infinite; }
-@keyframes qibla-turn { to { transform: rotate(360deg); } }
-#qiblaMoon { fill: #F3E7BE; }
-.qibla__hand { fill: url(#qiblaGold); transform-origin: 120px 120px; transition: transform .28s cubic-bezier(.4, 2.2, .55, 1); }
-.qibla__hand--second { fill: #EBC96A; }
-.qibla__hand--second line { stroke: #EBC96A; stroke-width: 1.1; }
-.is-winding .qibla__hand { transition: transform 1.7s cubic-bezier(.3, .9, .3, 1); }
-.qibla__needle { transform-origin: 120px 120px; transition: transform 1.1s cubic-bezier(.3, 1.35, .5, 1); }
-.is-winding .qibla__needle { transition-duration: 1.7s; }
-.qibla__halo { fill: #F3D98A; opacity: .3; transform-origin: 120px 17px; animation: qibla-call 3s ease-out infinite; }
-@keyframes qibla-call { 0% { opacity: .55; transform: scale(.7); } 100% { opacity: 0; transform: scale(1.5); } }
-.qibla__kaaba { fill: #0C0C0C; stroke: #F3D98A; stroke-width: 1; }
-.qibla__band { stroke: #E0BB55; stroke-width: 1.5; }
-.qibla__words { display: grid; gap: 3px; min-width: 0; max-width: 300px; }
-.qibla__from { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin-bottom: 8px; font-size: var(--step--1); font-weight: 600; color: var(--muted); }
-.qibla__km { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.15; color: var(--green); }
-.qibla__dir { font-size: var(--step--1); color: var(--muted); }
-.qibla__time { margin-top: 8px; font-size: 1rem; font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; }
-.qibla__hijri { font-family: var(--font-naskh); font-size: 1.15rem; line-height: 1.4; color: var(--gold-text); text-align: left; }
-.qibla__key { margin-top: 6px; font-size: var(--step--2); line-height: 1.45; color: var(--muted); }
-@media (max-width: 620px) {
-  .qibla { flex-direction: column; text-align: center; }
-  .qibla__dial { width: min(72vw, 264px); }
-  .qibla__words { justify-items: center; }
-  .qibla__from { justify-content: center; }
-  .qibla__hijri { text-align: center; }
-}
-
 /* an arcade like the Haram's own: arched windows onto one moment each, linked like a chain */
 .arcade {
   --gap: clamp(22px, 3vw, 40px);
