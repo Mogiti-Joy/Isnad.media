@@ -83,7 +83,7 @@ The four cards are buttons. Each shows a picture from its films (the `<div class
 |---|---|
 | Reminders | Jumuʿah (Masajid of Africa) |
 | African Muslim History | The six Scholars of Mali films with Thierno Hady Thiam: Why Timbuktu is more famous abroad than at home, How Islam crossed the Sahara, From teacher to student, Islam’s first command, Who’s reading the manuscripts?, How Islam in West Africa has changed. Also Uganda National Mosque (Masajid of Africa) |
-| Faces of the Ummah | The recitation at the next table (also under From the Haramain), How Islam in West Africa has changed (also under African Muslim History) |
+| Faces of the Ummah | The recitation at the next table (also under From the Haramain), How Islam in West Africa has changed (also under African Muslim History), A night in Djibouti |
 | From the Haramain | The recitation at the next table |
 
 Each video on a shelf:
@@ -96,6 +96,7 @@ Each video on a shelf:
 - The six Scholars of Mali thumbnails are taken from the 1080p originals in `Downloads/REPORTAGE_Horizontal`, cropped above the subtitle line. Where the scholar is seated, his face sits off-centre so the play button doesn't cover it.
 - Jumuʿah, filmed upright, shows three moments side by side: the empty minbar, the khutbah and the congregation.
 - The recitation at the next table, also upright, shows Jamal close up.
+- A night in Djibouti shows people walking towards the minaret, from behind.
 - Uganda National Mosque, also upright, shows the arch and minaret from the wide shot inside the film, above its captions.
 
 The earlier thumbnails are in `originals/unused/old-thumbnails/`. If you replace a thumbnail, raise its `?v=` number in `index.html` so returning visitors see the new one.
@@ -136,23 +137,20 @@ After the live map, the story of the Great Mosque of Djenné in Mali, from Isnad
 
 The words on each page are part of the picture, so each picture's description in `index.html` repeats them for screen readers. To use another story, replace the eight pictures (keeping the names, or changing them in the `<section id="masajid">` block), then change the heading, the paragraph and the descriptions. For more or fewer pages, add or remove `<li class="deck__page">` blocks and change the "8" in the count and the labels.
 
-## Through the doors
+## From the Haramain
 
-After Masajid of Africa, this section keeps the curved door frames and opens onto three regions. The three small doors at the top choose one, and the doors and words take on its colours. The background stays the same for all three: parchment with a gold star-and-cross pattern and a double gold frame, like the illuminated pages of a printed muṣḥaf. It uses no verses, because Qurʾān text shouldn't sit behind buttons and pictures. It is the `<section id="haramain">` block in `index.html`, and it always opens on the Haramain, so the menu's link still goes there.
+After Masajid of Africa, this section shows Masjid al-Ḥarām, the qiblah of those prayers. Its files are in `assets/haramain/`.
 
-| Door | Colours | Arches |
-|---|---|---|
-| From the Haramain | Green and gold | The Kaʿbah, the Clock Tower, sunset over the courtyards, the Prophet’s Masjid in Madinah |
-| The Sahel | Terracotta | The Great Mosque of Djenné, and three Scholars of Mali films |
-| East Africa | Ocean teal and coral | Lamu, the dhows, the Swahili door, and the Uganda National Mosque film |
+- **The background**: parchment with a gold star-and-cross pattern and a double gold frame, like the illuminated pages of a printed muṣḥaf. It uses no verses, because Qurʾān text shouldn't sit behind buttons and pictures.
+- **The Makkah clock**: beside the heading, a clock in green and gold keeps Makkah's time, with Eastern Arabic numerals and a star rosette that turns slowly. Its outer ring is a compass: the Kaʿbah on the ring points from the visitor's city to the qiblah, with the distance and direction beside it. A window shows the moon's phase, worked out from the moon's average cycle, and the Hijri date below is the Umm al-Qurā calendar. The hands wind round to the time the first time the clock comes on screen. It follows the same city as the prayer times and the map, and uses the map's calculation, so they always agree. The direction is measured from true north, so a phone compass may differ by a few degrees.
+- **The arcade**: four arches, linked like a chain, run from daylight to the setting sun: the Kaʿbah (`kaaba-arch.jpg`), the Clock Tower (`clock-tower.jpg`), sunset over the courtyards (`haram-sunset.jpg`) and the Prophet’s Masjid in Madinah in the evening light (`madinah-evening.jpg`, see "Photos"). Tapping an arch opens the whole picture, uncropped; the arrow keys move along and Esc closes it.
+- **The leaves**: each arch starts shut, with two studded leaves that swing open one arch after another the first time the arcade comes on screen. Visitors who have asked their device for reduced motion see the pictures straight away.
 
-- **The leaves**: each arch starts shut, with two studded leaves in its region's colour. They swing open one arch after another when the section comes on screen, and again whenever a door is chosen. Visitors who have asked their device for reduced motion see the pictures straight away.
-- **Pictures and films**: tapping an arch opens the whole picture, uncropped, or plays its film. The arrow keys move along that region's arches only, and Esc closes it.
-- **Pictures in the arches**: the Sahel's are in `assets/sahel/` and East Africa's in `assets/east-africa/`, cut to 720×1000. Keep faces in the upper part of the picture, because a film's play button sits low in the arch.
+The arcade makes room for however many arches there are: to add one, copy an `<li class="arcade__bay">` block in the `<section id="haramain">` block of `index.html` and change its picture and text.
 
-To add an arch, copy an `<li class="arcade__bay">` block inside that region's `<div class="door">` and change its picture and text. An arch with a film needs `data-full-kind="film"` and `data-full-poster`, and the play button and length from another film arch. To add a region, add a `<button class="gate">`, a `<div class="door">` to match, and a block of colours under `.doors[data-region="sahel"]` in `css/styles.css`.
+The arches show smaller copies of the pictures (`kaaba-arch-sm.jpg` and so on); tapping an arch opens the full-size one. To swap a picture, keep the same file name, or change it in the `<section id="haramain">` block.
 
-The Haramain arches show smaller copies of the pictures (`kaaba-arch-sm.jpg` and so on); tapping an arch opens the full-size one. To swap a picture, keep the same file name, or change it in the block.
+The Clock Tower was regraded to soften its gold and sky. The earlier versions are `originals/clock-tower-before-regrade.jpg` and `clock-tower-sm-before-regrade.jpg`.
 
 The Maghrib clip and the wide courtyards banner that used to be in the Haramain arcade were removed because they repeated the courtyards clip and looked like the Sunset arch. Their files are in `originals/unused/`.
 
@@ -164,7 +162,7 @@ The page is built so visitors download as little as possible:
 
 - **The Ṭawāf arch** under "Our name" plays a 2 MB, 6.5-second looping clip, cut to the arch's shape. It is the only video that plays without a tap, and only while it is on screen.
 - **Previews on the shelves** play 8-second, silent, small copies from `assets/video/previews/` (about 200 KB each), not the films themselves.
-- **The films** are 720p, 4–17 MB each, and are only downloaded when someone presses play. The Mali films' 1080p originals are in `Downloads/REPORTAGE_Horizontal` if you ever want them back.
+- **The films** are 720p, 4–17 MB each (A night in Djibouti is 464p, as it was filmed), and are only downloaded when someone presses play. The Mali films' 1080p originals are in `Downloads/REPORTAGE_Horizontal` if you ever want them back.
 - **Pictures** on the cards, shelves and arches are small copies (`-sm.jpg`); the full-size ones load only when opened.
 - **Visitors who turn on data saving** on their phone get no moving pictures until they press play.
 - **Returning visitors** reuse what they already have. `_headers` (Netlify, Cloudflare Pages) and `.htaccess` (Apache hosting such as cPanel) tell browsers to keep the CSS and JavaScript for a year and pictures and videos for 30 days, and to always check the page itself for changes. GitHub Pages ignores both files and keeps everything for 10 minutes.
@@ -191,7 +189,7 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 | `assets/masajid/` | The eight pages of the Djenné story in Masajid of Africa |
 | `serve.py` | Local preview server |
 | `_headers`, `.htaccess` | How long visitors' browsers keep each file (see "Data and caching") |
-| `originals/` | Earlier versions, not used by the page: `unused/` (files no longer on the page: the courtyards and Maghrib clips, an earlier Madinah photo, the Lamu sunrise illustration, and the sources of the Lamu and Swahili-door pictures), `tawaf-source-1080x1920.mp4` (the full video the arch's clip was cut from), the two films with their series labels, `green-sides/` (before the blurred sides) and the courtyards clip and picture before they were made smaller |
+| `originals/` | Earlier versions, not used by the page: `unused/` (files no longer on the page: the courtyards and Maghrib clips, an earlier Madinah photo, the Lamu and Swahili-door pictures, and `doors/`, the arch pictures from a Sahel and East Africa version of the Haramain section), `tawaf-source-1080x1920.mp4` (the full video the arch's clip was cut from), the two films with their series labels, `green-sides/` (before the blurred sides) and the courtyards clip and picture before they were made smaller |
 
 ## Photos
 
@@ -199,7 +197,7 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 - `assets/makkah-sunset.jpg` (Makkah at sunset, under the verse) was supplied as a WhatsApp image. It has no caption on the page; if it needs a photographer's credit, add one under the photo in `index.html`.
 - The other Haram pictures and all the films are Isnad Media's own.
 
-Two East Africa pictures came from Wikimedia Commons and must keep their credit under the arch, which also says they were cropped: `assets/east-africa/dhows.jpg` (dhow race at Lamu during Maulidi, by FredD, CC BY-SA 3.0) and `assets/east-africa/lamu-town.jpg` (Lamu Island, by folklore.co.ke, CC BY-SA 4.0). Pictures that are no longer on the page are in `originals/unused/`.
+Pictures that are no longer on the page are in `originals/unused/`. Two of them came from Wikimedia Commons and need their photographer credited if they are ever used again: `lamu-maulidi-dhows.jpg` (dhow race at Lamu during Maulidi, by FredD, CC BY-SA 3.0) and `lamu-town.jpg` (Lamu Island, by folklore.co.ke, CC BY-SA 4.0). The same goes for their cropped copies in `unused/doors/east-africa/`.
 
 ## Icons and link preview
 

@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/styles.css?v=43">
+<link rel="stylesheet" href="css/styles.css?v=46">
 </head>
 <body>
 
@@ -166,7 +166,7 @@
         <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-history" data-shelf>African Muslim History</button></h3>
         <p class="pillar__ar" lang="ar" dir="rtl">تاريخ المسلمين في أفريقيا</p>
         <p class="pillar__about">From Mauritania, Mali and Senegal to Sudan, Somalia and the Swahili coast</p>
-        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">6 videos</span><svg><use href="#i-next"/></svg></p>
+        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">7 videos</span><svg><use href="#i-next"/></svg></p>
       </div>
       <div class="shelf" id="shelf-history" role="region" aria-label="African Muslim History: videos" data-gallery hidden>
         <ul class="shelf__films">
@@ -261,7 +261,7 @@
         <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-faces" data-shelf>Faces of the Ummah</button></h3>
         <p class="pillar__ar" lang="ar" dir="rtl">وجوه الأمة</p>
         <p class="pillar__about">Real stories of Muslims, from Africa to the Haramain</p>
-        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">2 videos</span><svg><use href="#i-next"/></svg></p>
+        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">3 videos</span><svg><use href="#i-next"/></svg></p>
       </div>
       <div class="shelf" id="shelf-faces" role="region" aria-label="Faces of the Ummah: videos" data-gallery hidden>
         <ul class="shelf__films">
@@ -288,6 +288,18 @@
             <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
             <h4 class="piece__title">How Islam in West Africa has changed</h4>
             <p class="piece__text">Thierno Hady Thiam on the middle way of the Mālikī school, and what has shifted in his lifetime</p>
+          </li>
+          <li class="shelf__film" data-piece>
+            <button class="shelf__thumb" type="button" data-full="assets/video/djibouti-night.mp4" data-preview="assets/video/previews/djibouti-night.mp4" data-full-kind="film" data-full-poster="assets/video/djibouti-night.jpg">
+              <img src="assets/video/djibouti-night-sm.jpg" width="1280" height="720" loading="lazy" alt="">
+              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+              <span class="shelf__len" aria-hidden="true">0:35</span>
+              <span class="shelf__progress" aria-hidden="true"><span></span></span>
+              <span class="sr-only">Watch A night in Djibouti, 0:35</span>
+            </button>
+            <p class="shelf__series"><span>Faces of the Ummah</span><span class="piece__ar" lang="ar" dir="rtl">وجوه الأمة</span></p>
+            <h4 class="piece__title">A night in Djibouti</h4>
+            <p class="piece__text">The evening crowd on a street beside a masjid</p>
           </li>
         </ul>
       </div>
@@ -489,37 +501,66 @@
   </div>
 </section>
 
-<section class="section doors" id="haramain" aria-label="Through the doors" data-region="haramain">
+<section class="section haram" id="haramain" aria-labelledby="haram-title" data-gallery>
   <div class="wrap">
-    <p class="eyebrow doors__eyebrow"><span>Through the doors</span><span class="eyebrow__ar" lang="ar" dir="rtl">عبر الأبواب</span></p>
+    <div class="haram__intro">
+      <header class="section__head">
+        <p class="eyebrow"><span>From the Haramain</span><span class="eyebrow__ar" lang="ar" dir="rtl">من الحرمين</span></p>
+        <h2 id="haram-title">Every prayer faces here</h2>
+        <p class="section__lead">Masjid al-Ḥarām in Makkah, the qiblah of every prayer above, and the Prophet’s Masjid in Madinah. Walk the arches from the light of day to the setting sun, and tap any arch to see it in full.</p>
+      </header>
 
-    <!-- Three small doors, linked like a chain. Each opens one region below in its own colours. -->
-    <div class="gates" role="tablist" aria-label="Choose a door">
-      <button class="gate" type="button" role="tab" id="gate-haramain" aria-controls="door-haramain" aria-selected="true" data-region="haramain">
-        <span class="gate__arch"><span class="gate__window"><img src="assets/haramain/kaaba-arch-sm.jpg" width="1490" height="990" loading="lazy" style="object-position: 42% 50%" alt=""></span></span>
-        <span class="gate__name">From the Haramain</span>
-        <span class="gate__ar" lang="ar" dir="rtl">من الحرمين</span>
-      </button>
-      <button class="gate" type="button" role="tab" id="gate-sahel" aria-controls="door-sahel" aria-selected="false" tabindex="-1" data-region="sahel">
-        <span class="gate__arch"><span class="gate__window"><img src="assets/sahel/djenne-arch.jpg" width="720" height="1000" loading="lazy" alt=""></span></span>
-        <span class="gate__name">The Sahel</span>
-        <span class="gate__ar" lang="ar" dir="rtl">الساحل</span>
-      </button>
-      <button class="gate" type="button" role="tab" id="gate-east" aria-controls="door-east" aria-selected="false" tabindex="-1" data-region="east">
-        <span class="gate__arch"><span class="gate__window"><img src="assets/east-africa/dhows-arch.jpg" width="720" height="1000" loading="lazy" alt=""></span></span>
-        <span class="gate__name">East Africa</span>
-        <span class="gate__ar" lang="ar" dir="rtl">شرق أفريقيا</span>
-      </button>
+      <!-- The visitor's own line to the Kaʿbah: the same city as the prayer times and the map. -->
+      <aside class="qibla" aria-label="Your qiblah">
+        <svg class="qibla__dial" id="qiblaDial" viewBox="0 0 240 240" aria-hidden="true">
+          <defs>
+            <linearGradient id="qiblaGold" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#F6E7AE"/><stop offset=".38" stop-color="#B8902A"/><stop offset=".62" stop-color="#7D5F14"/><stop offset="1" stop-color="#E9D188"/>
+            </linearGradient>
+            <radialGradient id="qiblaFace">
+              <stop offset="0" stop-color="#176349"/><stop offset=".7" stop-color="#0B3A2B"/><stop offset="1" stop-color="#062419"/>
+            </radialGradient>
+          </defs>
+          <circle cx="120" cy="120" r="119" fill="url(#qiblaGold)"/>
+          <circle cx="120" cy="120" r="114" fill="#062419"/>
+          <g id="qiblaRing"></g>
+          <circle cx="120" cy="120" r="94" fill="url(#qiblaFace)" stroke="url(#qiblaGold)" stroke-width="2"/>
+          <g class="qibla__rosette">
+            <path d="M120.0 58.0L138.2 76.2L163.8 76.2L163.8 101.8L182.0 120.0L163.8 138.2L163.8 163.8L138.2 163.8L120.0 182.0L101.8 163.8L76.2 163.8L76.2 138.2L58.0 120.0L76.2 101.8L76.2 76.2L101.8 76.2Z"/>
+            <path d="M120.0 73.0L133.8 86.8L153.2 86.8L153.2 106.2L167.0 120.0L153.2 133.8L153.2 153.2L133.8 153.2L120.0 167.0L106.2 153.2L86.8 153.2L86.8 133.8L73.0 120.0L86.8 106.2L86.8 86.8L106.2 86.8Z"/>
+          </g>
+          <g id="qiblaHours"></g>
+          <g class="qibla__moon">
+            <circle cx="120" cy="160" r="15" fill="#051A14" stroke="url(#qiblaGold)" stroke-width="1.2"/>
+            <path id="qiblaMoon" transform="translate(120 160)" d=""/>
+          </g>
+          <g class="qibla__hand" id="qiblaHour"><path d="M120 128 L115.5 100 L120 74 L124.5 100Z"/></g>
+          <g class="qibla__hand" id="qiblaMinute"><path d="M120 130 L116.8 92 L120 52 L123.2 92Z"/></g>
+          <g class="qibla__hand qibla__hand--second" id="qiblaSecond">
+            <line x1="120" y1="146" x2="120" y2="54"/>
+            <path d="M120 156a8 8 0 1 1 7.4-5 6.4 6.4 0 1 0-7.4 5Z"/>
+          </g>
+          <circle cx="120" cy="120" r="5.5" fill="url(#qiblaGold)"/>
+          <circle cx="120" cy="120" r="2" fill="#062419"/>
+          <g class="qibla__needle" id="qiblaNeedle">
+            <circle class="qibla__halo" cx="120" cy="17" r="9"/>
+            <rect class="qibla__kaaba" x="114.5" y="11.5" width="11" height="11" rx="1"/>
+            <line class="qibla__band" x1="114.5" y1="15" x2="125.5" y2="15"/>
+          </g>
+        </svg>
+        <div class="qibla__words">
+          <p class="qibla__from"><label for="cityQibla">Your qiblah from</label> <select class="city-select city-select--pill" id="cityQibla"><option>Nairobi</option></select></p>
+          <p class="qibla__km"><span id="qiblaKm">2,520</span> km to the Kaʿbah</p>
+          <p class="qibla__dir">Face <span id="qiblaWind">north</span>, <span id="qiblaDeg">0°</span> from true north</p>
+          <p class="qibla__time"><span id="qiblaTime">12:00:00</span> in Makkah</p>
+          <p class="qibla__hijri" id="qiblaHijri" lang="ar" dir="rtl"></p>
+          <p class="qibla__key">The Kaʿbah on the outer ring marks your qiblah. The hands keep Makkah’s time.</p>
+        </div>
+      </aside>
     </div>
 
-    <div class="door" id="door-haramain" role="tabpanel" aria-labelledby="gate-haramain">
-    <header class="section__head">
-      <h2>Every prayer faces here</h2>
-      <p class="section__lead">Masjid al-Ḥarām in Makkah, the qiblah of every prayer above, and the Prophet’s Masjid in Madinah. Walk the arches from the light of day to the setting sun, and tap any arch to see it in full.</p>
-    </header>
-
     <!-- An arcade like the Haram's own: each arch is a window onto one moment, linked like a chain. -->
-    <ol class="arcade" data-gallery>
+    <ol class="arcade">
       <li class="arcade__bay" data-piece>
         <div class="arcade__frame">
           <button class="arcade__arch" type="button" data-full="assets/haramain/kaaba-arch.jpg">
@@ -533,8 +574,8 @@
       </li>
       <li class="arcade__bay" data-piece>
         <div class="arcade__frame">
-          <button class="arcade__arch" type="button" data-full="assets/haramain/clock-tower.jpg">
-            <span class="arcade__window"><img src="assets/haramain/clock-tower-sm.jpg" width="1124" height="1600" loading="lazy" style="object-position: 50% 30%" alt="The Makkah Clock Tower lit gold by the sun against a deep blue sky, with a minaret of the Haram and crowds below."></span>
+          <button class="arcade__arch" type="button" data-full="assets/haramain/clock-tower.jpg?v=2">
+            <span class="arcade__window"><img src="assets/haramain/clock-tower-sm.jpg?v=2" width="1124" height="1600" loading="lazy" style="object-position: 50% 30%" alt="The Makkah Clock Tower lit gold by the sun against a deep blue sky, with a minaret of the Haram and crowds below."></span>
             <span class="sr-only">See in full</span>
           </button>
         </div>
@@ -565,121 +606,6 @@
         <p class="piece__text">Madinah, in the evening light</p>
       </li>
     </ol>
-    </div>
-
-    <div class="door" id="door-sahel" role="tabpanel" aria-labelledby="gate-sahel" hidden>
-      <header class="section__head">
-        <h2>Mud, ink and memory</h2>
-        <p class="section__lead">Djenné’s mud-brick masjid, Timbuktu’s manuscripts and the scholars of Mali who carry that knowledge today. Tap a door to see it in full or to watch its film.</p>
-      </header>
-      <ol class="arcade" data-gallery>
-        <li class="arcade__bay" data-piece>
-          <div class="arcade__frame">
-            <button class="arcade__arch" type="button" data-full="assets/masajid/djenne-2.jpg">
-              <span class="arcade__window"><img src="assets/sahel/djenne-arch.jpg" width="720" height="1000" loading="lazy" alt="The Great Mosque of Djenné, Mali, the largest mud-brick building on earth: a tall earthen tower studded with wooden beams against a blue sky."></span>
-              <span class="sr-only">See in full</span>
-            </button>
-          </div>
-          <p class="piece__ar" lang="ar" dir="rtl">مسجد جينيه</p>
-          <h3 class="piece__title">The Great Mosque of Djenné</h3>
-          <p class="piece__text">Mali: the largest mud-brick building on earth</p>
-        </li>
-        <li class="arcade__bay" data-piece>
-          <div class="arcade__frame">
-            <button class="arcade__arch" type="button" data-full="assets/video/mali-timbuktu-abroad.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-timbuktu-abroad.jpg?v=5">
-              <span class="arcade__window"><img src="assets/sahel/timbuktu-arch.jpg" width="720" height="1000" loading="lazy" alt=""></span>
-              <span class="arcade__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="arcade__len" aria-hidden="true">Film, 1:30</span>
-              <span class="sr-only">Watch Why Timbuktu is more famous abroad than at home, 1:30</span>
-            </button>
-          </div>
-          <p class="piece__ar" lang="ar" dir="rtl">تمبكتو</p>
-          <h3 class="piece__title">Why Timbuktu is more famous abroad than at home</h3>
-          <p class="piece__text">Thierno Hady Thiam on the city the world knows better than Malians do</p>
-        </li>
-        <li class="arcade__bay" data-piece>
-          <div class="arcade__frame">
-            <button class="arcade__arch" type="button" data-full="assets/video/mali-manuscripts.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-manuscripts.jpg?v=4">
-              <span class="arcade__window"><img src="assets/sahel/manuscripts-arch.jpg" width="720" height="1000" loading="lazy" alt=""></span>
-              <span class="arcade__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="arcade__len" aria-hidden="true">Film, 0:44</span>
-              <span class="sr-only">Watch Who’s reading the manuscripts?, 0:44</span>
-            </button>
-          </div>
-          <p class="piece__ar" lang="ar" dir="rtl">المخطوطات</p>
-          <h3 class="piece__title">Who’s reading the manuscripts?</h3>
-          <p class="piece__text">Timbuktu’s manuscripts hold centuries of scholarship. Are they being read?</p>
-        </li>
-        <li class="arcade__bay" data-piece>
-          <div class="arcade__frame">
-            <button class="arcade__arch" type="button" data-full="assets/video/mali-first-command.mp4?v=2" data-full-kind="film" data-full-poster="assets/video/mali-first-command.jpg?v=4">
-              <span class="arcade__window"><img src="assets/sahel/first-command-arch.jpg" width="720" height="1000" loading="lazy" alt=""></span>
-              <span class="arcade__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="arcade__len" aria-hidden="true">Film, 1:03</span>
-              <span class="sr-only">Watch Islam’s first command, 1:03</span>
-            </button>
-          </div>
-          <p class="piece__ar" lang="ar" dir="rtl">اقرأ</p>
-          <h3 class="piece__title">Islam’s first command</h3>
-          <p class="piece__text">The first word revealed was not “pray” but “read”</p>
-        </li>
-      </ol>
-    </div>
-
-    <div class="door" id="door-east" role="tabpanel" aria-labelledby="gate-east" hidden>
-      <header class="section__head">
-        <h2>From the coast to the lakes</h2>
-        <p class="section__lead">The stone town of Lamu and its dhows on the Indian Ocean, the carved doors of the Swahili coast, and inland to the Uganda National Mosque in Old Kampala.</p>
-      </header>
-      <ol class="arcade" data-gallery>
-        <li class="arcade__bay" data-piece>
-          <div class="arcade__frame">
-            <button class="arcade__arch" type="button" data-full="assets/east-africa/lamu-town.jpg">
-              <span class="arcade__window"><img src="assets/east-africa/lamu-town-arch.jpg" width="720" height="1000" loading="lazy" alt="Lamu town seen from the air: closely packed buildings along the seafront, with boats moored around a jetty."></span>
-              <span class="sr-only">See in full</span>
-            </button>
-          </div>
-          <p class="piece__ar" lang="ar" dir="rtl">لامو</p>
-          <h3 class="piece__title">Lamu</h3>
-          <p class="piece__text">The island town from the air. Photo: folklore.co.ke, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>, cropped</p>
-        </li>
-        <li class="arcade__bay" data-piece>
-          <div class="arcade__frame">
-            <button class="arcade__arch" type="button" data-full="assets/east-africa/dhows.jpg">
-              <span class="arcade__window"><img src="assets/east-africa/dhows-arch.jpg" width="720" height="1000" loading="lazy" alt="Dhows with tall white sails racing on a blue sea at Lamu during Maulidi."></span>
-              <span class="sr-only">See in full</span>
-            </button>
-          </div>
-          <p class="piece__ar" lang="ar" dir="rtl">المراكب الشراعية</p>
-          <h3 class="piece__title">The dhows</h3>
-          <p class="piece__text">Racing at Lamu during Maulidi. Photo: FredD, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener">CC BY-SA 3.0</a>, cropped</p>
-        </li>
-        <li class="arcade__bay" data-piece>
-          <div class="arcade__frame">
-            <button class="arcade__arch" type="button" data-full="assets/east-africa/swahili-door.jpg">
-              <span class="arcade__window"><img src="assets/east-africa/swahili-door-arch.jpg" width="720" height="1000" loading="lazy" alt="An illustration of a carved green Swahili door with brass studs, set in a white stone doorway."></span>
-              <span class="sr-only">See in full</span>
-            </button>
-          </div>
-          <p class="piece__ar" lang="ar" dir="rtl">الباب السواحلي</p>
-          <h3 class="piece__title">The Swahili door</h3>
-          <p class="piece__text">An illustration of the coast’s carved, brass-studded doors</p>
-        </li>
-        <li class="arcade__bay" data-piece>
-          <div class="arcade__frame">
-            <button class="arcade__arch" type="button" data-full="assets/video/masajid-of-africa-uganda.mp4" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-uganda.jpg">
-              <span class="arcade__window"><img src="assets/east-africa/uganda-arch.jpg" width="720" height="1000" loading="lazy" alt=""></span>
-              <span class="arcade__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="arcade__len" aria-hidden="true">Film, 0:46</span>
-              <span class="sr-only">Watch Uganda National Mosque, 0:46</span>
-            </button>
-          </div>
-          <p class="piece__ar" lang="ar" dir="rtl">مسجد أوغندا الوطني</p>
-          <h3 class="piece__title">Uganda National Mosque</h3>
-          <p class="piece__text">In Old Kampala: up to 20,000 can pray here</p>
-        </li>
-      </ol>
-    </div>
   </div>
 </section>
 
@@ -799,6 +725,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js?v=36"></script>
+<script src="js/main.js?v=39"></script>
 </body>
 </html>
