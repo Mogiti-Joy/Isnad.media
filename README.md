@@ -51,9 +51,9 @@ The "From the Haramain" and "Masajid of Africa" labels were painted out of both 
 
 These films were filmed upright. To fill the wide frame, the film plays whole in the middle with a blurred copy of the same footage at the sides. The earlier versions, with plain green sides, are in `originals/green-sides/`.
 
-The mihrab arch under "Our name" and its quote plays the Ṭawāf around the Kaʿbah, late in the day. It is the `<figure class="stage">` block in `index.html` and uses `assets/haramain/tawaf-arch.mp4` (cover `tawaf-arch.jpg`). The clip was cut from a 1080×1920 video (`originals/tawaf-source-1080x1920.mp4`, from Pexels judging by its file name; the Pexels licence allows use without credit) to the arch's tall shape at 760×1056, sharp on Retina screens. The source is 7 seconds long, so the last second fades into the first and the clip loops without a jump. It is never played backwards, which would show the Ṭawāf turning the wrong way. The arch is 380px wide. The earlier courtyards version is in `originals/unused/`.
+The first arch in "What we’re about" plays the Ṭawāf around the Kaʿbah, late in the day, muted on a loop. It is the first `<li class="arcade__bay">` in the `<section id="find">` block of `index.html` and uses `assets/haramain/tawaf-arch.mp4` (cover `tawaf-arch.jpg`). The clip was cut from a 1080×1920 video (`originals/tawaf-source-1080x1920.mp4`, from Pexels judging by its file name; the Pexels licence allows use without credit) to the arch's tall shape at 760×1056, sharp on Retina screens. The source is 7 seconds long, so the last second fades into the first and the clip loops without a jump. It is never played backwards, which would show the Ṭawāf turning the wrong way. The earlier courtyards version is in `originals/unused/`.
 
-The other films are on the shelves under "What you'll find here" (see below).
+The other films are on the shelves under "What we’re about" (see below).
 
 ## The menu
 
@@ -73,18 +73,24 @@ The site was checked on every common size, from the 280px outer screen of the fi
 
 ## Our name
 
-The "Our name" section comes straight after the opening, so it is the first thing people reach when they scroll. It explains the name in two paragraphs, then gives the saying of ʿAbdullāh ibn al-Mubārak on the isnad in Arabic and English, and ends with the Ṭawāf arch.
+The "Our name" section comes straight after the opening, so it is the first thing people reach when they scroll. It explains the name in two paragraphs, then gives the saying of ʿAbdullāh ibn al-Mubārak on the isnad in Arabic and English.
 
-## What you'll find here
+## What we’re about
 
-The four cards are buttons. Each shows a picture from its films (the `<div class="pillar__media">` at the top of the card). The chosen card turns green and opens a shelf of its videos, shown as horizontal thumbnails; choosing a video plays it in the full view, with sound for the films. A video can be on two shelves at most, and a series stays together (all the Scholars of Mali films are under African Muslim History). A film on two shelves shares its progress line, because it is the same file:
+After "Our name", a swipeable strip of six arches shows everything Isnad covers, and each arch opens its own videos. It is the `<section id="find">` block in `index.html`, so the menu's Watch link lands on it. The arches use the frame from "Every prayer faces here", with a fine gold line inside. On a computer about four show at once. The arrows beneath move one arch along, and the small arches between them light up for the arches in view.
 
-| Card | Videos |
+Tapping an arch turns its frame gold and opens a shelf of its videos below the strip; choosing a video plays it in the full view, with sound for the films. A video can be on two shelves at most, and a series stays together (all the Scholars of Mali films are under Scholars of the Sahel). A film on two shelves shares its progress line, because it is the same file. The picture in the first arch is the Ṭawāf clip, which has a pause button. Visitors who have asked their device for reduced motion or data saving see its still instead. Images after the second arch load only when they are needed.
+
+| Arch | Videos |
 |---|---|
-| Reminders | Jumuʿah (Masajid of Africa) |
-| African Muslim History | The six Scholars of Mali films with Thierno Hady Thiam: Why Timbuktu is more famous abroad than at home, How Islam crossed the Sahara, From teacher to student, Islam’s first command, Who’s reading the manuscripts?, How Islam in West Africa has changed. Also Uganda National Mosque (Masajid of Africa) |
-| Faces of the Ummah | The recitation at the next table (also under From the Haramain), How Islam in West Africa has changed (also under African Muslim History), A night in Djibouti |
 | From the Haramain | The recitation at the next table |
+| Masajid of Africa | Uganda National Mosque, Jumuʿah |
+| Scholars of the Sahel | The six Scholars of Mali films with Thierno Hady Thiam: Why Timbuktu is more famous abroad than at home, How Islam crossed the Sahara, From teacher to student, Islam’s first command, Who’s reading the manuscripts?, How Islam in West Africa has changed |
+| Faces of the Ummah | The recitation at the next table (also under From the Haramain), How Islam in West Africa has changed (also under Scholars of the Sahel), A night in Djibouti |
+| African Muslim History | Five of the Scholars of Mali films (the sixth is under Faces of the Ummah), Uganda National Mosque |
+| Reminders | Jumuʿah |
+
+To add an arch, copy an `<li class="arcade__bay">` block in the strip, add a `<div class="shelf">` to match, and add one more `<span class="strip__dot">` to the row under the strip.
 
 Each video on a shelf:
 
@@ -99,13 +105,15 @@ Each video on a shelf:
 - A night in Djibouti shows people walking towards the minaret, from behind.
 - Uganda National Mosque, also upright, shows the arch and minaret from the wide shot inside the film, above its captions.
 
+**Pictures in the strip.** Faces of the Ummah and African Muslim History use their film thumbnails. Three arches have their own tall pictures, 720×1000: `assets/masajid/djenne-arch.jpg` is cut from `djenne-1.jpg` to leave out the words on that page, `assets/video/scholars-of-the-sahel-arch.jpg` is a still from the 1080p Scholars of Mali footage, and `assets/video/masajid-of-africa-jumuah-arch.jpg` is the middle of the Jumuʿah cover, without its dividers.
+
 The earlier thumbnails are in `originals/unused/old-thumbnails/`. If you replace a thumbnail, raise its `?v=` number in `index.html` so returning visitors see the new one.
 
-To add a video to a shelf, copy one `<li class="shelf__film">` block inside that card's `<div class="shelf">` in `index.html`, change the video, cover, length, series and text, and update the count on the card ("2 videos").
+To add a video to a shelf, copy one `<li class="shelf__film">` block inside that arch's `<div class="shelf">` in `index.html` and change the video, cover, length, series and text. The count under the arch updates itself.
 
 ## What we do
 
-After the four categories in "What you’ll find here", "What we do" (ما نقدّمه) lists Isnad Media's services: six main ones as numbered cards, then three under the smaller heading "Also from Isnad". The **Start a conversation** button under them goes to the contact form. To change a service, edit its `<li>` in the `<section id="services">` block in `index.html`.
+After the arch strip in "What we’re about", "What we do" (ما نقدّمه) lists Isnad Media's services: six main ones as numbered cards, then three under the smaller heading "Also from Isnad". The **Start a conversation** button under them goes to the contact form. To change a service, edit its `<li>` in the `<section id="services">` block in `index.html`.
 
 ## Contact
 
@@ -159,7 +167,7 @@ If you edit the CSS or JavaScript after the site is online, raise the `?v=` numb
 
 The page is built so visitors download as little as possible:
 
-- **The Ṭawāf arch** under "Our name" plays a 2 MB, 6.5-second looping clip, cut to the arch's shape. It is the only video that plays without a tap, and only while it is on screen.
+- **The Ṭawāf arch** in "What we’re about" plays a 2 MB, 6.5-second looping clip, cut to the arch's shape. It is the only video that plays without a tap, and only while it is on screen.
 - **Previews on the shelves** play 8-second, silent, small copies from `assets/video/previews/` (about 200 KB each), not the films themselves.
 - **The films** are 720p, 4–17 MB each (A night in Djibouti is 464p, as it was filmed), and are only downloaded when someone presses play. The Mali films' 1080p originals are in `Downloads/REPORTAGE_Horizontal` if you ever want them back.
 - **Pictures** on the cards, shelves and arches are small copies (`-sm.jpg`); the full-size ones load only when opened.

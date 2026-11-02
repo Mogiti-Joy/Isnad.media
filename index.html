@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/styles.css?v=47">
+<link rel="stylesheet" href="css/styles.css?v=48">
 </head>
 <body>
 
@@ -31,6 +31,8 @@
     <!-- The pointed arch from the logo, in box units, for clipping artwork -->
     <clipPath id="archClip" clipPathUnits="objectBoundingBox"><path d="M0 1V0.426A0.6 0.432 0 0 1 0.5 0A0.6 0.432 0 0 1 1 0.426V1Z"/></clipPath>
   </defs>
+  <!-- The same arch as a line, for the gold inside the frames of the arch strip -->
+  <symbol id="archLine" viewBox="0 0 1 1" preserveAspectRatio="none"><path d="M0 1V0.426A0.6 0.432 0 0 1 0.5 0A0.6 0.432 0 0 1 1 0.426V1" vector-effect="non-scaling-stroke"/></symbol>
   <symbol id="mark" viewBox="0 0 272 362">
     <path d="M15 350V155A147.4 147.4 0 0 1 136 10A147.4 147.4 0 0 1 257 155V350" style="fill:none;stroke:var(--mark-arch);stroke-width:16;stroke-linecap:round;stroke-linejoin:round"/>
     <g style="fill:none;stroke:var(--mark-chain);stroke-width:16;stroke-linecap:round">
@@ -103,229 +105,357 @@
     </div>
   </div>
 
-  <!-- The saying the name rests on, then the Ṭawāf. -->
+  <!-- The saying the name rests on. -->
   <blockquote class="wrap quote">
     <p class="quote__ar" lang="ar" dir="rtl">الإِسْنَادُ مِنَ الدِّينِ، وَلَوْلَا الإِسْنَادُ لَقَالَ مَنْ شَاءَ مَا شَاءَ</p>
     <p class="quote__en">“The isnad is part of the religion. Were it not for the isnad, anyone could say whatever they wished.”</p>
   </blockquote>
-
-  <div class="wrap name__film">
-    <!-- After the name, the mihrab arch: the Ṭawāf around the Kaʿbah, a silent moving picture. -->
-    <figure class="stage" data-ambient>
-      <div class="arch">
-        <video class="arch__art" src="assets/haramain/tawaf-arch.mp4" poster="assets/haramain/tawaf-arch.jpg" muted loop playsinline preload="metadata" aria-label="Pilgrims in white circling the Kaʿbah in Masjid al-Ḥarām, Makkah, late in the day."></video>
-        <canvas id="stage" aria-hidden="true"></canvas>
-        <button class="hold stage__hold" type="button" data-ambient-toggle aria-label="Pause the moving picture">
-          <svg class="hold__pause" aria-hidden="true"><use href="#i-pause"/></svg>
-          <svg class="hold__play" aria-hidden="true"><use href="#i-play"/></svg>
-        </button>
-      </div>
-      <figcaption class="film__caption">
-        <span class="story__series"><span>From the Haramain</span><span class="eyebrow__ar" lang="ar" dir="rtl">من الحرمين</span></span>
-        <span class="film__title">The Ṭawāf</span>
-        <span>Pilgrims circling the Kaʿbah, late in the day.</span>
-      </figcaption>
-    </figure>
-  </div>
 </section>
 
 <section class="section" id="find" aria-labelledby="find-title">
   <div class="wrap">
     <header class="section__head">
-      <p class="eyebrow"><span>Watch</span><span class="eyebrow__ar" lang="ar" dir="rtl">شاهد</span></p>
-      <h2 id="find-title">What you’ll find here</h2>
-      <p class="section__lead">Choose one to watch its videos.</p>
+      <p class="eyebrow"><span>What we’re about</span><span class="eyebrow__ar" lang="ar" dir="rtl">ما نرويه</span></p>
+      <h2 id="find-title">Stories of Islam in Africa, told from the source</h2>
+      <p class="section__lead">Mosques, scholars and living traditions across the continent, shared with the world. Tap an arch to watch.</p>
     </header>
-    <!-- Each card opens its shelf of films. Each film is on one shelf only. -->
-    <div class="pillars">
-      <div class="pillar">
-        <div class="pillar__media" aria-hidden="true"><img src="assets/video/masajid-of-africa-jumuah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt=""></div>
-        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-reminders" data-shelf>Reminders</button></h3>
-        <p class="pillar__ar" lang="ar" dir="rtl">تذكير</p>
-        <p class="pillar__about">From the Qurʾān and Sunnah, always with the source</p>
-        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">1 video</span><svg><use href="#i-next"/></svg></p>
-      </div>
-      <div class="shelf" id="shelf-reminders" role="region" aria-label="Reminders: videos" data-gallery hidden>
-        <ul class="shelf__films">
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/masajid-of-africa-jumuah.mp4?v=3" data-preview="assets/video/previews/masajid-of-africa-jumuah.mp4" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-jumuah.jpg?v=4">
-              <img src="assets/video/masajid-of-africa-jumuah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">0:53</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch Jumuʿah, 0:53</span>
-            </button>
-            <p class="shelf__series"><span>Masajid of Africa</span><span class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
-            <h4 class="piece__title">Jumuʿah</h4>
-            <p class="piece__text">The khutbah’s call of Āl ʿImrān 3:102, with its source on screen</p>
-          </li>
-        </ul>
-      </div>
-      <div class="pillar">
-        <div class="pillar__media" aria-hidden="true"><img src="assets/video/mali-manuscripts-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt=""></div>
-        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-history" data-shelf>African Muslim History</button></h3>
-        <p class="pillar__ar" lang="ar" dir="rtl">تاريخ المسلمين في أفريقيا</p>
-        <p class="pillar__about">From Mauritania, Mali and Senegal to Sudan, Somalia and the Swahili coast</p>
-        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">7 videos</span><svg><use href="#i-next"/></svg></p>
-      </div>
-      <div class="shelf" id="shelf-history" role="region" aria-label="African Muslim History: videos" data-gallery hidden>
-        <ul class="shelf__films">
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/mali-timbuktu-abroad.mp4?v=2" data-preview="assets/video/previews/mali-timbuktu-abroad.mp4" data-full-kind="film" data-full-poster="assets/video/mali-timbuktu-abroad.jpg?v=5">
-              <img src="assets/video/mali-timbuktu-abroad-sm.jpg?v=5" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">1:30</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch Why Timbuktu is more famous abroad than at home, 1:30</span>
-            </button>
-            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
-            <h4 class="piece__title">Why Timbuktu is more famous abroad than at home</h4>
-            <p class="piece__text">Thierno Hady Thiam, Vice-President of the High Islamic Council of Mali, on the city the world knows better than Malians do</p>
-          </li>
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/mali-across-the-sahara.mp4?v=2" data-preview="assets/video/previews/mali-across-the-sahara.mp4" data-full-kind="film" data-full-poster="assets/video/mali-across-the-sahara.jpg?v=4">
-              <img src="assets/video/mali-across-the-sahara-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">1:06</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch How Islam crossed the Sahara, 1:06</span>
-            </button>
-            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
-            <h4 class="piece__title">How Islam crossed the Sahara</h4>
-            <p class="piece__text">From Biskra to Gao: Islam reached Timbuktu, Gao and Kidal in the north of Mali before the south</p>
-          </li>
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/mali-teacher-to-student.mp4?v=2" data-preview="assets/video/previews/mali-teacher-to-student.mp4" data-full-kind="film" data-full-poster="assets/video/mali-teacher-to-student.jpg?v=4">
-              <img src="assets/video/mali-teacher-to-student-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">1:02</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch From teacher to student, 1:02</span>
-            </button>
-            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
-            <h4 class="piece__title">From teacher to student</h4>
-            <p class="piece__text">How knowledge in Islam is passed on, hand to hand, in the circles of Mali</p>
-          </li>
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/mali-first-command.mp4?v=2" data-preview="assets/video/previews/mali-first-command.mp4" data-full-kind="film" data-full-poster="assets/video/mali-first-command.jpg?v=4">
-              <img src="assets/video/mali-first-command-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">1:03</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch Islam’s first command, 1:03</span>
-            </button>
-            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
-            <h4 class="piece__title">Islam’s first command</h4>
-            <p class="piece__text">The first word revealed was not “pray” but “read”: the religion begins with knowledge</p>
-          </li>
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/mali-manuscripts.mp4?v=2" data-preview="assets/video/previews/mali-manuscripts.mp4" data-full-kind="film" data-full-poster="assets/video/mali-manuscripts.jpg?v=4">
-              <img src="assets/video/mali-manuscripts-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">0:44</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch Who’s reading the manuscripts?, 0:44</span>
-            </button>
-            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
-            <h4 class="piece__title">Who’s reading the manuscripts?</h4>
-            <p class="piece__text">Timbuktu’s manuscripts hold centuries of scholarship. Are they being read?</p>
-          </li>
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/mali-west-africa-changed.mp4?v=2" data-preview="assets/video/previews/mali-west-africa-changed.mp4" data-full-kind="film" data-full-poster="assets/video/mali-west-africa-changed.jpg?v=4">
-              <img src="assets/video/mali-west-africa-changed-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">0:58</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch How Islam in West Africa has changed, 0:58</span>
-            </button>
-            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
-            <h4 class="piece__title">How Islam in West Africa has changed</h4>
-            <p class="piece__text">Thierno Hady Thiam on the middle way of the Mālikī school, and what has shifted in his lifetime</p>
-          </li>
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/masajid-of-africa-uganda.mp4" data-preview="assets/video/previews/masajid-of-africa-uganda.mp4" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-uganda.jpg">
-              <img src="assets/video/masajid-of-africa-uganda-sm.jpg" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">0:46</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch Uganda National Mosque, 0:46</span>
-            </button>
-            <p class="shelf__series"><span>Masajid of Africa</span><span class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
-            <h4 class="piece__title">Uganda National Mosque</h4>
-            <p class="piece__text">In Old Kampala: work began in 1972, it took 35 years to open, and up to 20,000 can pray here</p>
-          </li>
-        </ul>
-      </div>
-      <div class="pillar">
-        <div class="pillar__media" aria-hidden="true"><img src="assets/video/mali-west-africa-changed-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt=""></div>
-        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-faces" data-shelf>Faces of the Ummah</button></h3>
-        <p class="pillar__ar" lang="ar" dir="rtl">وجوه الأمة</p>
-        <p class="pillar__about">Real stories of Muslims, from Africa to the Haramain</p>
-        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">3 videos</span><svg><use href="#i-next"/></svg></p>
-      </div>
-      <div class="shelf" id="shelf-faces" role="region" aria-label="Faces of the Ummah: videos" data-gallery hidden>
-        <ul class="shelf__films">
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/from-the-haramain-madinah.mp4?v=3" data-preview="assets/video/previews/from-the-haramain-madinah.mp4" data-full-kind="film" data-full-poster="assets/video/from-the-haramain-madinah.jpg?v=4">
-              <img src="assets/video/from-the-haramain-madinah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">1:30</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch The recitation at the next table, 1:30</span>
-            </button>
-            <p class="shelf__series"><span>From the Haramain</span><span class="piece__ar" lang="ar" dir="rtl">من الحرمين</span></p>
-            <h4 class="piece__title">The recitation at the next table</h4>
-            <p class="piece__text">A waiter in Madinah, reciting Sūrat an-Nūr as he works</p>
-          </li>
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/mali-west-africa-changed.mp4?v=2" data-preview="assets/video/previews/mali-west-africa-changed.mp4" data-full-kind="film" data-full-poster="assets/video/mali-west-africa-changed.jpg?v=4">
-              <img src="assets/video/mali-west-africa-changed-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">0:58</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch How Islam in West Africa has changed, 0:58</span>
-            </button>
-            <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
-            <h4 class="piece__title">How Islam in West Africa has changed</h4>
-            <p class="piece__text">Thierno Hady Thiam on the middle way of the Mālikī school, and what has shifted in his lifetime</p>
-          </li>
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/djibouti-night.mp4" data-preview="assets/video/previews/djibouti-night.mp4" data-full-kind="film" data-full-poster="assets/video/djibouti-night.jpg">
-              <img src="assets/video/djibouti-night-sm.jpg" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">0:35</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch A night in Djibouti, 0:35</span>
-            </button>
-            <p class="shelf__series"><span>Faces of the Ummah</span><span class="piece__ar" lang="ar" dir="rtl">وجوه الأمة</span></p>
-            <h4 class="piece__title">A night in Djibouti</h4>
-            <p class="piece__text">The evening crowd on a street beside a masjid</p>
-          </li>
-        </ul>
-      </div>
-      <div class="pillar">
-        <div class="pillar__media" aria-hidden="true"><img src="assets/video/from-the-haramain-madinah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt=""></div>
-        <h3><button class="pillar__btn" type="button" aria-expanded="false" aria-controls="shelf-haramain" data-shelf>From the Haramain</button></h3>
-        <p class="pillar__ar" lang="ar" dir="rtl">من الحرمين</p>
-        <p class="pillar__about">Moments from Makkah and Madinah</p>
-        <p class="pillar__more" aria-hidden="true"><span class="pillar__count">1 video</span><svg><use href="#i-next"/></svg></p>
-      </div>
-      <div class="shelf" id="shelf-haramain" role="region" aria-label="From the Haramain: videos" data-gallery hidden>
-        <ul class="shelf__films">
-          <li class="shelf__film" data-piece>
-            <button class="shelf__thumb" type="button" data-full="assets/video/from-the-haramain-madinah.mp4?v=3" data-preview="assets/video/previews/from-the-haramain-madinah.mp4" data-full-kind="film" data-full-poster="assets/video/from-the-haramain-madinah.jpg?v=4">
-              <img src="assets/video/from-the-haramain-madinah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
-              <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
-              <span class="shelf__len" aria-hidden="true">1:30</span>
-              <span class="shelf__progress" aria-hidden="true"><span></span></span>
-              <span class="sr-only">Watch The recitation at the next table, 1:30</span>
-            </button>
-            <p class="shelf__series"><span>From the Haramain</span><span class="piece__ar" lang="ar" dir="rtl">من الحرمين</span></p>
-            <h4 class="piece__title">The recitation at the next table</h4>
-            <p class="piece__text">A waiter in Madinah, reciting Sūrat an-Nūr as he works</p>
-          </li>
-        </ul>
-      </div>
+
+    <!-- One arch for each thing Isnad covers. Each opens its shelf of films; a film can be on two shelves at most. -->
+    <ol class="arcade arcade--strip" data-strip>
+      <li class="arcade__bay" data-ambient>
+        <div class="arcade__frame">
+          <div class="arcade__arch">
+            <span class="arcade__window"><video src="assets/haramain/tawaf-arch.mp4" poster="assets/haramain/tawaf-arch.jpg" muted loop playsinline preload="metadata" aria-label="Pilgrims in white circling the Kaʿbah in Masjid al-Ḥarām, Makkah, late in the day."></video></span>
+            <svg class="arcade__line" aria-hidden="true"><use href="#archLine"/></svg>
+          </div>
+          <button class="hold" type="button" data-ambient-toggle aria-label="Pause the moving picture">
+            <svg class="hold__pause" aria-hidden="true"><use href="#i-pause"/></svg>
+            <svg class="hold__play" aria-hidden="true"><use href="#i-play"/></svg>
+          </button>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">من الحرمين</p>
+        <h3 class="piece__title"><button class="strip__btn" type="button" aria-expanded="false" aria-controls="shelf-haramain" data-shelf>From the Haramain</button></h3>
+        <p class="piece__text">Moments from Makkah and Madinah</p>
+        <p class="strip__more" aria-hidden="true"><span class="strip__count">1 video</span><svg><use href="#i-next"/></svg></p>
+      </li>
+      <li class="arcade__bay">
+        <div class="arcade__frame">
+          <div class="arcade__arch">
+            <span class="arcade__window"><img src="assets/masajid/djenne-arch.jpg" width="720" height="1000" alt="The Great Mosque of Djenné, Mali: an earthen tower studded with wooden beams against a blue sky."></span>
+            <svg class="arcade__line" aria-hidden="true"><use href="#archLine"/></svg>
+          </div>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</p>
+        <h3 class="piece__title"><button class="strip__btn" type="button" aria-expanded="false" aria-controls="shelf-masajid" data-shelf>Masajid of Africa</button></h3>
+        <p class="piece__text">From Djenné to Kampala</p>
+        <p class="strip__more" aria-hidden="true"><span class="strip__count">2 videos</span><svg><use href="#i-next"/></svg></p>
+      </li>
+      <li class="arcade__bay">
+        <div class="arcade__frame">
+          <div class="arcade__arch">
+            <span class="arcade__window"><img src="assets/video/scholars-of-the-sahel-arch.jpg" width="720" height="1000" loading="lazy" alt="A woman in a purple shawl with a book open on her lap, at a study circle in Mali."></span>
+            <svg class="arcade__line" aria-hidden="true"><use href="#archLine"/></svg>
+          </div>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">علماء الساحل</p>
+        <h3 class="piece__title"><button class="strip__btn" type="button" aria-expanded="false" aria-controls="shelf-scholars" data-shelf>Scholars of the Sahel</button></h3>
+        <p class="piece__text">Mali’s scholars and their manuscripts</p>
+        <p class="strip__more" aria-hidden="true"><span class="strip__count">6 videos</span><svg><use href="#i-next"/></svg></p>
+      </li>
+      <li class="arcade__bay">
+        <div class="arcade__frame">
+          <div class="arcade__arch">
+            <span class="arcade__window"><img src="assets/video/mali-west-africa-changed-sm.jpg?v=4" width="1280" height="720" loading="lazy" style="object-position: 4% 50%" alt="Thierno Hady Thiam, dressed in white, looking at framed portraits on his wall."></span>
+            <svg class="arcade__line" aria-hidden="true"><use href="#archLine"/></svg>
+          </div>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">وجوه الأمة</p>
+        <h3 class="piece__title"><button class="strip__btn" type="button" aria-expanded="false" aria-controls="shelf-faces" data-shelf>Faces of the Ummah</button></h3>
+        <p class="piece__text">Real stories, from Africa to the Haramain</p>
+        <p class="strip__more" aria-hidden="true"><span class="strip__count">3 videos</span><svg><use href="#i-next"/></svg></p>
+      </li>
+      <li class="arcade__bay">
+        <div class="arcade__frame">
+          <div class="arcade__arch">
+            <span class="arcade__window"><img src="assets/video/mali-manuscripts-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="Shelves of old books and bound volumes."></span>
+            <svg class="arcade__line" aria-hidden="true"><use href="#archLine"/></svg>
+          </div>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">تاريخ المسلمين في أفريقيا</p>
+        <h3 class="piece__title"><button class="strip__btn" type="button" aria-expanded="false" aria-controls="shelf-history" data-shelf>African Muslim History</button></h3>
+        <p class="piece__text">From Abyssinia to the Swahili coast</p>
+        <p class="strip__more" aria-hidden="true"><span class="strip__count">6 videos</span><svg><use href="#i-next"/></svg></p>
+      </li>
+      <li class="arcade__bay">
+        <div class="arcade__frame">
+          <div class="arcade__arch">
+            <span class="arcade__window"><img src="assets/video/masajid-of-africa-jumuah-arch.jpg" width="720" height="1000" loading="lazy" alt="A khatib on the minbar, giving the Friday khutbah to the congregation."></span>
+            <svg class="arcade__line" aria-hidden="true"><use href="#archLine"/></svg>
+          </div>
+        </div>
+        <p class="piece__ar" lang="ar" dir="rtl">تذكير</p>
+        <h3 class="piece__title"><button class="strip__btn" type="button" aria-expanded="false" aria-controls="shelf-reminders" data-shelf>Reminders</button></h3>
+        <p class="piece__text">Qurʾān and Sunnah, always sourced</p>
+        <p class="strip__more" aria-hidden="true"><span class="strip__count">1 video</span><svg><use href="#i-next"/></svg></p>
+      </li>
+    </ol>
+    <div class="deck__bar strip__bar">
+      <button class="deck__btn" type="button" data-strip-step="-1" aria-label="Previous arches"><svg aria-hidden="true"><use href="#i-prev"/></svg></button>
+      <span class="strip__dots" aria-hidden="true"><span class="strip__dot"></span><span class="strip__dot"></span><span class="strip__dot"></span><span class="strip__dot"></span><span class="strip__dot"></span><span class="strip__dot"></span></span>
+      <button class="deck__btn" type="button" data-strip-step="1" aria-label="Next arches"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+    </div>
+
+    <div class="shelf" id="shelf-haramain" role="region" aria-label="From the Haramain: videos" data-gallery hidden>
+      <ul class="shelf__films">
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/from-the-haramain-madinah.mp4?v=3" data-preview="assets/video/previews/from-the-haramain-madinah.mp4" data-full-kind="film" data-full-poster="assets/video/from-the-haramain-madinah.jpg?v=4">
+            <img src="assets/video/from-the-haramain-madinah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:30</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch The recitation at the next table, 1:30</span>
+          </button>
+          <p class="shelf__series"><span>From the Haramain</span><span class="piece__ar" lang="ar" dir="rtl">من الحرمين</span></p>
+          <h4 class="piece__title">The recitation at the next table</h4>
+          <p class="piece__text">A waiter in Madinah, reciting Sūrat an-Nūr as he works</p>
+        </li>
+      </ul>
+    </div>
+    <div class="shelf" id="shelf-masajid" role="region" aria-label="Masajid of Africa: videos" data-gallery hidden>
+      <ul class="shelf__films">
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/masajid-of-africa-uganda.mp4" data-preview="assets/video/previews/masajid-of-africa-uganda.mp4" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-uganda.jpg">
+            <img src="assets/video/masajid-of-africa-uganda-sm.jpg" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:46</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Uganda National Mosque, 0:46</span>
+          </button>
+          <p class="shelf__series"><span>Masajid of Africa</span><span class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
+          <h4 class="piece__title">Uganda National Mosque</h4>
+          <p class="piece__text">In Old Kampala: work began in 1972, it took 35 years to open, and up to 20,000 can pray here</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/masajid-of-africa-jumuah.mp4?v=3" data-preview="assets/video/previews/masajid-of-africa-jumuah.mp4" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-jumuah.jpg?v=4">
+            <img src="assets/video/masajid-of-africa-jumuah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:53</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Jumuʿah, 0:53</span>
+          </button>
+          <p class="shelf__series"><span>Masajid of Africa</span><span class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
+          <h4 class="piece__title">Jumuʿah</h4>
+          <p class="piece__text">The khutbah’s call of Āl ʿImrān 3:102, with its source on screen</p>
+        </li>
+      </ul>
+    </div>
+    <div class="shelf" id="shelf-scholars" role="region" aria-label="Scholars of the Sahel: videos" data-gallery hidden>
+      <ul class="shelf__films">
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-timbuktu-abroad.mp4?v=2" data-preview="assets/video/previews/mali-timbuktu-abroad.mp4" data-full-kind="film" data-full-poster="assets/video/mali-timbuktu-abroad.jpg?v=5">
+            <img src="assets/video/mali-timbuktu-abroad-sm.jpg?v=5" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:30</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Why Timbuktu is more famous abroad than at home, 1:30</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">Why Timbuktu is more famous abroad than at home</h4>
+          <p class="piece__text">Thierno Hady Thiam, Vice-President of the High Islamic Council of Mali, on the city the world knows better than Malians do</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-across-the-sahara.mp4?v=2" data-preview="assets/video/previews/mali-across-the-sahara.mp4" data-full-kind="film" data-full-poster="assets/video/mali-across-the-sahara.jpg?v=4">
+            <img src="assets/video/mali-across-the-sahara-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:06</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch How Islam crossed the Sahara, 1:06</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">How Islam crossed the Sahara</h4>
+          <p class="piece__text">From Biskra to Gao: Islam reached Timbuktu, Gao and Kidal in the north of Mali before the south</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-teacher-to-student.mp4?v=2" data-preview="assets/video/previews/mali-teacher-to-student.mp4" data-full-kind="film" data-full-poster="assets/video/mali-teacher-to-student.jpg?v=4">
+            <img src="assets/video/mali-teacher-to-student-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:02</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch From teacher to student, 1:02</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">From teacher to student</h4>
+          <p class="piece__text">How knowledge in Islam is passed on, hand to hand, in the circles of Mali</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-first-command.mp4?v=2" data-preview="assets/video/previews/mali-first-command.mp4" data-full-kind="film" data-full-poster="assets/video/mali-first-command.jpg?v=4">
+            <img src="assets/video/mali-first-command-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:03</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Islam’s first command, 1:03</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">Islam’s first command</h4>
+          <p class="piece__text">The first word revealed was not “pray” but “read”: the religion begins with knowledge</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-manuscripts.mp4?v=2" data-preview="assets/video/previews/mali-manuscripts.mp4" data-full-kind="film" data-full-poster="assets/video/mali-manuscripts.jpg?v=4">
+            <img src="assets/video/mali-manuscripts-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:44</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Who’s reading the manuscripts?, 0:44</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">Who’s reading the manuscripts?</h4>
+          <p class="piece__text">Timbuktu’s manuscripts hold centuries of scholarship. Are they being read?</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-west-africa-changed.mp4?v=2" data-preview="assets/video/previews/mali-west-africa-changed.mp4" data-full-kind="film" data-full-poster="assets/video/mali-west-africa-changed.jpg?v=4">
+            <img src="assets/video/mali-west-africa-changed-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:58</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch How Islam in West Africa has changed, 0:58</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">How Islam in West Africa has changed</h4>
+          <p class="piece__text">Thierno Hady Thiam on the middle way of the Mālikī school, and what has shifted in his lifetime</p>
+        </li>
+      </ul>
+    </div>
+    <div class="shelf" id="shelf-faces" role="region" aria-label="Faces of the Ummah: videos" data-gallery hidden>
+      <ul class="shelf__films">
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/from-the-haramain-madinah.mp4?v=3" data-preview="assets/video/previews/from-the-haramain-madinah.mp4" data-full-kind="film" data-full-poster="assets/video/from-the-haramain-madinah.jpg?v=4">
+            <img src="assets/video/from-the-haramain-madinah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:30</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch The recitation at the next table, 1:30</span>
+          </button>
+          <p class="shelf__series"><span>From the Haramain</span><span class="piece__ar" lang="ar" dir="rtl">من الحرمين</span></p>
+          <h4 class="piece__title">The recitation at the next table</h4>
+          <p class="piece__text">A waiter in Madinah, reciting Sūrat an-Nūr as he works</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-west-africa-changed.mp4?v=2" data-preview="assets/video/previews/mali-west-africa-changed.mp4" data-full-kind="film" data-full-poster="assets/video/mali-west-africa-changed.jpg?v=4">
+            <img src="assets/video/mali-west-africa-changed-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:58</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch How Islam in West Africa has changed, 0:58</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">How Islam in West Africa has changed</h4>
+          <p class="piece__text">Thierno Hady Thiam on the middle way of the Mālikī school, and what has shifted in his lifetime</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/djibouti-night.mp4" data-preview="assets/video/previews/djibouti-night.mp4" data-full-kind="film" data-full-poster="assets/video/djibouti-night.jpg">
+            <img src="assets/video/djibouti-night-sm.jpg" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:35</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch A night in Djibouti, 0:35</span>
+          </button>
+          <p class="shelf__series"><span>Faces of the Ummah</span><span class="piece__ar" lang="ar" dir="rtl">وجوه الأمة</span></p>
+          <h4 class="piece__title">A night in Djibouti</h4>
+          <p class="piece__text">The evening crowd on a street beside a masjid</p>
+        </li>
+      </ul>
+    </div>
+    <div class="shelf" id="shelf-history" role="region" aria-label="African Muslim History: videos" data-gallery hidden>
+      <ul class="shelf__films">
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-timbuktu-abroad.mp4?v=2" data-preview="assets/video/previews/mali-timbuktu-abroad.mp4" data-full-kind="film" data-full-poster="assets/video/mali-timbuktu-abroad.jpg?v=5">
+            <img src="assets/video/mali-timbuktu-abroad-sm.jpg?v=5" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:30</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Why Timbuktu is more famous abroad than at home, 1:30</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">Why Timbuktu is more famous abroad than at home</h4>
+          <p class="piece__text">Thierno Hady Thiam, Vice-President of the High Islamic Council of Mali, on the city the world knows better than Malians do</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-across-the-sahara.mp4?v=2" data-preview="assets/video/previews/mali-across-the-sahara.mp4" data-full-kind="film" data-full-poster="assets/video/mali-across-the-sahara.jpg?v=4">
+            <img src="assets/video/mali-across-the-sahara-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:06</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch How Islam crossed the Sahara, 1:06</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">How Islam crossed the Sahara</h4>
+          <p class="piece__text">From Biskra to Gao: Islam reached Timbuktu, Gao and Kidal in the north of Mali before the south</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-teacher-to-student.mp4?v=2" data-preview="assets/video/previews/mali-teacher-to-student.mp4" data-full-kind="film" data-full-poster="assets/video/mali-teacher-to-student.jpg?v=4">
+            <img src="assets/video/mali-teacher-to-student-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:02</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch From teacher to student, 1:02</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">From teacher to student</h4>
+          <p class="piece__text">How knowledge in Islam is passed on, hand to hand, in the circles of Mali</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-first-command.mp4?v=2" data-preview="assets/video/previews/mali-first-command.mp4" data-full-kind="film" data-full-poster="assets/video/mali-first-command.jpg?v=4">
+            <img src="assets/video/mali-first-command-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">1:03</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Islam’s first command, 1:03</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">Islam’s first command</h4>
+          <p class="piece__text">The first word revealed was not “pray” but “read”: the religion begins with knowledge</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/mali-manuscripts.mp4?v=2" data-preview="assets/video/previews/mali-manuscripts.mp4" data-full-kind="film" data-full-poster="assets/video/mali-manuscripts.jpg?v=4">
+            <img src="assets/video/mali-manuscripts-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:44</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Who’s reading the manuscripts?, 0:44</span>
+          </button>
+          <p class="shelf__series"><span>Scholars of Mali</span><span class="piece__ar" lang="ar" dir="rtl">علماء مالي</span></p>
+          <h4 class="piece__title">Who’s reading the manuscripts?</h4>
+          <p class="piece__text">Timbuktu’s manuscripts hold centuries of scholarship. Are they being read?</p>
+        </li>
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/masajid-of-africa-uganda.mp4" data-preview="assets/video/previews/masajid-of-africa-uganda.mp4" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-uganda.jpg">
+            <img src="assets/video/masajid-of-africa-uganda-sm.jpg" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:46</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Uganda National Mosque, 0:46</span>
+          </button>
+          <p class="shelf__series"><span>Masajid of Africa</span><span class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
+          <h4 class="piece__title">Uganda National Mosque</h4>
+          <p class="piece__text">In Old Kampala: work began in 1972, it took 35 years to open, and up to 20,000 can pray here</p>
+        </li>
+      </ul>
+    </div>
+    <div class="shelf" id="shelf-reminders" role="region" aria-label="Reminders: videos" data-gallery hidden>
+      <ul class="shelf__films">
+        <li class="shelf__film" data-piece>
+          <button class="shelf__thumb" type="button" data-full="assets/video/masajid-of-africa-jumuah.mp4?v=3" data-preview="assets/video/previews/masajid-of-africa-jumuah.mp4" data-full-kind="film" data-full-poster="assets/video/masajid-of-africa-jumuah.jpg?v=4">
+            <img src="assets/video/masajid-of-africa-jumuah-sm.jpg?v=4" width="1280" height="720" loading="lazy" alt="">
+            <span class="shelf__play" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+            <span class="shelf__len" aria-hidden="true">0:53</span>
+            <span class="shelf__progress" aria-hidden="true"><span></span></span>
+            <span class="sr-only">Watch Jumuʿah, 0:53</span>
+          </button>
+          <p class="shelf__series"><span>Masajid of Africa</span><span class="piece__ar" lang="ar" dir="rtl">مساجد أفريقيا</span></p>
+          <h4 class="piece__title">Jumuʿah</h4>
+          <p class="piece__text">The khutbah’s call of Āl ʿImrān 3:102, with its source on screen</p>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -675,6 +805,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js?v=40"></script>
+<script src="js/main.js?v=41"></script>
 </body>
 </html>

@@ -309,44 +309,6 @@
     $('#prayersNote').textContent = `Times for ${place.name}, ${place.country}, follow ${m.name} (Fajr ${m.fajr}°, Isha ${m.isha}°${added})${SETTINGS.asrFactor === 2 ? ', with Hanafi Asr' : ''}.`;
   }
 
-  /* ---------- the mihrab frame (canvas) ---------- */
-
-  // Drawn like the logo: a solid green arch with a fine gold line inside.
-  (() => {
-    const canvas = $('#stage'), ctx = canvas.getContext('2d');
-
-    function archPath(W, H, inset) {
-      const w = W - inset * 2, r = 0.6 * w, rise = Math.sqrt(r * r - (r - w / 2) ** 2);
-      const x0 = inset, x1 = W - inset, top = inset, y0 = top + rise, cx = W / 2;
-      const p = new Path2D();
-      p.moveTo(x0, H);
-      p.lineTo(x0, y0);
-      p.arc(x0 + r, y0, r, Math.PI, Math.atan2(top - y0, cx - (x0 + r)));
-      p.arc(x1 - r, y0, r, Math.atan2(top - y0, cx - (x1 - r)), 0);
-      p.lineTo(x1, H);
-      return p;
-    }
-
-    function draw() {
-      const { width: W, height: H } = canvas.getBoundingClientRect();
-      if (!W) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2), cs = getComputedStyle(document.documentElement);
-      canvas.width = Math.round(W * dpr);
-      canvas.height = Math.round(H * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.lineCap = 'round';
-      ctx.strokeStyle = cs.getPropertyValue('--green').trim();
-      ctx.lineWidth = 5;
-      ctx.stroke(archPath(W, H, 2.5));
-      ctx.globalAlpha = 0.7;
-      ctx.strokeStyle = cs.getPropertyValue('--gold').trim();
-      ctx.lineWidth = 1.2;
-      ctx.stroke(archPath(W, H, 13));
-    }
-
-    new ResizeObserver(draw).observe(canvas);
-  })();
-
   /* ---------- toast ---------- */
 
   let toastTimer;
@@ -433,7 +395,7 @@
   /* ---------- the Haramain's arcade: its doors swing open once, when it comes on screen ---------- */
 
   if (!reduceMotion.matches) {
-    const arcade = $('.arcade');
+    const arcade = $('#haramain .arcade');
     arcade.classList.add('is-closed');
     const seen = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return;
@@ -526,23 +488,37 @@
   });
   window.matchMedia('(min-width: 901px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
 
-  /* ---------- what you'll find here: each card opens its shelf of videos ---------- */
+  /* ---------- the arch strip: each arch opens its shelf of videos ---------- */
 
   const shelfBtns = $$('[data-shelf]');
-  shelfBtns.forEach((btn, i) => btn.addEventListener('click', () => {
+  for (const btn of shelfBtns) btn.addEventListener('click', () => {
     const open = btn.getAttribute('aria-expanded') !== 'true';
     for (const b of shelfBtns) {
       const on = open && b === btn, shelf = $(`#${b.getAttribute('aria-controls')}`);
       b.setAttribute('aria-expanded', String(on));
-      b.closest('.pillar').classList.toggle('is-open', on);
+      b.closest('.arcade__bay').classList.toggle('is-open', on);
       shelf.hidden = !on;
-      if (on) {
-        shelf.style.setProperty('--i', i);
-        shelf.style.setProperty('--c2', i % 2);
-        requestAnimationFrame(() => shelf.scrollIntoView({ block: 'nearest' }));
-      }
+      if (on) requestAnimationFrame(() => shelf.scrollIntoView({ block: 'nearest' }));
     }
-  }));
+  });
+
+  // The arrows move one arch along. The small arches beneath light up for every arch in view, at any screen width.
+  const strip = $('[data-strip]'), stripBays = $$('.arcade__bay', strip), stripDots = $$('.strip__dot'), stripSteps = $$('[data-strip-step]');
+  function stripView() {
+    const view = strip.getBoundingClientRect();
+    stripBays.forEach((bay, i) => {
+      const r = bay.getBoundingClientRect();
+      stripDots[i].classList.toggle('is-on', Math.min(r.right, view.right) - Math.max(r.left, view.left) > r.width * 0.6);
+    });
+    stripSteps[0].disabled = strip.scrollLeft < 4;
+    stripSteps[1].disabled = strip.scrollLeft > strip.scrollWidth - strip.clientWidth - 4;
+  }
+  for (const b of stripSteps) b.addEventListener('click', () => {
+    const step = stripBays[1].offsetLeft - stripBays[0].offsetLeft;
+    strip.scrollBy({ left: Number(b.dataset.stripStep) * step, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+  });
+  strip.addEventListener('scroll', stripView, { passive: true });
+  new ResizeObserver(stripView).observe(strip);
 
   /* ---------- shelves: live previews, and where each visitor left off ---------- */
 
@@ -580,7 +556,7 @@
       label.textContent = thumb.dataset.label + (w?.done ? ', watched' : pct ? `, ${Math.round(pct)}% watched` : '');
     }
     for (const btn of shelfBtns) {
-      const thumbs = $$('.shelf__thumb', $(`#${btn.getAttribute('aria-controls')}`)), count = $('.pillar__count', btn.closest('.pillar'));
+      const thumbs = $$('.shelf__thumb', $(`#${btn.getAttribute('aria-controls')}`)), count = $('.strip__count', btn.closest('.arcade__bay'));
       if (!thumbs.length) continue;
       count.textContent = `${thumbs.length} video${thumbs.length > 1 ? 's' : ''}`;
     }

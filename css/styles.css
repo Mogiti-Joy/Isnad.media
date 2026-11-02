@@ -353,30 +353,6 @@ img, svg { max-width: 100%; }
   .brand { min-width: 44px; justify-content: center; }
 }
 
-/* the mihrab: a moving picture seen through the logo's arch */
-.name__film { display: grid; justify-items: center; margin-top: clamp(48px, 6vw, 88px); }
-.stage { display: grid; gap: 18px; width: min(100%, 380px); margin: 0; }
-.arch {
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  aspect-ratio: 18 / 25;
-}
-.arch__art {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  background: var(--green-deep);
-  clip-path: url(#archClip);
-  cursor: pointer;
-}
-/* the frame is drawn over the film; clicks pass through to it */
-.arch canvas { position: absolute; inset: 0; display: block; width: 100%; height: 100%; pointer-events: none; }
-.stage__hold { position: absolute; right: 18%; bottom: 22px; z-index: 2; }
-
-
 /* ---------- sections ---------- */
 
 .section { padding-block: clamp(48px, 6vw, 88px); }
@@ -385,80 +361,16 @@ img, svg { max-width: 100%; }
 .section h2 { font-size: var(--step-3); }
 .section__lead { max-width: 62ch; font-size: 1.0625rem; color: var(--muted); }
 
-/* ---------- what you'll find here ---------- */
-
-/* four cards; choosing one opens its shelf of videos beneath the row */
-.pillars {
-  --g: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--g);
-}
-.pillar {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  --pad: 24px;
-  padding: var(--pad);
-  border: 1px solid var(--line-gold);
-  border-radius: var(--radius);
-  background: var(--bg);
-  transition: border-color .3s, box-shadow .3s, background-color .3s;
-}
-.pillar:hover { border-color: var(--gold); box-shadow: 0 12px 30px rgba(17, 77, 58, .08); }
-.pillar h3 { display: flex; align-items: flex-end; min-height: 2.16em; font-size: 1.45rem; }
-/* a picture from the card's films, running to the card's edges */
-.pillar__media {
-  aspect-ratio: 2 / 1;
-  margin: calc(-1 * var(--pad)) calc(-1 * var(--pad)) 14px;
-  overflow: hidden;
-  border-radius: var(--radius) var(--radius) 0 0;
-  background: var(--tint);
-}
-.pillar__media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .7s cubic-bezier(.2, .7, .2, 1); }
-.pillar:hover .pillar__media img { transform: scale(1.05); }
-.pillar__media--soon { display: grid; place-items: center; background: var(--gold-tint); }
-.pillar__soon { --mark-arch: var(--line-gold); --mark-chain: var(--line-gold); width: 40px; height: 54px; }
-.pillar.is-open .pillar__media--soon { background: rgba(255, 255, 255, .08); }
-.pillar__btn { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
-.pillar__btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }  /* the whole card is the button */
-.pillar__btn:focus-visible { outline: none; }
-.pillar:has(.pillar__btn:focus-visible) { outline: 2px solid var(--green); outline-offset: 3px; }
-.pillar__ar { font-size: 1.1rem; line-height: 1.5; color: var(--gold-text); text-align: left; }
-.pillar__about { color: var(--muted); }
-.pillar__more { display: flex; align-items: center; gap: 6px; margin-top: auto; padding-top: 16px; font-size: var(--step--1); font-weight: 700; color: var(--green); }
-.pillar__more svg { width: 14px; height: 14px; transition: transform .3s; }
-.pillar.is-open { border-color: var(--green); background: var(--green); box-shadow: 0 12px 30px rgba(17, 77, 58, .22); }
-.pillar.is-open h3,
-.pillar.is-open .pillar__more { color: var(--white); }
-.pillar.is-open .pillar__ar { color: #D6B65C; }
-.pillar.is-open .pillar__about { color: rgba(255, 255, 255, .8); }
-.pillar.is-open .pillar__more svg { transform: rotate(90deg); }
+/* ---------- the shelves of videos under the arch strip ---------- */
 
 .shelf {
   position: relative;
-  order: 1;
-  grid-column: 1 / -1;
-  margin-top: 6px;
+  margin-top: 18px;
   padding: clamp(22px, 3vw, 36px);
   border-radius: 20px;
   background: var(--tint);
   box-shadow: inset 0 0 0 1px var(--line);
   animation: reach-in .4s cubic-bezier(.2, .7, .2, 1);
-}
-/* a notch pointing up at the chosen card */
-.shelf::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: calc((100% - 3 * var(--g)) / 4 * (var(--i, 0) + .5) + var(--i, 0) * var(--g) - 8px);
-  width: 16px;
-  height: 16px;
-  background: var(--tint);
-  border-top: 1px solid var(--line);
-  border-left: 1px solid var(--line);
-  transform: rotate(45deg);
 }
 .shelf__films { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 28px; margin: 0; padding: 0; list-style: none; }
 .shelf__film { display: grid; align-content: start; gap: 2px; min-width: 0; }
@@ -530,27 +442,8 @@ img, svg { max-width: 100%; }
 .shelf__film:nth-child(3) { animation-delay: .16s; }
 .shelf__film:nth-child(n+4) { animation-delay: .24s; }
 @keyframes rise-in { from { opacity: 0; transform: translateY(16px); } }
-.shelf__empty { max-width: 56ch; color: var(--muted); }
-.shelf__empty a { color: var(--green); font-weight: 600; }
 
-/* two columns: each shelf opens under the row its card is in */
-@media (max-width: 1000px) {
-  .pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .pillar:nth-child(-n+4) { order: 0; }
-  .shelf:nth-child(-n+4) { order: 1; }
-  .pillar:nth-child(n+5) { order: 2; }
-  .shelf:nth-child(n+5) { order: 3; }
-  .shelf::before { left: calc((100% - var(--g)) / 2 * (var(--c2, 0) + .5) + var(--c2, 0) * var(--g) - 8px); }
-}
-/* one column: each shelf opens right under its card */
 @media (max-width: 560px) {
-  .pillars { grid-template-columns: minmax(0, 1fr); }
-  .pillar, .shelf { order: 0 !important; }
-  .pillar { --pad: 16px; display: grid; grid-template-columns: 96px minmax(0, 1fr); align-content: start; column-gap: 16px; }
-  .pillar > :not(.pillar__media) { grid-column: 2; }
-  .pillar h3 { min-height: 0; }
-  .pillar__media { grid-row: 1 / span 4; aspect-ratio: 1; margin: 0; border-radius: 4px; }
-  .shelf::before { left: 32px; }
   .shelf__films { grid-template-columns: minmax(0, 1fr); gap: 26px; }
   .shelf__series { letter-spacing: .1em; }
 }
@@ -875,6 +768,36 @@ img, svg { max-width: 100%; }
   .arcade__bay { flex: 0 0 min(68%, 300px); scroll-snap-align: center; }
 }
 
+/* the arch strip: the arcade's frames at every width, with a gold line inside, and each arch opens its videos */
+@media (min-width: 901px) {
+  .arcade--strip {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 4px 0 10px;
+  }
+  .arcade--strip::-webkit-scrollbar { display: none; }
+  .arcade--strip .arcade__bay { flex: 0 0 calc((100% - 4 * var(--gap)) / 4.3); scroll-snap-align: start; }
+}
+.arcade--strip .arcade__bay { position: relative; grid-template-rows: auto auto auto auto 1fr; }
+.arcade--strip .arcade__arch { position: relative; }
+.arcade--strip .arcade__bay:hover .arcade__window > * { transform: scale(1.06); }
+.arcade__line { position: absolute; top: 15px; left: 15px; width: calc(100% - 30px); height: calc(100% - 20px); overflow: visible; fill: none; stroke: #D6B65C; stroke-width: 1.2; opacity: .85; pointer-events: none; }
+.strip__btn { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.strip__btn::after { content: ""; position: absolute; inset: 0; z-index: 1; }  /* the whole arch is the button */
+.strip__btn:focus-visible { outline: none; text-decoration: underline; }
+.arcade__bay:has(.strip__btn:focus-visible) .arcade__arch,
+.arcade__bay.is-open .arcade__arch { background: var(--gold); }
+.strip__more { display: flex; align-self: end; align-items: center; justify-content: center; gap: 6px; padding-top: 8px; font-size: var(--step--1); font-weight: 700; color: var(--green); }
+.strip__more svg { width: 14px; height: 14px; transition: transform .3s; }
+.arcade__bay.is-open .strip__more svg { transform: rotate(90deg); }
+.strip__bar { justify-content: center; margin-top: 14px; }
+.strip__dots { display: flex; align-items: center; gap: 8px; }
+.strip__dot { width: 11px; height: 14px; background: var(--line-gold); clip-path: url(#archClip); transition: background-color .25s; }
+.strip__dot.is-on { background: var(--gold); }
+
 /* the full view: one picture, uncropped, over the page */
 .lightbox {
   position: fixed;
@@ -936,23 +859,6 @@ html:has(.lightbox[open]) { overflow: hidden; }
   .lightbox__next { top: 50%; bottom: auto; margin-top: -24px; }
   .lightbox__close { top: 10px; right: 12px; }
 }
-
-/* ---------- films: captions ---------- */
-
-.story__series {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 14px;
-  font-size: var(--step--2);
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--gold-text);
-}
-.film__caption { display: grid; justify-items: center; gap: 6px; font-size: var(--step--1); color: var(--muted); text-align: center; }
-.film__caption .story__series { justify-content: center; }
-.film__title { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.2; color: var(--green); }
 
 /* social links */
 .socials { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 0; padding: 0; list-style: none; }
@@ -1242,12 +1148,7 @@ html:has(.lightbox[open]) { overflow: hidden; }
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     column-gap: var(--fold-gap);
   }
-  .pillars, .services, .also__list { --g: var(--fold-gap); grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fold-gap); }
-  .pillar:nth-child(-n+4) { order: 0; }
-  .shelf:nth-child(-n+4) { order: 1; }
-  .pillar:nth-child(n+5) { order: 2; }
-  .shelf:nth-child(n+5) { order: 3; }
-  .shelf::before { left: calc((100% - var(--g)) / 2 * (var(--c2, 0) + .5) + var(--c2, 0) * var(--g) - 8px); }
+  .services, .also__list { --g: var(--fold-gap); grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fold-gap); }
   .prayers { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fold-gap); background: none; border: 0; row-gap: 1px; }
   .prayer, .prayer:first-child, .prayer:last-child { border-radius: var(--radius); box-shadow: inset 0 0 0 1px var(--line); }
   .arcade { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fold-gap); row-gap: 40px; }
