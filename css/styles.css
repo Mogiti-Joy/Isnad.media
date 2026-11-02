@@ -675,7 +675,11 @@ img, svg { max-width: 100%; }
   border: 2.5px solid var(--gold);
   border-radius: 999px;
   pointer-events: none;
+  transition: opacity .2s;
 }
+/* a link shows only while both its arches are in view, so the edge of the row never cuts one */
+.arcade__bay:not(.is-in) .arcade__frame::before,
+.arcade__bay:not(.is-in) + .arcade__bay .arcade__frame::before { opacity: 0; }
 .arcade__arch {
   display: block;
   width: 100%;
@@ -752,7 +756,7 @@ img, svg { max-width: 100%; }
 .is-held .hold__pause { display: none; }
 .is-held .hold__play { display: inline; }
 
-/* phones and tablets: swipe along the arcade, one arch at a time */
+/* phones and tablets: two whole arches fill the width, and a swipe moves on to the next two, so no arch is ever cut */
 @media (max-width: 900px) {
   .arcade {
     --gap: 22px;
@@ -760,12 +764,19 @@ img, svg { max-width: 100%; }
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: 20px;
     scrollbar-width: none;
     margin-inline: -20px;
     padding: 4px 20px 10px;
   }
   .arcade::-webkit-scrollbar { display: none; }
-  .arcade__bay { flex: 0 0 min(68%, 300px); scroll-snap-align: center; }
+  .arcade__bay { flex: 0 0 calc((100% - var(--gap)) / 2); }
+  .arcade__bay:nth-child(odd) { scroll-snap-align: start; scroll-snap-stop: always; }
+}
+/* two arches side by side leave narrow columns: smaller captions keep the longest to two lines, so the row stays even */
+@media (max-width: 420px) {
+  .arcade .piece__ar { font-size: 1.1rem; }
+  .arcade .piece__title { font-size: 1.15rem; }
 }
 
 /* the arch strip: the arcade's frames at every width, with a gold line inside, and each arch opens its videos */
@@ -779,7 +790,8 @@ img, svg { max-width: 100%; }
     padding: 4px 0 10px;
   }
   .arcade--strip::-webkit-scrollbar { display: none; }
-  .arcade--strip .arcade__bay { flex: 0 0 calc((100% - 4 * var(--gap)) / 4.3); scroll-snap-align: start; }
+  .arcade--strip .arcade__bay { flex: 0 0 calc((100% - 3 * var(--gap)) / 4); }
+  .arcade--strip .arcade__bay:nth-child(odd) { scroll-snap-align: start; scroll-snap-stop: always; }
 }
 .arcade--strip .arcade__bay { position: relative; grid-template-rows: auto auto auto auto 1fr; }
 .arcade--strip .arcade__arch { position: relative; }
@@ -793,7 +805,20 @@ img, svg { max-width: 100%; }
 .strip__more { display: flex; align-self: end; align-items: center; justify-content: center; gap: 6px; padding-top: 8px; font-size: var(--step--1); font-weight: 700; color: var(--green); }
 .strip__more svg { width: 14px; height: 14px; transition: transform .3s; }
 .arcade__bay.is-open .strip__more svg { transform: rotate(90deg); }
-.strip__bar { justify-content: center; margin-top: 14px; }
+/* the row of arches with an arrow either side, level with the middle of the arches; the small arches sit below */
+.strip { position: relative; margin-inline: -12px; padding-inline: 58px; }
+.strip:has(> .strip__bar[hidden]) { margin-inline: 0; padding-inline: 0; }
+.strip__bar { justify-content: center; margin-top: 18px; }
+.strip .deck__btn { position: absolute; top: calc(4px + var(--arch-half)); z-index: 3; width: 44px; height: 44px; margin-top: -22px; }
+.strip .deck__btn:first-child { left: 0; }
+.strip .deck__btn:last-child { right: 0; }
+/* on a phone two arches need the full width, so the arrows sit on their outer edges, and only where there is further to go */
+@media (max-width: 560px) {
+  .strip { margin-inline: 0; padding-inline: 0; }
+  .strip .deck__btn:first-child { left: -16px; }
+  .strip .deck__btn:last-child { right: -16px; }
+  .strip .deck__btn:disabled { visibility: hidden; }
+}
 .strip__dots { display: flex; align-items: center; gap: 8px; }
 .strip__dot { width: 11px; height: 14px; background: var(--line-gold); clip-path: url(#archClip); transition: background-color .25s; }
 .strip__dot.is-on { background: var(--gold); }
@@ -955,8 +980,8 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .masajid__head { display: grid; gap: 16px; justify-items: start; }
 .masajid__lead { max-width: 46ch; font-size: 1.0625rem; color: var(--muted); }
 
-.deck { display: grid; justify-items: center; gap: 28px; min-width: 0; }
-.deck__stage { position: relative; width: min(100%, 360px); aspect-ratio: 4 / 5; touch-action: pan-y; }
+.deck { --stage: min(100%, 360px); --arrow-side: max(-16px, calc(50% - var(--stage) / 2 - 78px)); position: relative; display: grid; justify-items: center; gap: 28px; min-width: 0; }
+.deck__stage { position: relative; width: var(--stage); aspect-ratio: 4 / 5; touch-action: pan-y; }
 .deck__pages { position: absolute; inset: 0; margin: 0; padding: 0; list-style: none; }
 .deck__page { position: absolute; inset: 0; transition: transform .6s cubic-bezier(.2, .8, .2, 1), opacity .45s; }
 .deck__card {
@@ -1001,10 +1026,17 @@ html:has(.lightbox[open]) { overflow: hidden; }
 .deck__btn:hover { border-color: var(--gold); }
 .deck__btn:disabled { opacity: .35; cursor: default; }
 .deck__btn svg { width: 18px; height: 18px; }
+/* the arrows sit either side of the stack, level with its middle and clear of the fanned pages where there is room; the count stays below */
+.deck .deck__btn { position: absolute; top: 0; z-index: 8; width: 44px; height: 44px; margin-top: calc(var(--stage) * .625 - 22px); }
+.deck .deck__btn:first-child { left: var(--arrow-side); }
+.deck .deck__btn:last-child { right: var(--arrow-side); }
 
 @media (max-width: 900px) {
   .masajid { grid-template-columns: minmax(0, 1fr); }
-  .deck__stage { width: min(82%, 360px); }
+  .deck { --stage: min(82%, 360px); }
+}
+@media (max-width: 560px) {
+  .deck .deck__btn:disabled { visibility: hidden; }
 }
 @media (prefers-reduced-motion: reduce) {
   .deck__page { transition: opacity .2s; }

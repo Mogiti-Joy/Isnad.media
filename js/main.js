@@ -502,23 +502,29 @@
     }
   });
 
-  // The arrows move one arch along. The small arches beneath light up for every arch in view, at any screen width.
-  const strip = $('[data-strip]'), stripBays = $$('.arcade__bay', strip), stripDots = $$('.strip__dot'), stripSteps = $$('[data-strip-step]');
-  function stripView() {
-    const view = strip.getBoundingClientRect();
-    stripBays.forEach((bay, i) => {
-      const r = bay.getBoundingClientRect();
-      stripDots[i].classList.toggle('is-on', Math.min(r.right, view.right) - Math.max(r.left, view.left) > r.width * 0.6);
+  // The arrows move two arches along. The small arches beneath light up for every arch in view, at any screen width.
+  // Where every arch already fits, as the Haramain's do on a wide screen, the bar under them is hidden.
+  for (const strip of $$('[data-strip]')) {
+    const bar = strip.nextElementSibling, bays = $$('.arcade__bay', strip), dots = $$('.strip__dot', bar), steps = $$('[data-strip-step]', bar), frame = $('.arcade__frame', strip);
+    const stripView = () => {
+      bar.hidden = strip.scrollWidth <= strip.clientWidth;
+      bar.style.setProperty('--arch-half', `${frame.offsetHeight / 2}px`);  // the arrows sit level with the middle of the arches
+      const view = strip.getBoundingClientRect();
+      bays.forEach((bay, i) => {
+        const r = bay.getBoundingClientRect(), inView = Math.min(r.right, view.right) - Math.max(r.left, view.left) > r.width * 0.6;
+        bay.classList.toggle('is-in', inView);
+        dots[i].classList.toggle('is-on', inView);
+      });
+      steps[0].disabled = strip.scrollLeft < 4;
+      steps[1].disabled = strip.scrollLeft > strip.scrollWidth - strip.clientWidth - 4;
+    };
+    for (const b of steps) b.addEventListener('click', () => {
+      const step = bays[2].offsetLeft - bays[0].offsetLeft;
+      strip.scrollBy({ left: Number(b.dataset.stripStep) * step, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
     });
-    stripSteps[0].disabled = strip.scrollLeft < 4;
-    stripSteps[1].disabled = strip.scrollLeft > strip.scrollWidth - strip.clientWidth - 4;
+    strip.addEventListener('scroll', stripView, { passive: true });
+    new ResizeObserver(stripView).observe(strip);
   }
-  for (const b of stripSteps) b.addEventListener('click', () => {
-    const step = stripBays[1].offsetLeft - stripBays[0].offsetLeft;
-    strip.scrollBy({ left: Number(b.dataset.stripStep) * step, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
-  });
-  strip.addEventListener('scroll', stripView, { passive: true });
-  new ResizeObserver(stripView).observe(strip);
 
   /* ---------- shelves: live previews, and where each visitor left off ---------- */
 

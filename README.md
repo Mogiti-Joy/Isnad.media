@@ -77,7 +77,7 @@ The "Our name" section comes straight after the opening, so it is the first thin
 
 ## What we’re about
 
-After "Our name", a swipeable strip of six arches shows everything Isnad covers, and each arch opens its own videos. It is the `<section id="find">` block in `index.html`, so the menu's Watch link lands on it. The arches use the frame from "Every prayer faces here", with a fine gold line inside. On a computer about four show at once. The arrows beneath move one arch along, and the small arches between them light up for the arches in view.
+After "Our name", a swipeable strip of six arches shows everything Isnad covers, and each arch opens its own videos. It is the `<section id="find">` block in `index.html`, so the menu's Watch link lands on it. The arches use the frame from "Every prayer faces here", with a fine gold line inside. Only whole arches ever show: four at once on a computer, two on phones and tablets. A swipe or the arrows either side of the row move two arches along, and the small arches beneath light up for the arches in view. On phones, where two arches need the full width, the arrows sit on the outer edges of the arches, and each one hides when there is nothing further that way. The gold chain link between two arches shows only while both are in view.
 
 Tapping an arch turns its frame gold and opens a shelf of its videos below the strip; choosing a video plays it in the full view, with sound for the films. A video can be on two shelves at most, and a series stays together (all the Scholars of Mali films are under Scholars of the Sahel). A film on two shelves shares its progress line, because it is the same file. The picture in the first arch is the Ṭawāf clip, which has a pause button. Visitors who have asked their device for reduced motion or data saving see its still instead. Images after the second arch load only when they are needed.
 
@@ -140,7 +140,7 @@ The map uses the same prayer times as the rest of the site, so there is nothing 
 
 After the live map, the story of the Great Mosque of Djenné in Mali, from Isnad Media's Instagram, lies beside a short introduction as a stack of its eight pages (`assets/masajid/djenne-1.jpg` to `djenne-8.jpg`, 1080×1350, in order). The pages under the top one fan out a little.
 
-- **Turning the pages**: drag the top page aside (it flies off and the next one shows; drag the other way to bring the last one back), or use the arrows under the stack or the arrow keys. The count shows which page is on top.
+- **Turning the pages**: drag the top page aside (it flies off and the next one shows; drag the other way to bring the last one back), or use the arrows either side of the stack or the arrow keys. On phones each arrow hides when there is no page further that way. The count under the stack shows which page is on top.
 - **Reading in full**: tapping the top page opens it in the full view; closing it leaves the stack on the page last seen.
 
 The words on each page are part of the picture, so each picture's description in `index.html` repeats them for screen readers. To use another story, replace the eight pictures (keeping the names, or changing them in the `<section id="masajid">` block), then change the heading, the paragraph and the descriptions. For more or fewer pages, add or remove `<li class="deck__page">` blocks and change the "8" in the count and the labels.
@@ -150,10 +150,10 @@ The words on each page are part of the picture, so each picture's description in
 After Masajid of Africa, this section shows Masjid al-Ḥarām, the qiblah of those prayers. Its files are in `assets/haramain/`.
 
 - **The background**: parchment with a gold star-and-cross pattern and a double gold frame, like the illuminated pages of a printed muṣḥaf. It uses no verses, because Qurʾān text shouldn't sit behind buttons and pictures.
-- **The arcade**: four arches, linked like a chain, run from daylight to the setting sun: the Kaʿbah (`kaaba-arch.jpg`), the Clock Tower (`clock-tower.jpg`), sunset over the courtyards (`haram-sunset.jpg`) and the Prophet’s Masjid in Madinah in the evening light (`madinah-evening.jpg`, see "Photos"). Tapping an arch opens the whole picture, uncropped; the arrow keys move along and Esc closes it.
+- **The arcade**: four arches, linked like a chain, run from daylight to the setting sun: the Kaʿbah (`kaaba-arch.jpg`), the Clock Tower (`clock-tower.jpg`), sunset over the courtyards (`haram-sunset.jpg`) and the Prophet’s Masjid in Madinah in the evening light (`madinah-evening.jpg`, see "Photos"). Tapping an arch opens the whole picture, uncropped; the arrow keys move along and Esc closes it. On phones and tablets two whole arches show at a time, as in the strip in "What we’re about", and a swipe or the arrows either side move on to the next two, so no arch is cut by the edge of the screen. On wider screens all four show, so the arrows hide themselves.
 - **The leaves**: each arch starts shut, with two studded leaves that swing open one arch after another the first time the arcade comes on screen. Visitors who have asked their device for reduced motion see the pictures straight away.
 
-The arcade makes room for however many arches there are: to add one, copy an `<li class="arcade__bay">` block in the `<section id="haramain">` block of `index.html` and change its picture and text.
+The arcade makes room for however many arches there are: to add one, copy an `<li class="arcade__bay">` block in the `<section id="haramain">` block of `index.html`, change its picture and text, and add one more `<span class="strip__dot">` to the row under the arches.
 
 The arches show smaller copies of the pictures (`kaaba-arch-sm.jpg` and so on); tapping an arch opens the full-size one. To swap a picture, keep the same file name, or change it in the `<section id="haramain">` block.
 
