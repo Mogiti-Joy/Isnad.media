@@ -294,7 +294,7 @@
       const n = prayerName(p, z.weekday);
       // Marked like the countdown above; after Isha that is tomorrow's Fajr, shown with its own time.
       const isNext = np.key === p.key;
-      return `<li class="prayer${p.sun ? ' prayer--sun' : ''}${isNext ? ' is-next' : ''}">
+      return `<li class="prayer${p.sun ? ' prayer--sun' : ''}${isNext ? ' is-next' : ''}" data-p="${p.key}">
         <span class="prayer__ar" lang="ar" dir="rtl">${n.ar}</span>
         <span class="prayer__en">${n.en}${isNext ? `<span class="prayer__tag">${np.tomorrow ? 'Tomorrow' : 'Next'}</span>` : ''}</span>
         <span class="prayer__time">${hm(isNext ? np.time : t[p.key])}</span>
@@ -392,20 +392,6 @@
     swipeX = null;
   });
 
-  /* ---------- the Haramain's arcade: its doors swing open once, when it comes on screen ---------- */
-
-  if (!reduceMotion.matches) {
-    const arcade = $('#haramain .arcade');
-    arcade.classList.add('is-closed');
-    const seen = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      seen.disconnect();
-      arcade.classList.replace('is-closed', 'is-opening');
-      setTimeout(() => arcade.classList.remove('is-opening'), 2200);
-    }, { threshold: 0.3 });
-    seen.observe(arcade);
-  }
-
   /* ---------- masajid of africa: a stack of pages ---------- */
 
   // The top page can be dragged away (or back), or turned with the arrows or the arrow keys.
@@ -487,6 +473,42 @@
     if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
   });
   window.matchMedia('(min-width: 901px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+
+  /* ---------- as the page is read ---------- */
+
+  // The gold line under the bar fills as the page is read.
+  const header = $('.site-header');
+  let readQueued = false;
+  const read = () => {
+    readQueued = false;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    header.style.setProperty('--read', max > 0 ? Math.min(1, scrollY / max).toFixed(4) : 0);
+  };
+  const queueRead = () => { if (!readQueued) { readQueued = true; requestAnimationFrame(read); } };
+  addEventListener('scroll', queueRead, { passive: true });
+  addEventListener('resize', queueRead);
+  read();
+
+  // Each section's label locks its chain link and its words rise in as it comes on screen.
+  // Without the script, or with reduced motion, everything simply shows.
+  if (!reduceMotion.matches) {
+    document.documentElement.classList.add('js-reveal');
+    const rising = $$('.section__head, .name__head, .name__text, .quote, .atlas__head, .masajid__head, .countdown, .prayers, .service, .also__item, .ways li, .contact__links');
+    for (const el of rising) {
+      el.classList.add('reveal');
+      // cards in the same row follow one another
+      const row = [...el.parentElement.children].filter(c => c.matches('.service, .also__item, .ways li'));
+      if (row.length > 1) el.style.setProperty('--d', `${(row.indexOf(el) % 3) * 0.1}s`);
+    }
+    const seen = new IntersectionObserver(entries => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        e.target.classList.add('is-seen');
+        seen.unobserve(e.target);
+      }
+    }, { rootMargin: '0px 0px -8% 0px' });
+    for (const el of [...rising, ...$$('.eyebrow, .ayah')]) seen.observe(el);
+  }
 
   /* ---------- the arch strip: each arch opens its shelf of videos ---------- */
 

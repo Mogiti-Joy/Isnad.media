@@ -59,6 +59,20 @@ The other films are on the shelves under "What we’re about" (see below).
 
 The bar at the top links to Our name, Watch, What we do, Prayer times, From Haramain and Contact, and underlines the section on screen. On phones it shows only the logo and Follow us. The links are the `<nav class="site-nav">` block in `index.html`.
 
+## The look: the page as a chain
+
+The page is designed as an isnad: one link after another, from the opening to you.
+
+- **The opening** stands inside a mihrab drawn in a thin gold line, with a lamp (the gold star) hanging from three links of chain at its point, like the lamp in a prayer niche. The arch draws itself when the page loads, its sides run down and fade into the page, and the lamp swings gently. It is the `hero__mihrab` block at the top of `index.html`.
+- **Every section label** has two chain links before it, like the links in the logo. The second slides in and locks onto the first as the section comes on screen, and the words and cards rise in after it.
+- **A gold line** under the bar at the top fills from left to right as the page is read.
+- **The quote** in "Our name" sits under a gold rule held by a star, as in the margin of a manuscript.
+- **What we do and the footer** are deep green bands, with the muṣḥaf's star-and-cross pattern faint at the edges of What we do and the logo's arch and chain large and faint in the corner of the footer. To make another section green, add `section--deep` to its `class`.
+- **The prayer times** carry each prayer's colour from the live map along their top edge.
+- **"verify it."** under the verse is underlined in gold once it has been read.
+
+Visitors who have asked their device for reduced motion see everything in place, with nothing moving.
+
 ## Phones, folding phones and dual-screen phones
 
 The site was checked on every common size, from the 280px outer screen of the first Galaxy Fold, through the Galaxy Z Fold and Flip, every iPhone from the SE to the Pro Max, and phones turned sideways, to tablets and large desktops.
@@ -151,7 +165,6 @@ After Masajid of Africa, this section shows Masjid al-Ḥarām, the qiblah of th
 
 - **The background**: parchment with a gold star-and-cross pattern and a double gold frame, like the illuminated pages of a printed muṣḥaf. It uses no verses, because Qurʾān text shouldn't sit behind buttons and pictures.
 - **The arcade**: four arches, linked like a chain, run from daylight to the setting sun: the Kaʿbah (`kaaba-arch.jpg`), the Clock Tower (`clock-tower.jpg`), sunset over the courtyards (`haram-sunset.jpg`) and the Prophet’s Masjid in Madinah in the evening light (`madinah-evening.jpg`, see "Photos"). Tapping an arch opens the whole picture, uncropped; the arrow keys move along and Esc closes it. On phones and tablets two whole arches show at a time, as in the strip in "What we’re about", and a swipe or the arrows either side move on to the next two, so no arch is cut by the edge of the screen. On wider screens all four show, so the arrows hide themselves.
-- **The leaves**: each arch starts shut, with two studded leaves that swing open one arch after another the first time the arcade comes on screen. Visitors who have asked their device for reduced motion see the pictures straight away.
 
 The arcade makes room for however many arches there are: to add one, copy an `<li class="arcade__bay">` block in the `<section id="haramain">` block of `index.html`, change its picture and text, and add one more `<span class="strip__dot">` to the row under the arches.
 

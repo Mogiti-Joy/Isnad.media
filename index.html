@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/styles.css?v=49">
+<link rel="stylesheet" href="css/styles.css?v=51">
 </head>
 <body>
 
@@ -84,6 +84,15 @@
 
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="wrap hero__inner">
+    <!-- A mihrab drawn in a gold line, with a lamp hanging from a chain at its point: the chain of the logo. -->
+    <div class="hero__mihrab" aria-hidden="true">
+      <svg class="hero__arch" viewBox="0 0 200 114.5" preserveAspectRatio="xMidYMax meet"><path d="M0 114.5A115 115 0 0 1 100 .5A115 115 0 0 1 200 114.5" pathLength="1"/></svg>
+      <span class="hero__leg hero__leg--l"></span><span class="hero__leg hero__leg--r"></span>
+      <svg class="hero__lamp" viewBox="0 0 40 150">
+        <g class="hero__chain"><rect x="14" y="0" width="12" height="26" rx="6"/><path d="M20 22V44"/><rect x="14" y="40" width="12" height="26" rx="6"/><path d="M20 62V84"/><rect x="14" y="80" width="12" height="26" rx="6"/></g>
+        <use href="#star" x="6" y="106" width="28" height="28"/>
+      </svg>
+    </div>
     <div class="hero__copy">
       <p class="eyebrow eyebrow--hero"><span>Stories you can trust</span><span class="eyebrow__ar" lang="ar" dir="rtl">قصص موثوقة</span></p>
       <h1 id="hero-title">Every story has a <span class="gold">chain.</span></h1>
@@ -107,6 +116,7 @@
 
   <!-- The saying the name rests on. -->
   <blockquote class="wrap quote">
+    <svg class="quote__star" aria-hidden="true"><use href="#star"/></svg>
     <p class="quote__ar" lang="ar" dir="rtl">الإِسْنَادُ مِنَ الدِّينِ، وَلَوْلَا الإِسْنَادُ لَقَالَ مَنْ شَاءَ مَا شَاءَ</p>
     <p class="quote__en">“The isnad is part of the religion. Were it not for the isnad, anyone could say whatever they wished.”</p>
   </blockquote>
@@ -462,7 +472,7 @@
   </div>
 </section>
 
-<section class="section" id="services" aria-labelledby="services-title">
+<section class="section section--deep" id="services" aria-labelledby="services-title">
   <div class="wrap">
     <header class="section__head">
       <p class="eyebrow"><span>What we do</span><span class="eyebrow__ar" lang="ar" dir="rtl">ما نقدّمه</span></p>
@@ -779,6 +789,7 @@
 </main>
 
 <footer class="site-footer">
+  <svg class="footer__mark" aria-hidden="true"><use href="#mark"/></svg>
   <div class="wrap footer__grid">
     <div class="footer__brand">
       <a class="brand" href="#top" aria-label="Isnad Media, back to the top">
@@ -814,6 +825,6 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="js/main.js?v=42"></script>
+<script src="js/main.js?v=44"></script>
 </body>
 </html>
