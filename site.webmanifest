@@ -1,0 +1,13 @@
+{
+  "name": "Isnad Media",
+  "short_name": "Isnad",
+  "description": "Short films, reminders and stories of Muslims across Africa, told with their sources.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#EEF4EF",
+  "theme_color": "#0F4535",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

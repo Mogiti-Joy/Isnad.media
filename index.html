@@ -9,6 +9,7 @@
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="assets/isnad-mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <!-- How the page looks when its link is shared. Once the site has its address, write og:image as the full address, e.g. https://example.org/assets/share.jpg -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Isnad Media">
@@ -19,10 +20,27 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The Isnad Media logo beside the Kaʿbah, seen through an arch.">
 <meta name="twitter:card" content="summary_large_image">
+<!-- Who Isnad Media is, for search engines. Once the site has its address, add "url" and "logo" as full addresses. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Isnad Media",
+  "alternateName": "إسناد",
+  "description": "Short films, reminders and stories of Muslims across Africa, told with their sources.",
+  "email": "isnadmedia9@gmail.com",
+  "telephone": "+250793835632",
+  "sameAs": [
+    "https://www.instagram.com/isnad_media",
+    "https://www.tiktok.com/@isnad.media7",
+    "https://www.youtube.com/@Isnadmedia9"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Gloock&family=Hanken+Grotesk:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
-<link rel="stylesheet" href="css/styles.css?v=51">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Bodoni+Moda:opsz,wght@6..96,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Reem+Kufi:wght@500;700&display=swap">
+<link rel="stylesheet" href="css/styles.css?v=57">
 </head>
 <body>
 
@@ -56,6 +74,8 @@
   <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" style="fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round"/></symbol>
 </svg>
 
+<a class="skip" href="#main">Skip to content</a>
+
 <header class="site-header">
   <div class="wrap site-header__inner">
     <a class="brand" href="#top" aria-label="Isnad Media, back to the top">
@@ -65,7 +85,7 @@
     <nav class="site-nav" id="siteNav" aria-label="Sections">
       <a href="#our-name">Our name</a>
       <a href="#find">Watch</a>
-      <a href="#services">What we do</a>
+      <a href="#services">Our expertise</a>
       <a href="#prayer-times">Prayer times</a>
       <a href="#haramain">From Haramain</a>
       <a href="#contact">Contact</a>
@@ -80,17 +100,38 @@
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="wrap hero__inner">
-    <!-- A mihrab drawn in a gold line, with a lamp hanging from a chain at its point: the chain of the logo. -->
+    <!-- A mihrab drawn in a gold line. From its point a chain is let down link by link, as a narration is handed down,
+         and at its end a mosque lamp, the logo's star on its glass, lights once the last link is in place. -->
     <div class="hero__mihrab" aria-hidden="true">
       <svg class="hero__arch" viewBox="0 0 200 114.5" preserveAspectRatio="xMidYMax meet"><path d="M0 114.5A115 115 0 0 1 100 .5A115 115 0 0 1 200 114.5" pathLength="1"/></svg>
       <span class="hero__leg hero__leg--l"></span><span class="hero__leg hero__leg--r"></span>
-      <svg class="hero__lamp" viewBox="0 0 40 150">
-        <g class="hero__chain"><rect x="14" y="0" width="12" height="26" rx="6"/><path d="M20 22V44"/><rect x="14" y="40" width="12" height="26" rx="6"/><path d="M20 62V84"/><rect x="14" y="80" width="12" height="26" rx="6"/></g>
-        <use href="#star" x="6" y="106" width="28" height="28"/>
+      <svg class="hero__lamp" viewBox="0 0 60 224">
+        <defs>
+          <radialGradient id="lampGlass" cx="50%" cy="72%" r="60%"><stop offset="0" stop-color="#FFF4CC"/><stop offset=".45" stop-color="#E9C96E"/><stop offset="1" stop-color="#A8841F"/></radialGradient>
+        </defs>
+        <!-- links face-on and edge-on in turn, interlocked like a real chain -->
+        <g class="hero__chain">
+          <rect class="hero__link" style="--i:0" x="24" y="0" width="12" height="22" rx="6"/>
+          <path class="hero__link" style="--i:1" d="M30 18V34"/>
+          <rect class="hero__link" style="--i:2" x="24" y="30" width="12" height="22" rx="6"/>
+          <path class="hero__link" style="--i:3" d="M30 48V64"/>
+          <rect class="hero__link" style="--i:4" x="24" y="60" width="12" height="22" rx="6"/>
+          <path class="hero__link" style="--i:5" d="M30 78V94"/>
+          <rect class="hero__link" style="--i:6" x="24" y="90" width="12" height="22" rx="6"/>
+          <path class="hero__link" style="--i:7" d="M30 108V124"/>
+          <circle class="hero__link" style="--i:8" cx="30" cy="131" r="6"/>
+        </g>
+        <g class="hero__lantern">
+          <path class="hero__cords" d="M30 137L13 160M30 137V160M30 137L47 160"/>
+          <path class="hero__glass" d="M12 160H48C44 168 38 173 38 181C50 185 55 195 53 203C51 213 41 217 35 217L37 222H23L25 217C19 217 9 213 7 203C5 195 10 185 22 181C22 173 16 168 12 160Z"/>
+          <path class="hero__bands" d="M22 181H38M8 195H52"/>
+          <use class="hero__medallion" href="#star" x="23" y="196" width="14" height="14"/>
+          <circle class="hero__medallion" cx="15" cy="203" r="2"/><circle class="hero__medallion" cx="45" cy="203" r="2"/>
+        </g>
       </svg>
     </div>
     <div class="hero__copy">
@@ -475,7 +516,7 @@
 <section class="section section--deep" id="services" aria-labelledby="services-title">
   <div class="wrap">
     <header class="section__head">
-      <p class="eyebrow"><span>What we do</span><span class="eyebrow__ar" lang="ar" dir="rtl">ما نقدّمه</span></p>
+      <p class="eyebrow"><span>Our expertise</span><span class="eyebrow__ar" lang="ar" dir="rtl">خبراتنا</span></p>
       <h2 id="services-title">Work with us</h2>
     </header>
     <ol class="services">
@@ -521,6 +562,7 @@
 
     <p class="prayers-head"><label for="cityPrayers">Prayer times for</label> <select class="city-select city-select--pill" id="cityPrayers"><option>Nairobi</option></select></p>
     <ol class="prayers" id="prayers" aria-label="Prayer times"></ol>
+    <noscript><p class="noscript">The prayer times, the countdown and the live map are worked out in your browser, so they need JavaScript. Turn it on to see them.</p></noscript>
     <p class="prayers__note" id="prayersNote"></p>
   </div>
 </section>
@@ -811,6 +853,7 @@
   <div class="wrap footer__base">
     <p>© <span id="year">2026</span> Isnad Media</p>
     <p>Prayer times are calculated and may differ by a few minutes from your local masjid.</p>
+    <p><a href="privacy.html">Privacy</a></p>
   </div>
 </footer>
 

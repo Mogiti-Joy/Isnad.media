@@ -1,0 +1,5 @@
+# Every search engine may read the whole site.
+# Once the site has its address, add a line pointing to the sitemap, e.g.
+# Sitemap: https://example.org/sitemap.xml
+User-agent: *
+Allow: /

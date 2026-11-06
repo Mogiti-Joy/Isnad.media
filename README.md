@@ -57,17 +57,19 @@ The other films are on the shelves under "What we’re about" (see below).
 
 ## The menu
 
-The bar at the top links to Our name, Watch, What we do, Prayer times, From Haramain and Contact, and underlines the section on screen. On phones it shows only the logo and Follow us. The links are the `<nav class="site-nav">` block in `index.html`.
+The bar at the top links to Our name, Watch, Our expertise, Prayer times, From Haramain and Contact, and underlines the section on screen. On phones it shows only the logo and Follow us. The links are the `<nav class="site-nav">` block in `index.html`.
 
 ## The look: the page as a chain
 
 The page is designed as an isnad: one link after another, from the opening to you.
 
-- **The opening** stands inside a mihrab drawn in a thin gold line, with a lamp (the gold star) hanging from three links of chain at its point, like the lamp in a prayer niche. The arch draws itself when the page loads, its sides run down and fade into the page, and the lamp swings gently. It is the `hero__mihrab` block at the top of `index.html`.
+- **The opening** is deep green and stands inside a mihrab drawn in a thin gold line. From the point of the arch a chain is let down one link at a time, as a narration is handed down, and a mosque lamp, with the logo's star on its glass, arrives at the end of it and is lit. Its light falls on the word "chain." in the heading, and the lamp swings gently. The arch draws itself when the page loads and its sides run down and fade into the page. It is the `hero__mihrab` block at the top of `index.html`.
+- **The page itself** is a pale sage green (`--bg` at the top of `css/styles.css`), with cards and form fields in white (`--surface`) so they stand out.
+- **Headings** are set in Bodoni Moda, from Google Fonts.
 - **Every section label** has two chain links before it, like the links in the logo. The second slides in and locks onto the first as the section comes on screen, and the words and cards rise in after it.
 - **A gold line** under the bar at the top fills from left to right as the page is read.
 - **The quote** in "Our name" sits under a gold rule held by a star, as in the margin of a manuscript.
-- **What we do and the footer** are deep green bands, with the muṣḥaf's star-and-cross pattern faint at the edges of What we do and the logo's arch and chain large and faint in the corner of the footer. To make another section green, add `section--deep` to its `class`.
+- **Our expertise and the footer** are deep green bands, with the muṣḥaf's star-and-cross pattern faint at the edges of Our expertise and the logo's arch and chain large and faint in the corner of the footer. To make another section green, add `section--deep` to its `class`.
 - **The prayer times** carry each prayer's colour from the live map along their top edge.
 - **"verify it."** under the verse is underlined in gold once it has been read.
 
@@ -125,9 +127,9 @@ The earlier thumbnails are in `originals/unused/old-thumbnails/`. If you replace
 
 To add a video to a shelf, copy one `<li class="shelf__film">` block inside that arch's `<div class="shelf">` in `index.html` and change the video, cover, length, series and text. The count under the arch updates itself.
 
-## What we do
+## Our expertise
 
-After the arch strip in "What we’re about", "What we do" (ما نقدّمه) lists Isnad Media's services: six main ones as numbered cards, then three under the smaller heading "Also from Isnad". The **Start a conversation** button under them goes to the contact form. To change a service, edit its `<li>` in the `<section id="services">` block in `index.html`.
+After the arch strip in "What we’re about", "Our expertise" (خبراتنا) lists Isnad Media's services: six main ones as numbered cards, then three under the smaller heading "Also from Isnad". The **Start a conversation** button under them goes to the contact form. To change a service, edit its `<li>` in the `<section id="services">` block in `index.html`.
 
 ## Contact
 
@@ -202,6 +204,10 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 | Path | What it is |
 |---|---|
 | `index.html` | The page |
+| `privacy.html` | The privacy notice, linked from the bottom of the footer |
+| `404.html` | The page shown for an address that doesn't exist |
+| `robots.txt` | Tells search engines they may read the whole site |
+| `site.webmanifest` | The name, colours and icons used when someone adds the site to their phone's home screen |
 | `css/styles.css` | All styling (colours are at the top, under `:root`) |
 | `js/main.js` | Settings, prayer times, the live map, the shelves and full view, contact form |
 | `assets/` | Logo, icons, the link-preview picture and photos |
@@ -222,13 +228,30 @@ Pictures that are no longer on the page are in `originals/unused/`. Two of them 
 ## Icons and link preview
 
 - `assets/isnad-mark.svg` is the browser-tab icon, with `assets/favicon-32.png` for browsers that can't show SVG icons.
-- `assets/apple-touch-icon.png` is the icon an iPhone or iPad shows when someone adds the site to their home screen.
+- `assets/apple-touch-icon.png` is the icon an iPhone or iPad shows when someone adds the site to their home screen, and `assets/icon-192.png` and `icon-512.png` are the same for Android phones (named in `site.webmanifest`).
 - `assets/share.jpg` (1200×630) is the picture shown when the site's link is shared on WhatsApp, Facebook, X, LinkedIn and similar apps, with the title and description in the `og:` lines at the top of `index.html`.
 
-**Once the site has its address,** change `og:image` at the top of `index.html` to the picture's full address (for example `https://isnadmedia.org/assets/share.jpg`). Some apps, Facebook among them, only show the picture when the address is written in full.
+## Search engines, privacy and safety
+
+- **Search engines** read the title, the description and a short description of Isnad Media (its name, email, WhatsApp number and social accounts) in the `<script type="application/ld+json">` block at the top of `index.html`. If an account or number changes, change it there too.
+- **Skip to content**: someone using a keyboard or a screen reader can press Tab once to jump past the bar to the page.
+- **Without JavaScript**, the prayer times section explains that the times and the map need it.
+- **Privacy**: `privacy.html` says what the site keeps (the city picked and how far each film was watched, in the visitor's own browser), that there are no cookies or tracking, and what happens to messages. If you add analytics, a newsletter, an embedded video or any other outside service, update it.
+- **Safety settings**: `_headers` and `.htaccess` also tell browsers to load nothing from other sites except Google Fonts, and not to let other sites show this one inside theirs. If you embed something from another site (a YouTube film, say), add its address to the `Content-Security-Policy` line in both files, or it won't show.
+- **Page not found**: `404.html` is shown for addresses that don't exist. Netlify, Cloudflare Pages and GitHub Pages find it by its name; on Apache hosting, `.htaccess` points to it.
+
+## Once the site has its address
+
+Some things need the site's full address (for example `https://isnadmedia.org`), so they wait until it has one:
+
+1. **The shared picture**: change `og:image` at the top of `index.html` to the picture's full address (for example `https://isnadmedia.org/assets/share.jpg`). Some apps, Facebook among them, only show the picture when the address is written in full.
+2. **The page's own address**: add `<link rel="canonical" href="https://isnadmedia.org/">` and `<meta property="og:url" content="https://isnadmedia.org/">` under the description at the top of `index.html`.
+3. **Search engines**: add `"url": "https://isnadmedia.org/"` and `"logo": "https://isnadmedia.org/assets/icon-512.png"` to the `ld+json` block at the top of `index.html`.
+4. **A sitemap**: add a `sitemap.xml` listing `https://isnadmedia.org/` and `https://isnadmedia.org/privacy.html`, and add its address to `robots.txt`.
+5. **Google Search Console** (search.google.com/search-console): add the site and send it the sitemap, so Google finds it sooner.
 
 ## Putting it online
 
-Upload the whole folder (everything except `serve.py`, this file and the `originals` folder) to any static web host, for example Netlify (drag and drop the folder), GitHub Pages, Cloudflare Pages or your current hosting's file manager. No server code is needed.
+Upload the whole folder (everything except `serve.py`, this file and the `originals` folder, and including `privacy.html`, `404.html`, `robots.txt` and `site.webmanifest`) to any static web host, for example Netlify (drag and drop the folder), GitHub Pages, Cloudflare Pages or your current hosting's file manager. No server code is needed.
 
 Include `_headers` and `.htaccess`. They tell visitors' browsers how long to keep each file (see "Data and caching" above). Your Mac hides files whose names start with a dot; press `Cmd + Shift + .` in Finder to see `.htaccess`.
