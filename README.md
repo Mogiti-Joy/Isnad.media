@@ -19,7 +19,6 @@ Open `js/main.js`. The settings are at the top, in `SETTINGS`:
 
 | Setting | What to put there |
 |---|---|
-| `email` | The address the contact form's messages are written to. |
 | `city` | The city whose prayer times are shown when a visitor's time zone doesn't match any city in the list (currently Nairobi). It must be one of the `CITIES` listed below it. |
 | `asrFactor` | `1` for the standard Asr (Shafiʿi, Maliki, Hanbali), `2` for Hanafi Asr. |
 
@@ -57,7 +56,7 @@ The other films are on the shelves under "What we’re about" (see below).
 
 ## The menu
 
-The bar at the top links to Our name, Watch, Our expertise, Prayer times, From Haramain and Contact, and underlines the section on screen. On phones it shows only the logo and Follow us. The links are the `<nav class="site-nav">` block in `index.html`.
+The bar at the top links to About us (Our name, and What we’re about below it), Our expertise, Prayer times, From Haramain and Contact, and underlines the section on screen; a section without a link of its own counts as part of the one before it. Follow us is in the footer. The links are the `<nav class="site-nav">` block in `index.html`.
 
 ## The look: the page as a chain
 
@@ -79,12 +78,11 @@ Visitors who have asked their device for reduced motion see everything in place,
 
 The site was checked on every common size, from the 280px outer screen of the first Galaxy Fold, through the Galaxy Z Fold and Flip, every iPhone from the SE to the Pro Max, and phones turned sideways, to tablets and large desktops.
 
-- **Menu**: up to 900px wide, the menu folds into a **Menu** button that opens the sections as a list. Choosing one, tapping elsewhere or pressing Esc closes it. On the narrowest screens the bar shows only the arch mark, Follow us and Menu.
+- **Menu**: up to 900px wide, the menu folds into a **Menu** button that opens the sections as a list. Choosing one, tapping elsewhere or pressing Esc closes it. On phones the bar shows the logo and Menu.
 - **Taps**: buttons and pickers are at least 44px tall on phones, the size Apple recommends for a finger. The city pickers use 16px text so iPhones don't zoom in when they are tapped.
 - **The map**: on a phone the 125 cities crowd together, so a tap picks the city closest to the finger.
 - **The full view**: swipe left or right to move between pictures (films keep their own controls, so swiping isn't used on them). The picture or film always fits the screen above its caption, including phones turned sideways, where the arrows move to the sides.
 - **Small details**: buttons never break their label over two lines, the map's labels are enlarged on phones, and numbers stay on the same line as their units ("4 min").
-- **The form**: phone keyboards show the right keys for email and phone numbers, and the Return key moves to the next field.
 - **Dual-screen phones** (such as the Surface Duo) with the page spread over both screens: nothing sits across the hinge. Two-part layouts put one part on each screen (the verse in Arabic on the left and English on the right), cards and services fill two columns, one each side, and the full view uses one screen. This is the `dual-screen phones` block near the end of `css/styles.css`.
 
 ## Our name
@@ -99,7 +97,7 @@ Tapping an arch turns its frame gold and opens a shelf of its videos below the s
 
 | Arch | Videos |
 |---|---|
-| From the Haramain | The recitation at the next table |
+| From the Haramain | The recitation at the next table, The Haram at night (a 3-second clip with no sound, from `assets/haramain/films/`) |
 | Masajid of Africa | Uganda National Mosque, Jumuʿah |
 | Scholars of the Sahel | The six Scholars of Mali films with Thierno Hady Thiam: Why Timbuktu is more famous abroad than at home, How Islam crossed the Sahara, From teacher to student, Islam’s first command, Who’s reading the manuscripts?, How Islam in West Africa has changed |
 | Faces of the Ummah | The recitation at the next table (also under From the Haramain), How Islam in West Africa has changed (also under Scholars of the Sahel), A night in Djibouti |
@@ -121,7 +119,7 @@ Each video on a shelf:
 - A night in Djibouti shows people walking towards the minaret, from behind.
 - Uganda National Mosque, also upright, shows the arch and minaret from the wide shot inside the film, above its captions.
 
-**Pictures in the strip.** Faces of the Ummah and African Muslim History use their film thumbnails. Three arches have their own tall pictures, 720×1000: `assets/masajid/djenne-arch.jpg` is cut from `djenne-1.jpg` to leave out the words on that page, `assets/video/scholars-of-the-sahel-arch.jpg` is a still from the 1080p Scholars of Mali footage, and `assets/video/masajid-of-africa-jumuah-arch.jpg` is the middle of the Jumuʿah cover, without its dividers.
+**Pictures in the strip.** Masajid of Africa, Faces of the Ummah and African Muslim History use their film thumbnails (Masajid of Africa shows the Uganda National Mosque's minaret). Two arches have their own tall pictures, 720×1000: `assets/video/scholars-of-the-sahel-arch.jpg` is a still from the 1080p Scholars of Mali footage, and `assets/video/masajid-of-africa-jumuah-arch.jpg` is the middle of the Jumuʿah cover, without its dividers.
 
 The earlier thumbnails are in `originals/unused/old-thumbnails/`. If you replace a thumbnail, raise its `?v=` number in `index.html` so returning visitors see the new one.
 
@@ -129,15 +127,15 @@ To add a video to a shelf, copy one `<li class="shelf__film">` block inside that
 
 ## Our expertise
 
-After the arch strip in "What we’re about", "Our expertise" (خبراتنا) lists Isnad Media's services: six main ones as numbered cards, then three under the smaller heading "Also from Isnad". The **Start a conversation** button under them goes to the contact form. To change a service, edit its `<li>` in the `<section id="services">` block in `index.html`.
+After the arch strip in "What we’re about", "Our expertise" (خبراتنا) lists Isnad Media's services: six main ones as numbered cards, then three under the smaller heading "Also from Isnad". The **Start a conversation** button under them goes to Contact. To change a service, edit its `<li>` in the `<section id="services">` block in `index.html`.
 
 ## Contact
 
-"Write to us" has the form, then the WhatsApp line and the promise about privacy, and beside it the three kinds of message and a button for each way to reach us: Email (isnadmedia9@gmail.com), WhatsApp (+250 793 835 632, `https://wa.me/250793835632`), Instagram and TikTok. In a WhatsApp link, write the number with the country code and no `+`, spaces or dashes.
+"Contact us" has its heading in the middle under a soft gold glow, then one white box with a gold border: the line "Have a story or a question? We are happy to hear from you.", a dark green pill button for each way to reach us (isnadmedia9@gmail.com, which opens the visitor's email app; +250 793 835 632, which starts a call on a phone; and WhatsApp us, `https://wa.me/250793835632`), then the promise not to publish anything without asking and the reply time. On phones the buttons stack, one per line. Instagram, TikTok and YouTube are in the footer.
 
-The form asks for a name, an email address (required, so we can reply), a WhatsApp number (optional), the topic and the message. A hidden field catches spam robots.
+They are in the `<section id="contact">` block of `index.html`. In a WhatsApp link, write the number with the country code and no `+`, spaces or dashes; in a phone (`tel:`) link, keep the `+` and leave out the spaces.
 
-"Send message" opens the visitor's own email app with their message already written to isnadmedia9@gmail.com, and they press send there. There is no Google Sheet or outside form service, so it is free and has no limit. A visitor with no email app set up sees the address on the page and can write to it directly.
+There is no form, so nothing is sent through the site itself.
 
 ## The adhan never stops (live map)
 
@@ -154,27 +152,36 @@ The map uses the same prayer times as the rest of the site, so there is nothing 
 
 ## Masajid of Africa
 
-After the live map, the story of the Great Mosque of Djenné in Mali, from Isnad Media's Instagram, lies beside a short introduction as a stack of its eight pages (`assets/masajid/djenne-1.jpg` to `djenne-8.jpg`, 1080×1350, in order). The pages under the top one fan out a little.
+The Masajid of Africa arch opens a shelf that starts with a photo story: the Great Mosque of Djenné in Mali, from Isnad Media's Instagram, as a stack of its eight pages (`assets/masajid/djenne-1.jpg` to `djenne-8.jpg`, 1080×1350, in order) beside a short introduction and a list of every page by name. The pages under the top one fan out a little. The stack is sized to the screen's height, so the whole of it, with its arrows and count, is always in view. The shelf's videos follow below.
 
-- **Turning the pages**: drag the top page aside (it flies off and the next one shows; drag the other way to bring the last one back), or use the arrows either side of the stack or the arrow keys. On phones each arrow hides when there is no page further that way. The count under the stack shows which page is on top.
+- **Turning the pages**: drag the top page aside (it flies off and the next one shows; drag the other way to bring the last one back), or use the arrows either side of the stack, the arrow keys, or the list of pages (the page on top is marked in gold). On phones each arrow hides when there is no page further that way. The count under the stack shows which page is on top.
 - **Reading in full**: tapping the top page opens it in the full view; closing it leaves the stack on the page last seen.
 
-The words on each page are part of the picture, so each picture's description in `index.html` repeats them for screen readers. To use another story, replace the eight pictures (keeping the names, or changing them in the `<section id="masajid">` block), then change the heading, the paragraph and the descriptions. For more or fewer pages, add or remove `<li class="deck__page">` blocks and change the "8" in the count and the labels.
+The words on each page are part of the picture, so each picture's description in `index.html` repeats them for screen readers. To use another story, replace the eight pictures (keeping the names, or changing them in the `<article class="story">` block inside `#shelf-masajid`), then change the heading, the paragraph, the page names in the list and the descriptions. For more or fewer pages, add or remove `<li class="deck__page">` blocks and their entries in the list, and change the "8" in the count and the labels.
+
+**Photos from Addis Ababa.** At the foot of the Masajid of Africa shelf, below the videos, two photos from inside a masjid in Merkato, Addis Ababa (the one in our Merkato film) sit beside a short introduction: the painted dome (`assets/masajid/addis-dome.jpg`), ringed with Sūrat al-Ikhlāṣ, Āyat al-Kursī and the close of al-Baqarah, and a pillar with shelves of muṣḥafs (`addis-shelves.jpg`). The cards show smaller copies (`-sm.jpg`, 600×800); tapping one opens the full photo, and the arrows move between the two. To add a photo, copy an `<li class="pics__item">` in the `<article class="pics">` block. The photos as received are in `originals/addis-whatsapp/`.
 
 ## From the Haramain
 
 After Masajid of Africa, this section shows Masjid al-Ḥarām, the qiblah of those prayers. Its files are in `assets/haramain/`.
 
 - **The background**: parchment with a gold star-and-cross pattern and a double gold frame, like the illuminated pages of a printed muṣḥaf. It uses no verses, because Qurʾān text shouldn't sit behind buttons and pictures.
-- **The arcade**: four arches, linked like a chain, run from daylight to the setting sun: the Kaʿbah (`kaaba-arch.jpg`), the Clock Tower (`clock-tower.jpg`), sunset over the courtyards (`haram-sunset.jpg`) and the Prophet’s Masjid in Madinah in the evening light (`madinah-evening.jpg`, see "Photos"). Tapping an arch opens the whole picture, uncropped; the arrow keys move along and Esc closes it. On phones and tablets two whole arches show at a time, as in the strip in "What we’re about", and a swipe or the arrows either side move on to the next two, so no arch is cut by the edge of the screen. On wider screens all four show, so the arrows hide themselves.
+- **The arches**: a row of five arches, linked like a chain, works like the strip in "What we’re about": each arch shows how many videos it holds, and tapping it opens its shelf of videos underneath (one shelf at a time; tapping again closes it). Four arches show at a time on wide screens and two on phones and tablets, with arrows and small arches beneath to move along.
+  - **The Kaʿbah**: Seeing the Kaʿbah for the first time, At the railing, The Kaʿbah at dusk.
+  - **The Adhan**: Adhan in Makkah, from an arch on the upper floor and beneath the Clock Tower.
+  - **Around the Haramain**: The rock of Marwah, Bakhūr, Madinah.
+  - **Ramaḍān** (month 9 of the Hijri year): Martyrs of the Battle of Badr, which was fought on 17 Ramaḍān, 2 AH.
+  - **Hajj** (Dhū al-Ḥijjah, month 12): With the pilgrims, Mount Arafat, Hajj: Pilgrims at ʿArafah, Hajj: Muzdalifah, in the order of the days of Hajj.
 
-The arcade makes room for however many arches there are: to add one, copy an `<li class="arcade__bay">` block in the `<section id="haramain">` block of `index.html`, change its picture and text, and add one more `<span class="strip__dot">` to the row under the arches.
+  Each arch's picture is a still from one of its films.
+- **The shelves** work like the ones in "What we’re about": each video card plays a silent preview on hover (or while on screen on a phone), shows its length and how much of it the visitor has watched, and plays with its sound in the full view, where the arrows move through that shelf.
+- **The films** are Isnad Media's own phone clips, in `assets/haramain/films/` (`NAME.mp4`, its cover `NAME.jpg`, a 960×540 card picture `NAME-sm.jpg`, and an 8-second silent preview in `previews/NAME.mp4`). Most clips were filmed upright, so their card pictures and previews show the clip in the middle with a blurred copy filling the sides; the full view plays them upright. Most are the clips as filmed, only rearranged to start playing sooner. Three were cleaned up and enlarged by half (1280×724 or 720×1272) to look sharper: Seeing the Kaʿbah for the first time, Hajj: Muzdalifah (brightened, keeping the night sky dark) and Hajj: Pilgrims at ʿArafah, with noise reduction, a little more contrast and colour, and sharpening. The files as received are in `originals/haramain-whatsapp/`. Each film keeps the sound it was filmed with; the two Adhan in Makkah films carry the call to prayer.
 
-The arches show smaller copies of the pictures (`kaaba-arch-sm.jpg` and so on); tapping an arch opens the full-size one. To swap a picture, keep the same file name, or change it in the `<section id="haramain">` block.
+To add a film, copy a `<li class="shelf__film">` in its shelf (`<div class="shelf" id="shelf-h-...">`) in the `<section id="haramain">` block of `index.html`, change its files and text, and make its preview with the command under "Data and caching". The count on the arch updates itself.
 
-The Clock Tower was regraded to soften its gold and sky. The earlier versions are `originals/clock-tower-before-regrade.jpg` and `clock-tower-sm-before-regrade.jpg`.
+To add an arch, such as Muḥarram (month 1) or Shawwāl and ʿĪd al-Fiṭr (month 10), copy an `<li class="arcade__bay">` in the Haramain strip and a shelf, give the shelf a new `id` and point the arch's `aria-controls` at it, and add one more `<span class="strip__dot">` under the arches.
 
-The Maghrib clip and the wide courtyards banner that used to be in the Haramain arcade were removed because they repeated the courtyards clip and looked like the Sunset arch. Their files are in `originals/unused/`.
+The four photos that used to be in this section (the Kaʿbah from the upper floor, the Clock Tower, sunset over the courtyards and the Prophet's Masjid in the evening light) were removed to leave it to the films. They are in `originals/unused/haramain-photos/`, with the Clock Tower's earlier versions in `originals/clock-tower-before-regrade.jpg` and `clock-tower-sm-before-regrade.jpg`. The Maghrib clip and the wide courtyards banner that were there before them are in `originals/unused/`.
 
 If you edit the CSS or JavaScript after the site is online, raise the `?v=` number on their links at the top and bottom of `index.html`, so visitors' browsers fetch the new version.
 
@@ -209,7 +216,7 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 | `robots.txt` | Tells search engines they may read the whole site |
 | `site.webmanifest` | The name, colours and icons used when someone adds the site to their phone's home screen |
 | `css/styles.css` | All styling (colours are at the top, under `:root`) |
-| `js/main.js` | Settings, prayer times, the live map, the shelves and full view, contact form |
+| `js/main.js` | Settings, prayer times, the live map, the shelves and full view |
 | `assets/` | Logo, icons, the link-preview picture and photos |
 | `assets/video/` | The films and their cover images |
 | `assets/masajid/` | The eight pages of the Djenné story in Masajid of Africa |
@@ -219,11 +226,11 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 
 ## Photos
 
-- `assets/haramain/madinah-evening.jpg` (the Prophet’s Masjid, the fourth arch) is from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Madeena_masjid_nabavi_12122008230.jpg). Its photographer released it into the public domain, so it needs no credit.
 - `assets/makkah-sunset.jpg` (Makkah at sunset, under the verse) was supplied as a WhatsApp image. It has no caption on the page; if it needs a photographer's credit, add one under the photo in `index.html`.
-- The other Haram pictures and all the films are Isnad Media's own.
+- `assets/masajid/addis-dome.jpg` and `addis-shelves.jpg` (inside a masjid in Merkato, Addis Ababa) were supplied as WhatsApp images. If they need a photographer's credit, add one under the photos in `index.html`.
+- All the films are Isnad Media's own.
 
-Pictures that are no longer on the page are in `originals/unused/`. Two of them came from Wikimedia Commons and need their photographer credited if they are ever used again: `lamu-maulidi-dhows.jpg` (dhow race at Lamu during Maulidi, by FredD, CC BY-SA 3.0) and `lamu-town.jpg` (Lamu Island, by folklore.co.ke, CC BY-SA 4.0). The same goes for their cropped copies in `unused/doors/east-africa/`.
+Pictures that are no longer on the page are in `originals/unused/`. Of the old Haramain photos there, `haramain-photos/madinah-evening.jpg` is from [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Madeena_masjid_nabavi_12122008230.jpg) and in the public domain; the rest are Isnad Media's own. Two of them came from Wikimedia Commons and need their photographer credited if they are ever used again: `lamu-maulidi-dhows.jpg` (dhow race at Lamu during Maulidi, by FredD, CC BY-SA 3.0) and `lamu-town.jpg` (Lamu Island, by folklore.co.ke, CC BY-SA 4.0). The same goes for their cropped copies in `unused/doors/east-africa/`.
 
 ## Icons and link preview
 

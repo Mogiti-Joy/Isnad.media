@@ -6,7 +6,6 @@
      Settings. Change these to match Isnad Media.
      ------------------------------------------------------------------ */
   const SETTINGS = {
-    email: 'isnadmedia9@gmail.com',  // "Send message" opens the visitor's email app with the message addressed here
     city: 'Nairobi',            // prayer times shown when a visitor's time zone matches none of the CITIES below
     asrFactor: 1,               // 1 = Shafiʿi, Maliki, Hanbali; 2 = Hanafi
   };
@@ -361,8 +360,9 @@
   }
   for (const el of $$('[data-full]')) {
     el.addEventListener('click', () => {
-      for (const thumb of $$('.shelf__thumb')) preview(thumb, false);
-      group = $$('[data-full]', el.closest('[data-gallery]') || document);
+      for (const thumb of $$('[data-preview]')) preview(thumb, false);
+      const gallery = el.closest('[data-gallery]');
+      group = $$('[data-full]', gallery || document).filter(x => x.closest('[data-gallery]') === gallery);
       box.classList.toggle('is-single', group.length < 2);
       showPiece(group.indexOf(el));
       box.showModal();
@@ -394,10 +394,11 @@
 
   /* ---------- masajid of africa: a stack of pages ---------- */
 
-  // The top page can be dragged away (or back), or turned with the arrows or the arrow keys.
+  // The top page can be dragged away (or back), turned with the arrows or the arrow keys, or picked from the story's list of pages.
   // Tapping the top page opens it in the full view; closing that leaves the stack on the page last seen.
   for (const deck of $$('[data-deck]')) {
     const pages = $$('.deck__page', deck), steps = $$('[data-step]', deck), stage = $('.deck__stage', deck);
+    const chapters = $$('[data-go]', deck.closest('.story') || deck);
     let at = 0;
     function go(i) {
       at = Math.max(0, Math.min(pages.length - 1, i));
@@ -409,8 +410,10 @@
       $('.deck__now', deck).textContent = String(at + 1).padStart(2, '0');
       steps[0].disabled = at === 0;
       steps[1].disabled = at === pages.length - 1;
+      chapters.forEach((c, n) => n === at ? c.setAttribute('aria-current', 'step') : c.removeAttribute('aria-current'));
     }
     for (const b of steps) b.addEventListener('click', () => go(at + Number(b.dataset.step)));
+    for (const c of chapters) c.addEventListener('click', () => go(Number(c.dataset.go)));
     deck.addEventListener('keydown', e => {
       if (e.key === 'ArrowRight') go(at + 1);
       if (e.key === 'ArrowLeft') go(at - 1);
@@ -448,17 +451,24 @@
 
   /* ---------- header: the section on screen is marked in the menu ---------- */
 
-  const navLinks = $$('.site-nav a');
+  // A section without a link of its own counts as part of the one before it
+  // (What we're about marks About us, and Across Africa marks Prayer times).
+  const navLinks = $$('.site-nav a'), linkFor = new Map();
+  let lastLink = null;
+  for (const section of $$('main > section[id]')) {
+    lastLink = navLinks.find(a => a.hash === `#${section.id}`) || lastLink;
+    linkFor.set(section, lastLink);
+  }
   const spy = new IntersectionObserver(entries => {
     for (const e of entries) {
       if (!e.isIntersecting) continue;
       for (const a of navLinks) {
-        if (a.hash === `#${e.target.id}`) a.setAttribute('aria-current', 'location');
+        if (a === linkFor.get(e.target)) a.setAttribute('aria-current', 'location');
         else a.removeAttribute('aria-current');
       }
     }
   }, { rootMargin: '-45% 0px -50% 0px' });
-  for (const section of $$('main > section[id]')) spy.observe(section);
+  for (const section of linkFor.keys()) spy.observe(section);
 
   // Phones: the menu button opens the sections as a list; choosing one, tapping elsewhere or Esc closes it.
   const menuBtn = $('.menu-btn'), nav = $('#siteNav');
@@ -493,11 +503,11 @@
   // Without the script, or with reduced motion, everything simply shows.
   if (!reduceMotion.matches) {
     document.documentElement.classList.add('js-reveal');
-    const rising = $$('.section__head, .name__head, .name__text, .quote, .atlas__head, .masajid__head, .countdown, .prayers, .service, .also__item, .ways li, .contact__links');
+    const rising = $$('.section__head, .name__head, .name__text, .quote, .atlas__head, .countdown, .prayers, .service, .also__item, .talk');
     for (const el of rising) {
       el.classList.add('reveal');
       // cards in the same row follow one another
-      const row = [...el.parentElement.children].filter(c => c.matches('.service, .also__item, .ways li'));
+      const row = [...el.parentElement.children].filter(c => c.matches('.service, .also__item'));
       if (row.length > 1) el.style.setProperty('--d', `${(row.indexOf(el) % 3) * 0.1}s`);
     }
     const seen = new IntersectionObserver(entries => {
@@ -512,10 +522,11 @@
 
   /* ---------- the arch strip: each arch opens its shelf of videos ---------- */
 
+  // One shelf open at a time in each strip; the Watch strip and the Haramain's each keep their own.
   const shelfBtns = $$('[data-shelf]');
   for (const btn of shelfBtns) btn.addEventListener('click', () => {
     const open = btn.getAttribute('aria-expanded') !== 'true';
-    for (const b of shelfBtns) {
+    for (const b of shelfBtns.filter(b => b.closest('[data-strip]') === btn.closest('[data-strip]'))) {
       const on = open && b === btn, shelf = $(`#${b.getAttribute('aria-controls')}`);
       b.setAttribute('aria-expanded', String(on));
       b.closest('.arcade__bay').classList.toggle('is-open', on);
@@ -525,7 +536,7 @@
   });
 
   // The arrows move two arches along. The small arches beneath light up for every arch in view, at any screen width.
-  // Where every arch already fits, as the Haramain's do on a wide screen, the bar under them is hidden.
+  // Where every arch already fits, the bar under them is hidden.
   for (const strip of $$('[data-strip]')) {
     const bar = strip.nextElementSibling, bays = $$('.arcade__bay', strip), dots = $$('.strip__dot', bar), steps = $$('[data-strip-step]', bar), frame = $('.arcade__frame', strip);
     const stripView = () => {
@@ -541,7 +552,7 @@
       steps[1].disabled = strip.scrollLeft > strip.scrollWidth - strip.clientWidth - 4;
     };
     for (const b of steps) b.addEventListener('click', () => {
-      const step = bays[2].offsetLeft - bays[0].offsetLeft;
+      const step = bays.length > 2 ? bays[2].offsetLeft - bays[0].offsetLeft : strip.clientWidth;
       strip.scrollBy({ left: Number(b.dataset.stripStep) * step, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
     });
     strip.addEventListener('scroll', stripView, { passive: true });
@@ -584,13 +595,13 @@
       label.textContent = thumb.dataset.label + (w?.done ? ', watched' : pct ? `, ${Math.round(pct)}% watched` : '');
     }
     for (const btn of shelfBtns) {
-      const thumbs = $$('.shelf__thumb', $(`#${btn.getAttribute('aria-controls')}`)), count = $('.strip__count', btn.closest('.arcade__bay'));
+      const shelf = $(`#${btn.getAttribute('aria-controls')}`), thumbs = $$('.shelf__thumb', shelf), count = $('.strip__count', btn.closest('.arcade__bay'));
       if (!thumbs.length) continue;
-      count.textContent = `${thumbs.length} video${thumbs.length > 1 ? 's' : ''}`;
+      count.textContent = `${thumbs.length} video${thumbs.length > 1 ? 's' : ''}${$('.story', shelf) ? ' + a story' : ''}`;
     }
   }
 
-  // A silent preview of the first seconds plays in a thumbnail: on hover with a mouse,
+  // A silent preview of the first seconds plays in a thumbnail or a film's arch: on hover with a mouse,
   // or while it is on screen on a touch screen. Never with reduced motion or data saving.
   function preview(thumb, on) {
     let v = $('.shelf__preview', thumb);
@@ -613,7 +624,7 @@
   }
   if (!reduceMotion.matches && !saveData) {
     const mouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    for (const thumb of $$('.shelf__thumb')) {
+    for (const thumb of $$('[data-preview]')) {
       if (mouse) {
         thumb.addEventListener('pointerenter', () => preview(thumb, true));
         thumb.addEventListener('pointerleave', () => preview(thumb, false));
@@ -855,20 +866,6 @@
     setInterval(() => { if (onScreen && !playing) render(); }, 20000);
     render();
   })();
-
-  /* ---------- contact form ---------- */
-
-  // The visitor's email app opens with the message written out.
-  $('#contactForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const status = $('#formStatus');
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-    if (data._honey) return;  // filled in by a spam robot
-    const body = `${data.message}\n\n${data.name}\n${data.email}${data.whatsapp ? `\nWhatsApp: ${data.whatsapp}` : ''}`;
-    location.href = `mailto:${SETTINGS.email}?subject=${encodeURIComponent(`${data.topic}, from the Isnad Media website`)}&body=${encodeURIComponent(body)}`;
-    status.dataset.state = 'info';
-    status.innerHTML = `Your email app should open with your message. If it doesn’t, write to us at <a href="mailto:${SETTINGS.email}">${SETTINGS.email}</a>.`;
-  });
 
   /* ---------- start ---------- */
 
