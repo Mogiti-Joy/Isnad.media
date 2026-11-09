@@ -67,7 +67,6 @@ The page is designed as an isnad: one link after another, from the opening to yo
 - **Headings** are set in Bodoni Moda, from Google Fonts.
 - **Every section label** has two chain links before it, like the links in the logo. The second slides in and locks onto the first as the section comes on screen, and the words and cards rise in after it.
 - **A gold line** under the bar at the top fills from left to right as the page is read.
-- **The quote** in "Our name" sits under a gold rule held by a star, as in the margin of a manuscript.
 - **Our expertise and the footer** are deep green bands, with the muṣḥaf's star-and-cross pattern faint at the edges of Our expertise and the logo's arch and chain large and faint in the corner of the footer. To make another section green, add `section--deep` to its `class`.
 - **The prayer times** carry each prayer's colour from the live map along their top edge.
 - **"verify it."** under the verse is underlined in gold once it has been read.
@@ -87,7 +86,7 @@ The site was checked on every common size, from the 280px outer screen of the fi
 
 ## Our name
 
-The "Our name" section comes straight after the opening, so it is the first thing people reach when they scroll. It explains the name in two paragraphs, then gives the saying of ʿAbdullāh ibn al-Mubārak on the isnad in Arabic and English.
+The "Our name" section comes straight after the opening, so it is the first thing people reach when they scroll. It explains the name in two paragraphs.
 
 ## What we’re about
 

@@ -1162,43 +1162,6 @@ html:not(.js-reveal) .ayah__en .gold { background-size: 100% 1.5px; }
 }
 .name__text > p { max-width: 60ch; color: var(--muted); }
 
-/* the quote closes the story, under a gold rule held by a star, as in the margin of a manuscript */
-.quote {
-  position: relative;
-  display: grid;
-  justify-items: center;
-  gap: 12px;
-  max-width: 980px;
-  margin: clamp(32px, 4vw, 56px) auto 0;
-  padding-top: 48px;
-  text-align: center;
-}
-.quote::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line-gold) 18%, var(--gold) 50%, var(--line-gold) 82%, transparent);
-}
-.quote__star {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 22px;
-  height: 22px;
-  padding-inline: 14px;
-  box-sizing: content-box;
-  background: var(--bg);
-  color: var(--gold);
-  transform: translate(-50%, -50%);
-  transition: transform 1.2s cubic-bezier(.2, .7, .2, 1) .2s;
-}
-.js-reveal .quote:not(.is-seen) .quote__star { transform: translate(-50%, -50%) rotate(-135deg); }
-.quote__ar { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem); line-height: 1.8; color: var(--gold-text); }
-.quote__en { max-width: 34ch; font-family: var(--font-display); font-size: clamp(1.35rem, 1.1rem + .9vw, 1.9rem); line-height: 1.35; color: var(--green); }
-
 @media (max-width: 900px) {
   .name { grid-template-columns: minmax(0, 1fr); }
 }
@@ -1532,11 +1495,8 @@ html:not(.js-reveal) .ayah__en .gold { background-size: 100% 1.5px; }
   .arcade { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fold-gap); row-gap: 40px; }
   .arcade__bay + .arcade__bay .arcade__frame::before { display: none; }  /* the chain links would cross the hinge */
   .section__head { max-width: calc(var(--fold-start) - 48px); }
-  /* the verse and the quote: Arabic on the left screen, English on the right */
+  /* the verse: Arabic on the left screen, English on the right */
   .ayah__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--fold-gap); align-items: center; }
-  .quote { max-width: none; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--fold-gap); align-items: center; }
-  .quote__ar { grid-column: 1; }
-  .quote__en { grid-column: 2; }
   .footer__base { justify-content: flex-start; column-gap: var(--fold-gap); }
   .footer__base p { flex: 1 1 0; }
   .lightbox { padding-left: calc(var(--fold-end) + 24px); padding-right: 24px; }
