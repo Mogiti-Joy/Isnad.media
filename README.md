@@ -169,7 +169,7 @@ After Masajid of Africa, this section shows Masjid al-Ḥarām, the qiblah of th
   - **The Kaʿbah**: Seeing the Kaʿbah for the first time, At the railing, The Kaʿbah at dusk.
   - **The Adhan**: Adhan in Makkah, from an arch on the upper floor and beneath the Clock Tower.
   - **Around the Haramain**: The rock of Marwah, Bakhūr, Madinah.
-  - **Ramaḍān** (month 9 of the Hijri year): Martyrs of the Battle of Badr, which was fought on 17 Ramaḍān, 2 AH.
+  - **Ramaḍān** (month 9 of the Hijri year): The Battle of Badr, fought on 17 Ramaḍān, 2 AH: a 58-second film of the battlefield, Jabal al-Malāʾikah and the plaque naming the fourteen martyrs, with its own titles and a recitation by Sheikh Maher Al-Muaiqly (`battle-of-badr.mp4`). It replaced the 20-second Martyrs of the Battle of Badr clip, whose files are in `originals/unused/martyrs-of-badr/`.
   - **Hajj** (Dhū al-Ḥijjah, month 12): With the pilgrims, Mount Arafat, Hajj: Pilgrims at ʿArafah, Hajj: Muzdalifah, in the order of the days of Hajj.
 
   Each arch's picture is a still from one of its films.
