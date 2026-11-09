@@ -258,7 +258,7 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
 .brand__sub { font-size: .625rem; font-weight: 700; letter-spacing: .55em; color: var(--gold); }
 
 /* the sections, with the one on screen underlined in gold */
-.site-nav { display: flex; gap: 4px; margin-left: auto; }
+.site-nav { display: flex; align-items: center; gap: 4px; margin-left: auto; }
 .site-nav a {
   position: relative;
   padding: 10px 14px;
@@ -284,6 +284,23 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
 .site-nav a[aria-current] { color: var(--green); }
 .site-nav a:hover::after,
 .site-nav a[aria-current]::after { transform: scaleX(1); }
+/* Contact is a green pill at the end, in the place and style the Follow us button had */
+.site-nav a.site-nav__cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  margin-left: 8px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--green);
+  color: var(--white);
+  letter-spacing: .02em;
+  white-space: nowrap;
+  transition: background-color .2s, box-shadow .2s;
+}
+.site-nav a.site-nav__cta::after { content: none; }
+.site-nav a.site-nav__cta:hover { background: var(--green-deep); color: var(--white); }
+.site-nav a.site-nav__cta[aria-current] { background: var(--green-deep); color: var(--white); box-shadow: inset 0 0 0 1.5px var(--gold-light); }
 .site-header__back { margin-left: auto; }
 .menu-btn { display: none; }
 
@@ -314,6 +331,7 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
     right: 0;
     display: none;
     flex-direction: column;
+    align-items: stretch;
     gap: 0;
     margin: 0;
     padding: 6px max(20px, env(safe-area-inset-left, 0px)) 14px;
@@ -324,6 +342,8 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
   .site-nav.is-open { display: flex; animation: reach-in .25s cubic-bezier(.2, .7, .2, 1); }
   .site-nav a { display: flex; align-items: center; min-height: 52px; padding: 0 4px; border-bottom: 1px solid var(--line); font-size: 1.0625rem; color: var(--green); }
   .site-nav a:last-child { border-bottom: 0; }
+  /* in the phone menu, Contact is a full-width green pill under the other sections */
+  .site-nav a.site-nav__cta { justify-content: center; min-height: 48px; margin: 12px 0 2px; }
   .site-nav a::after { left: 4px; right: auto; bottom: 12px; width: 28px; }
 }
 @media (max-width: 420px) {

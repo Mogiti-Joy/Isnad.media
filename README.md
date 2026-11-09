@@ -56,7 +56,7 @@ The other films are on the shelves under "What we’re about" (see below).
 
 ## The menu
 
-The bar at the top links to About us (Our name, and What we’re about below it), Our expertise, Prayer times, From Haramain and Contact, and underlines the section on screen; a section without a link of its own counts as part of the one before it. Follow us is in the footer. The links are the `<nav class="site-nav">` block in `index.html`.
+The bar at the top links to About us (Our name, and What we’re about below it), Our expertise, Prayer times, From Haramain and Contact, and underlines the section on screen. Contact is a green pill button at the end of the bar (at the foot of the list on phones); a section without a link of its own counts as part of the one before it. Follow us is in the footer. The links are the `<nav class="site-nav">` block in `index.html`.
 
 ## The look: the page as a chain
 
