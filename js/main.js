@@ -505,7 +505,7 @@
   // Without the script, or with reduced motion, everything simply shows.
   if (!reduceMotion.matches) {
     document.documentElement.classList.add('js-reveal');
-    const rising = $$('.section__head, .name__head, .name__text, .atlas__head, .countdown, .prayers, .service, .also__item, .talk');
+    const rising = $$('.section__head, .name__mark, .name__head, .name__text, .atlas__head, .countdown, .prayers, .service, .also__item, .talk');
     for (const el of rising) {
       el.classList.add('reveal');
       // cards in the same row follow one another

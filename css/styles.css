@@ -1182,23 +1182,84 @@ html:not(.js-reveal) .ayah__en .gold { background-size: 100% 1.5px; }
 .name {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  align-items: end;
-  gap: clamp(28px, 6vw, 96px);
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px) clamp(28px, 6vw, 96px);
 }
-.name__head { display: grid; gap: 14px; }
-.name__text { display: grid; gap: 16px; }
+/* the word itself, large, with its three root letters beneath */
+.name__mark { display: grid; justify-items: center; gap: 6px; }
 .name__ar {
   font-family: var(--font-kufi);
   font-weight: 700;
-  font-size: clamp(3.5rem, 2.5rem + 3vw, 5.5rem);
-  line-height: 1.1;
+  font-size: clamp(5rem, 2.5rem + 9vw, 9.5rem);
+  line-height: 1.15;
   color: var(--gold);
-  text-align: left;
 }
-.name__text > p { max-width: 60ch; color: var(--muted); }
+.name__root {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+.name__root [lang="ar"] {
+  font-family: var(--font-kufi);
+  font-size: 1.125rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  word-spacing: .5em;
+  color: var(--green);
+}
+.name__root [lang="ar"]::after { content: ""; display: inline-block; width: 28px; height: 1px; margin-right: 14px; vertical-align: middle; background: var(--gold); }
+.name__head { display: grid; gap: 14px; }
+.name__head > p:not(.eyebrow) { max-width: 60ch; color: var(--muted); }
+
+.name__text { grid-column: 1 / -1; display: grid; gap: 22px; }
+.name__lead { color: var(--muted); }
+/* a gold line runs through one link per question */
+.name__links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 clamp(20px, 3vw, 40px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--gold);
+}
+.name__links li {
+  position: relative;
+  padding-top: 22px;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 1rem + .9vw, 1.7rem);
+  line-height: 1.25;
+  color: var(--green);
+  text-wrap: balance;
+}
+.name__links li::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 22px;
+  height: 11px;
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+  background: var(--bg);
+}
+.name__close { max-width: 60ch; color: var(--muted); }
+.name__close strong { font-weight: 600; color: var(--green); }
 
 @media (max-width: 900px) {
   .name { grid-template-columns: minmax(0, 1fr); }
+  .name__mark { justify-items: start; }
+}
+/* on a phone the chain hangs down the side instead */
+@media (max-width: 640px) {
+  .name__links { grid-template-columns: minmax(0, 1fr); gap: 16px; border-top: 0; border-left: 1px solid var(--gold); }
+  .name__links li { padding: 0 0 0 26px; }
+  .name__links li::before { top: .45em; left: -6px; width: 11px; height: 22px; }
 }
 
 /* ---------- masajid of africa: a photo story as a stack of pages, at the head of its shelf ---------- */
@@ -1530,6 +1591,10 @@ html:not(.js-reveal) .ayah__en .gold { background-size: 100% 1.5px; }
   .arcade { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--fold-gap); row-gap: 40px; }
   .arcade__bay + .arcade__bay .arcade__frame::before { display: none; }  /* the chain links would cross the hinge */
   .section__head { max-width: calc(var(--fold-start) - 48px); }
+  .name__text { grid-column: 2; }  /* the three questions keep to the right screen */
+  .name__links { grid-template-columns: minmax(0, 1fr); gap: 16px; border-top: 0; border-left: 1px solid var(--gold); }
+  .name__links li { padding: 0 0 0 26px; }
+  .name__links li::before { top: .45em; left: -6px; width: 11px; height: 22px; }
   /* the verse: Arabic on the left screen, English on the right */
   .ayah__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--fold-gap); align-items: center; }
   .footer__base { justify-content: flex-start; column-gap: var(--fold-gap); }
