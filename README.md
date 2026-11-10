@@ -62,8 +62,9 @@ The bar at the top links to About us (Our name, and What we’re about below it)
 
 The page is designed as an isnad: one link after another, from the opening to you.
 
-- **The opening** is deep green and stands inside a mihrab drawn in a thin gold line. From the point of the arch a chain is let down one link at a time, as a narration is handed down, and a mosque lamp, with the logo's star on its glass, arrives at the end of it and is lit. Its light falls on the word "chain." in the heading, and the lamp swings gently. The arch draws itself when the page loads and its sides run down and fade into the page. It is the `hero__mihrab` block at the top of `index.html`.
+- **The opening** stands over a photo of Makkah at sunset (`assets/makkah-sunset.jpg`), kept clear under a light green wash, inside a mihrab drawn in a thin gold line. At the very top of the page the bar is clear too, with the logo and links in white over the photo; once the page is scrolled it turns solid. To change the photo or how dark the wash is, see `.hero:not(.lost)` in `css/styles.css`. From the point of the arch a chain is let down one link at a time, as a narration is handed down, and a mosque lamp, with the logo's star on its glass, arrives at the end of it and is lit. Its light falls on the word "chain." in the heading, and the lamp swings gently. The arch draws itself when the page loads and its sides run down and fade into the page. It is the `hero__mihrab` block at the top of `index.html`.
 - **The page itself** is a pale sage green (`--bg` at the top of `css/styles.css`), with cards and form fields in white (`--surface`) so they stand out.
+- **The green** is very dark: `--green-deep` (`#06241A`) for the bands and the footer, and `--green` (`#0A3023`) for headings, buttons and the arch frames. Both are at the top of `css/styles.css`.
 - **Headings** are set in Bodoni Moda, from Google Fonts.
 - **Every section label** has two chain links before it, like the links in the logo. The second slides in and locks onto the first as the section comes on screen, and the words and cards rise in after it.
 - **A gold line** under the bar at the top fills from left to right as the page is read.
@@ -225,7 +226,7 @@ and add `data-preview="assets/video/previews/NAME.mp4"` to the film's `<button c
 
 ## Photos
 
-- `assets/makkah-sunset.jpg` (Makkah at sunset, under the verse) was supplied as a WhatsApp image. It has no caption on the page; if it needs a photographer's credit, add one under the photo in `index.html`.
+- `assets/makkah-sunset.jpg` (Makkah at sunset, behind the opening; it used to sit under the verse, which now stands by itself) was supplied as a WhatsApp image. It has no caption on the page; if it needs a photographer's credit, add one in `index.html`.
 - `assets/masajid/addis-dome.jpg` and `addis-shelves.jpg` (inside a masjid in Merkato, Addis Ababa) were supplied as WhatsApp images. If they need a photographer's credit, add one under the photos in `index.html`.
 - All the films are Isnad Media's own.
 

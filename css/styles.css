@@ -1,9 +1,9 @@
 /* Isnad Media */
 
 :root {
-  /* Layout: a pale sage page in the logo's green and gold; a mihrab arch frames a film at the top and the sections hang below it like links in a chain. */
-  --green: #114D3A;
-  --green-deep: #0B3A2B;
+  /* Layout: a pale sage page in a very dark green and the logo's gold; the opening stands in a mihrab over a photo of Makkah and the sections hang below it like links in a chain. */
+  --green: #0A3023;
+  --green-deep: #06241A;
   --gold: #A8841F;
   --gold-text: #8A6A12;
   --white: #FFFFFF;
@@ -11,7 +11,7 @@
   --surface: #FFFFFF;  /* cards and fields, lifted off the page */
   --tint: #E2ECE5;
   --gold-tint: #FBF6E7;
-  --ink: #114D3A;
+  --ink: #0A3023;
   --muted: #4E7264;
   --soft: #9BB2A6;
   --line: #D2E0D6;
@@ -241,6 +241,19 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
   pointer-events: none;
 }
 .site-header__inner { display: flex; align-items: center; gap: 20px; min-height: var(--header-h); }
+/* at the very top the bar is clear over the opening photo, with the logo and links in white; once the page moves it turns solid */
+.site-header { transition: background-color .3s, border-color .3s; }
+.site-header.is-over { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; border-bottom-color: transparent; }
+.site-header.is-over .brand { --mark-arch: var(--white); --mark-chain: var(--gold-light); color: var(--white); }
+.site-header.is-over .brand__sub { color: var(--gold-light); }
+.site-header.is-over .menu-btn { background: rgba(6, 36, 26, .35); border-color: rgba(255, 255, 255, .5); color: var(--white); }
+@media (min-width: 901px) {
+  .site-header.is-over .site-nav a { color: rgba(255, 255, 255, .88); }
+  .site-header.is-over .site-nav a:hover,
+  .site-header.is-over .site-nav a[aria-current] { color: var(--white); }
+  .site-header.is-over .site-nav a::after { background: var(--gold-light); }
+  .site-header.is-over .site-nav a.site-nav__cta { background: var(--gold-light); color: var(--green-deep); box-shadow: none; }
+}
 
 .brand {
   --mark-arch: var(--green);
@@ -362,6 +375,17 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
   color: rgba(255, 255, 255, .8);
   overflow: clip;
 }
+/* the home page: Makkah at sunset behind the mihrab, kept clear under a light green wash, with a little more shade behind the words */
+.hero:not(.lost) {
+  background:
+    linear-gradient(180deg, rgba(4, 22, 16, .55) 0%, rgba(4, 22, 16, 0) 22%),
+    radial-gradient(ellipse 62% 56% at 50% 62%, rgba(4, 22, 16, .5) 0%, rgba(4, 22, 16, 0) 78%),
+    linear-gradient(rgba(6, 36, 26, .4), rgba(6, 36, 26, .4)),
+    url("../assets/makkah-sunset.jpg") 50% 30% / cover no-repeat var(--green-deep);
+}
+.hero:not(.lost)::before { content: none; }
+/* the photo runs up behind the bar at the top */
+main > .hero:first-child { margin-top: calc(-1 * var(--header-h) - 1px); padding-top: var(--header-h); }
 .hero::before {
   content: "";
   position: absolute;
@@ -437,7 +461,7 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
 }
 .hero__cords { fill: none; stroke: var(--gold-light); stroke-width: 1.2; }
 .hero__glass { fill: url(#lampGlass); stroke: var(--gold-light); stroke-width: 1.5; animation: hero-light 1.2s ease-out 2.5s backwards; }
-.hero__bands { fill: none; stroke: rgba(11, 58, 43, .45); stroke-width: 1.2; }
+.hero__bands { fill: none; stroke: rgba(6, 36, 26, .45); stroke-width: 1.2; }
 .hero__medallion { color: var(--green-deep); fill: var(--green-deep); }
 @keyframes hero-link { from { opacity: 0; transform: translateY(-12px); } }
 @keyframes hero-light { from { fill-opacity: .25; } }
@@ -452,7 +476,8 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
 .hero__copy > :nth-child(2) { animation-delay: .4s; }
 .hero__copy > :nth-child(3) { animation-delay: .6s; }
 /* two balanced lines, narrow enough to stand clear of the arch at every width */
-.hero h1 { max-width: 8.6em; font-size: var(--step-4); letter-spacing: -.01em; color: var(--white); }
+.hero h1 { max-width: 8.6em; font-size: var(--step-4); letter-spacing: -.01em; color: var(--white); text-shadow: 0 2px 24px rgba(4, 22, 16, .45); }
+.hero__lead { color: rgba(255, 255, 255, .92); text-shadow: 0 1px 12px rgba(4, 22, 16, .6); }
 /* the lamp's light falls on "chain." once it is lit */
 .hero h1 .gold { color: var(--gold-light); text-shadow: 0 0 .45em rgba(214, 182, 92, .4); animation: hero-lit 1.6s ease-out 2.6s backwards; }
 @keyframes hero-lit { from { text-shadow: 0 0 .45em rgba(214, 182, 92, 0); } }
@@ -655,7 +680,7 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(11, 58, 43, .85);
+  background: rgba(6, 36, 26, .85);
   color: #FFFFFF;
   pointer-events: none;
   transition: transform .3s, opacity .3s;
@@ -668,7 +693,7 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
   bottom: 10px;
   padding: 3px 10px;
   border-radius: 999px;
-  background: rgba(11, 58, 43, .85);
+  background: rgba(6, 36, 26, .85);
   color: #FFFFFF;
   font-size: .75rem;
   font-weight: 600;
@@ -826,7 +851,7 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
   width: min(260px, 70%);
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(11, 58, 43, .95);
+  background: rgba(6, 36, 26, .95);
   color: #FFFFFF;
   font-size: .8125rem;
   line-height: 1.45;
@@ -965,7 +990,7 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
   height: 40px;
   border: 0;
   border-radius: 50%;
-  background: rgba(11, 58, 43, .72);
+  background: rgba(6, 36, 26, .72);
   color: #FFFFFF;
   cursor: pointer;
   box-shadow: 0 0 0 1.5px rgba(214, 182, 92, .75);
@@ -973,7 +998,7 @@ main:focus { outline: none; }  /* the skip link lands here; the page itself need
   backdrop-filter: blur(6px);
   transition: background-color .2s;
 }
-.hold:hover { background: rgba(11, 58, 43, .92); }
+.hold:hover { background: rgba(6, 36, 26, .92); }
 .hold svg { width: 16px; height: 16px; }
 @media (max-width: 900px), (horizontal-viewport-segments: 2), (vertical-viewport-segments: 2) { .hold { width: 44px; height: 44px; } }
 .hold__play,
@@ -1132,24 +1157,14 @@ html:has(.lightbox[open]) { overflow: hidden; }
 
 /* ---------- ayah ---------- */
 
-/* the verse, with Makkah rising out of the white below it */
+/* the verse, standing by itself (the photo of Makkah that was under it is now behind the opening) */
 .ayah { background: var(--bg); color: var(--green); }
 .ayah__inner {
   display: grid;
   justify-items: center;
   gap: 14px;
-  padding-block: clamp(28px, 3.5vw, 44px) 0;
+  padding-block: clamp(36px, 5vw, 64px) clamp(8px, 1.5vw, 20px);
   text-align: center;
-}
-.ayah__photo { position: relative; margin: clamp(-24px, -2vw, -8px) 0 0; }
-.ayah__photo img {
-  display: block;
-  width: 100%;
-  height: clamp(220px, 32vw, 440px);
-  object-fit: cover;
-  object-position: 50% 20%;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 25%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 25%);
 }
 .ayah__ar { font-size: clamp(1.75rem, 1.1rem + 2.6vw, 3.1rem); line-height: 1.9; color: var(--green); }
 .ayah__en { max-width: 34ch; font-family: var(--font-display); font-size: clamp(1.2rem, 1rem + .9vw, 1.7rem); line-height: 1.35; color: var(--green); }

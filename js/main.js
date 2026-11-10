@@ -487,12 +487,14 @@
   /* ---------- as the page is read ---------- */
 
   // The gold line under the bar fills as the page is read.
-  const header = $('.site-header');
+  // At the very top the bar is clear over the opening photo; once the page moves it turns solid.
+  const header = $('.site-header'), opening = $('main > .hero:first-child');
   let readQueued = false;
   const read = () => {
     readQueued = false;
     const max = document.documentElement.scrollHeight - innerHeight;
     header.style.setProperty('--read', max > 0 ? Math.min(1, scrollY / max).toFixed(4) : 0);
+    header.classList.toggle('is-over', !!opening && scrollY < 24);
   };
   const queueRead = () => { if (!readQueued) { readQueued = true; requestAnimationFrame(read); } };
   addEventListener('scroll', queueRead, { passive: true });
